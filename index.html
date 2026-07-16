@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,16 @@
     html { scroll-behavior: smooth; }
     body { margin: 0; }
     ::selection { background: #4A6741; color: #F5F0E6; }
+    @media (max-width: 768px) {
+      #top { grid-template-columns: 1fr !important; padding: 60px 24px 80px !important; }
+      #top > div:first-child { order: 2; }
+      #top > div:last-child { order: 1; max-width: 220px !important; margin: 0 auto 24px !important; }
+      header { padding: 20px 24px !important; }
+      header > div:nth-child(2) { display: none !important; }
+      section#work { padding: 60px 24px !important; }
+      section#work > div:last-child { grid-template-columns: 1fr !important; }
+      h1 { font-size: 40px !important; }
+    }
   </style>
 </helmet>
 
@@ -129,7 +140,7 @@ class Component extends DCLogic {
   state = { searchQuery: "", isDark: false, hoveredWork: 0 };
 
   work = [
-    { num: "01", title: "Native Member App", tag: "Smart Pension ", href: "Case Study - Native Member App.html", teaser: "Reimagining Smart Pension's mobile experience, moving millions of members from a web app into an engaging native-first journey.", gradient: "linear-gradient(135deg, #4A6741 0%, #A9C08F 100%)" },
+    { num: "01", title: "Native Member App", tag: "Smart Pension ", href: "Case Study - Native Member App.html", teaser: "Reimagining Smart Pension's mobile experience, moving millions of members from a web app into an engaging native-first journey.", gradient: "linear-gradient(135deg, #4A6741 0%, #A9C08F 100%)" },
     { num: "02", title: "Profile Project", tag: "Smart Pension", href: "Case Study - Profile Project.html", teaser: "Redesigning the customer identity model behind the scenes of a growing platform.", gradient: "linear-gradient(135deg, #191714 0%, #4A6741 100%)" },
     { num: "03", title: "Individual Pensions", tag: "Smart Pension", href: "Case Study - Individual Pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)" },
   ];
