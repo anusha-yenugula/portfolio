@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    ::selection { background: #4A6741; color: #F5F0E6; }
+    .delightful-wrap { position: relative; }
+    .delightful-wrap .spark2 { position: absolute; top: 0.75em; left: -0.6em; font-size: 0.4em; color: #A9C08F; opacity: 0; transform: scale(0.4) rotate(15deg); transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s; display: inline-block; font-style: normal; }
+    .delightful-wrap:hover .spark2 { opacity: 1; transform: scale(1) rotate(0deg); }
+    .delightful-wrap::before { content: "✦"; position: absolute; top: 0.4em; right: -1.1em; font-size: 0.35em; color: #A9C08F; opacity: 0; transform: scale(0.4) rotate(20deg); transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s; }
+    .delightful-wrap:hover::before { opacity: 1; transform: scale(1) rotate(0deg); }
+    .delightful-wrap::after { content: "✦"; position: absolute; top: -0.1em; right: -0.75em; font-size: 0.55em; color: #5D6D22; opacity: 0; transform: scale(0.4) rotate(-15deg); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .delightful-wrap:hover::after { opacity: 1; transform: scale(1) rotate(0deg); }
+    @media (max-width: 768px) {
+      #top { padding: 60px 24px 80px !important; }
+      #top > div { max-width: none !important; }
+      header { padding: 16px 20px !important; }
+      header > div:nth-child(2) { display: none !important; }
+      header a[href="#top"] { font-size: 18px !important; }
+      header nav { gap: 12px !important; }
+      header nav > a[href="#work"] { display: none !important; }
+      header nav > a[href="About.html"] { display: none !important; }
+      header nav > a[target="_blank"] { padding: 8px 14px !important; font-size: 13px !important; }
+      section#work { padding: 60px 24px !important; }
+      section#work > div:last-child { grid-template-columns: 1fr !important; }
+      #top h2 { font-size: 32px !important; }
+      footer { padding-left: 24px !important; padding-right: 24px !important; }
+      footer h2 { font-size: 32px !important; }
+    }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      header { padding: 24px 32px !important; }
+      header > div:nth-child(2) { max-width: 160px !important; margin: 0 20px !important; }
+      #top { padding-left: 32px !important; padding-right: 32px !important; }
+      section#work { padding-left: 32px !important; padding-right: 32px !important; }
+    }
+  </style>
+</helmet>
+
+<div style="color: {{ c.text }}; font-family: 'Archivo', sans-serif; min-height: 100vh; overflow-x: hidden; background-color: {{ c.bg }}; transition: background-color 0.2s, color 0.2s;">
+
+  <!-- HEADER -->
+  <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 28px max(64px, calc((100% - 1140px) / 2)); backdrop-filter: blur(8px); border-bottom: 1px solid {{ c.border }}; background-color: {{ c.headerBg }}; transition: background-color 0.2s, border-color 0.2s;">
+    <a href="#top" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s; flex-shrink:0;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+
+    <div style="position:relative; flex:1; max-width:220px; margin:0 40px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ c.muted }}" stroke-width="2" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); pointer-events:none;"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" value="{{ searchQuery }}" onChange="{{ onSearchChange }}" placeholder="Search work, writing…" aria-label="Search site" style="width:100%; box-sizing:border-box; font-family:'Archivo', sans-serif; font-size:14px; color:{{ c.text }}; background:{{ c.inputBg }}; border:1px solid {{ c.inputBorder }}; border-radius:12px; padding:10px 16px 10px 40px; outline:none; transition:border-color 0.15s, box-shadow 0.15s, background-color 0.2s;" style-focus="border-color:#4A6741; box-shadow:0 0 0 3px rgba(74,103,65,0.15);">
+      <sc-if value="{{ searchQuery }}">
+        <div style="position:absolute; top:calc(100% + 8px); left:0; right:0; background:{{ c.dropdownBg }}; border:1px solid {{ c.border }}; border-radius:14px; box-shadow:0 20px 40px -20px rgba(0,0,0,0.3); overflow:hidden; z-index:60;">
+          <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+            <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="0">
+              <a href="{{ r.href }}" style="display:block; padding:14px 18px; text-decoration:none; color:{{ c.text }}; font-size:14px; border-top:1px solid {{ c.border }}; transition:background 0.15s;" style-hover="background:{{ c.cardHoverBg }};">
+                <span style="font-weight:600;">{{ r.title }}</span>
+                <span style="color:{{ c.muted }};"> — {{ r.subtitle }}</span>
+              </a>
+            </sc-for>
+          </sc-if>
+          <sc-if value="{{ hasNoResults }}">
+            <div style="padding:14px 18px; font-size:14px; color:{{ c.muted }};">No results for "{{ searchQuery }}"</div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+
+    <nav style="display:flex; align-items:center; gap:32px; flex-shrink:0;">
+      <a href="About.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Bio &amp; Values</a>
+      <a href="#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Work</a>
+
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-hover="background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:2px;">
+        <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </sc-if>
+        <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </sc-if>
+      </button>
+
+      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:#F5F0E6; text-decoration:none; font-size:14px; font-weight:600; background:#22301C; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:#182B14;" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">Let's Connect!</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  
+
+  <!-- WORK -->
+  <section id="top" style="padding:100px 64px 120px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
+    <div style="max-width:clamp(300px, 50%, 700px);">
+      <img src="uploads/portrait-round.png" alt="Anusha Yenugula" width="452" height="452" style="width:113px; height:113px; border-radius:50%; object-fit:cover; object-position:center top; display:block; margin:0 0 28px; box-shadow:0 20px 40px -18px rgba(0,0,0,0.35);">
+      <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">DESIGN LEADER AT SMART PENSION</p>
+      <h2 style="font-family:'Archivo', sans-serif; font-size:clamp(24px, 4.5vw, 36px); line-height:1.2; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">I help turn complex digital experiences into something simple, achievable and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h2>
+      
+      <div style="display:flex; gap:16px;">
+        <a href="#work" style="display: inline-flex; align-items: center; gap: 8px; color: #F5F0E6; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; background-color: #22301C; transition:background-color 0.15s, transform 0.15s;" style-hover="background-color:#182B14; transform:translateY(-1px);" style-focus="outline:2px solid #22301C; outline-offset:3px;">View my work&nbsp;</a>
+        <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:{{ c.text }}; text-decoration:none; padding:14px 28px; border-radius:12px; font-size:15px; font-weight:600; border:1px solid {{ c.border }}; transition:border-color 0.15s, background 0.15s;" style-hover="border-color:#4A6741; background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">Get in touch</a>
+      </div>
+    </div>
+  </section><section id="work" style="padding:100px 64px; max-width:1140px; margin:0 auto; border-top:1px solid {{ c.border }}; scroll-margin-top:96px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:48px; gap:24px; flex-wrap:wrap;">
+      <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0;">Selected Work</p>
+      <p style="font-size:14px; color:{{ c.muted }}; margin:0; display:flex; align-items:center; gap:6px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Password protected. Access details are available on my resume.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+      <sc-for list="{{ workItems }}" as="w" hint-placeholder-count="3">
+        <a href="{{ w.href }}" style="display:flex; flex-direction:column; text-decoration:none; background:{{ c.cardBg }}; border-radius:16px; padding:16px 16px 22px; color:{{ c.text }}; transition:background 0.18s, transform 0.18s, border-color 0.18s;" style-hover="background:{{ c.cardHoverBg }}; transform:translateY(-3px);" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
+          <div style="position:relative; width:100%; aspect-ratio:240/168; border-radius:10px; overflow:hidden; background:{{ w.bg }}; margin:0 0 18px;">
+            <svg viewBox="0 0 240 132" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%;">
+              <g stroke="{{ w.fg }}" stroke-width="1.5" opacity="0.85" vector-effect="non-scaling-stroke">
+                <line x1="0" y1="33" x2="240" y2="33"></line>
+                <line x1="0" y1="66" x2="240" y2="66"></line>
+                <line x1="0" y1="99" x2="240" y2="99"></line>
+                <line x1="40" y1="0" x2="40" y2="132"></line>
+                <line x1="80" y1="0" x2="80" y2="132"></line>
+                <line x1="120" y1="0" x2="120" y2="132"></line>
+                <line x1="160" y1="0" x2="160" y2="132"></line>
+                <line x1="200" y1="0" x2="200" y2="132"></line>
+              </g>
+            </svg>
+            <sc-if value="{{ w.isDisc }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute; left:50%; transform:translateX(-50%); top:18px; bottom:0; width:54%; background:{{ w.bezel }}; border-radius:20px 20px 0 0; padding:6px 6px 0; box-shadow:0 18px 34px -14px rgba(0,0,0,0.6);">
+                <div style="position:relative; height:100%; background:#EFF2EA; border-radius:15px 15px 0 0; padding:14px 8px 0; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <div style="position:absolute; top:5px; left:50%; transform:translateX(-50%); width:26px; height:4px; border-radius:2px; background:{{ w.bezel }}; opacity:0.45;"></div>
+                  <div style="border:1.5px dashed rgba(34,48,28,0.45); color:#4f584a; border-radius:8px; padding:9px 8px; font-size:9.5px; font-weight:600; line-height:1.2;">Workplace pension</div>
+                  <div style="background:#5D6D22; color:#F4F1E9; border-radius:8px; padding:10px 8px; font-size:9.5px; font-weight:600; line-height:1.2; display:flex; align-items:flex-start; gap:5px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Add money
+                  </div>
+                  <div style="background:#22301C; color:#F4F1E9; border-radius:8px; padding:10px 8px; font-size:9.5px; font-weight:600; line-height:1.25; display:flex; align-items:flex-start; gap:5px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Self-invested personal pension (SIPP)
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ w.isHub }}" hint-placeholder-val="{{ false }}">
+              <svg viewBox="0 0 240 168" style="position:absolute; inset:0; width:100%; height:100%;">
+                <g stroke="{{ w.fg2 }}" stroke-width="1.6" opacity="0.85">
+                  <line x1="178" y1="84" x2="120" y2="84"></line>
+                  <line x1="149" y1="134" x2="120" y2="84"></line>
+                  <line x1="91" y1="134" x2="120" y2="84"></line>
+                  <line x1="62" y1="84" x2="120" y2="84"></line>
+                  <line x1="91" y1="34" x2="120" y2="84"></line>
+                  <line x1="149" y1="34" x2="120" y2="84"></line>
+                </g>
+                <g fill="{{ w.fg2 }}">
+                  <circle cx="178" cy="84" r="8"></circle>
+                  <circle cx="149" cy="134" r="8"></circle>
+                  <circle cx="91" cy="134" r="8"></circle>
+                  <circle cx="62" cy="84" r="8"></circle>
+                  <circle cx="91" cy="34" r="8"></circle>
+                  <circle cx="149" cy="34" r="8"></circle>
+                </g>
+                <circle cx="120" cy="84" r="30" fill="{{ w.bezel }}"></circle>
+                <circle cx="120" cy="74" r="8" fill="#C7D8A8"></circle>
+                <rect x="106" y="88" width="28" height="16" rx="8" fill="#C7D8A8"></rect>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ w.hasScreen }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; left:50%; transform:translateX(-50%); top:26px; bottom:0; width:54%; border-radius:18px 18px 0 0; overflow:hidden; background:{{ w.bezel }}; padding:5px 5px 0; box-shadow:0 22px 40px -16px rgba(0,0,0,0.55);">
+                <img src="{{ w.screen }}" alt="{{ w.title }} screen" loading="lazy" style="display:block; width:100%; border-radius:14px 14px 0 0;">
+              </div>
+            </sc-if>
+          </div>
+          <p style="font-size:11px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 8px; padding:0 4px;">{{ w.tag }}</p>
+          <p style="font-size:20px; margin:0 0 6px; letter-spacing:-0.01em; padding:0 4px;">{{ w.title }}</p>
+          <p style="font-size:14px; color:{{ c.muted }}; line-height:1.5; margin:0 0 18px; padding:0 4px;">{{ w.teaser }}</p>
+          <span style="display:flex; align-items:center; gap:9px; font-size:13px; font-weight:600; color:{{ c.text }}; margin-top:auto; padding:0 4px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            View →
+          </span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <!-- CONNECT / FOOTER -->
+  <footer id="connect" style="background:#182B14; color:#F5F0E6; padding:100px 64px 48px; scroll-margin-top:0;">
+    <div style="max-width:1140px; margin:0 auto;">
+      <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#A9C08F; margin:0 0 24px;">Connect</p>
+      <h2 style="font-family:'Archivo', sans-serif; font-size:clamp(24px, 4.5vw, 36px); font-weight:400; line-height:1.2; margin:0 0 48px; max-width:700px;">Curiosity drives my work. I'm always up for a chat about design, AI or the next big idea.</h2>
+      <div style="display:flex; gap:16px; margin-bottom:80px;">
+        <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:#F5F0E6; color:#22301C; text-decoration:none; padding:14px 28px; border-radius:12px; font-size:15px; font-weight:600; transition:background 0.15s;" style-hover="background:#e4dfd0;" style-focus="outline:2px solid #A9C08F; outline-offset:3px;">Linkedin</a>
+        
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:32px; border-top:1px solid rgba(245,240,230,0.15);">
+        <span style="font-family:'Archivo', sans-serif; font-size:18px;">© 2026 Anusha Yenugula</span>
+        <span style="font-size:14px; color:rgba(245,240,230,0.5);">Built with Claude Code</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { searchQuery: "", isDark: localStorage.getItem("theme") === "dark", hoveredWork: 0 };
+
+  work = [
+    { num: "01", title: "Native Member App", tag: "Smart Pension ", href: "Case Study - Native Member App.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#A9C08F", fg: "#22301C", fg2: "#F4F1E9", bezel: "#22301C", screen: "uploads/screen-native-member-app.png", gradient: "linear-gradient(135deg, #4A6741 0%, #0d2b2e 100%)", image: "uploads/case-study-native-member-app.png" },
+    { num: "02", title: "Profile Project", tag: "Smart Pension", href: "Case Study - Profile Project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#1F3B34", fg: "#2E5449", fg2: "#A9C08F", bezel: "#0F2620", hub: true, gradient: "linear-gradient(135deg, #22301C 0%, #4A6741 100%)", image: "uploads/case-study-profile-project.png" },
+    { num: "03", title: "Individual Pensions", tag: "Smart Pension", href: "Case Study - Individual Pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#22301C", fg: "#5D6D22", fg2: "#A9C08F", bezel: "#12200D", gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)", image: "uploads/case-study-individual-pensions.png" },
+  ];
+
+  items = [
+    { title: "Native Member App", subtitle: "Case study", href: "Case Study - Native Member App.html" },
+    { title: "Profile Project", subtitle: "Case study", href: "Case Study - Profile Project.html" },
+    { title: "Individual Pensions", subtitle: "Case study", href: "Case Study - Individual Pensions.html" },
+    { title: "Connect", subtitle: "Get in touch", href: "#connect" },
+  ];
+
+  light = {
+    bg: "#F4F1E9", text: "#22301C", muted: "#4f584a",
+    border: "rgba(34,48,28,0.14)", headerBg: "#F4F1E9E0",
+    cardBg: "#FCFAF4", cardHoverBg: "#FCFAF4",
+    inputBg: "#FFFFFF", inputBorder: "rgba(34,48,28,0.18)",
+    dropdownBg: "#FFFFFF",
+    accent: "#5D6D22", eyebrow: "#5D6D22",
+  };
+  dark = {
+    bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d",
+    border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0",
+    cardBg: "#221F16", cardHoverBg: "#221F16",
+    inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)",
+    dropdownBg: "#221F16",
+    accent: "#A9C08F", eyebrow: "#A9C08F",
+  };
+
+  renderVals() {
+    const q = this.state.searchQuery.trim().toLowerCase();
+    const results = q
+      ? this.items.filter(i => i.title.toLowerCase().includes(q) || i.subtitle.toLowerCase().includes(q))
+      : [];
+    return {
+      searchQuery: this.state.searchQuery,
+      onSearchChange: e => this.setState({ searchQuery: e.target.value }),
+      searchResults: results,
+      hasResults: results.length > 0,
+      hasNoResults: results.length === 0,
+      isDark: this.state.isDark,
+      isLight: !this.state.isDark,
+      onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),
+      c: this.state.isDark ? this.dark : this.light,
+      workItems: this.work.map((w, i) => ({ ...w, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }) })),
+      activeWork: this.work[this.state.hoveredWork],
+    };
+  }
+}
+</script>
+</body>
+</html>

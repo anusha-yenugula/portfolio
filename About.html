@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    ::selection { background: #4A6741; color: #F5F0E6; }
+    body { transition: background-color 0.2s, color 0.2s; }
+    @media (max-width: 768px) {
+      header { padding: 20px 24px !important; }
+      nav[style*="gap: 40px"] { gap: 16px !important; }
+      section { padding-left: 24px !important; padding-right: 24px !important; }
+      footer { padding-left: 24px !important; padding-right: 24px !important; }
+      [style*="grid-template-columns: 0.5fr 1.5fr"] { grid-template-columns: 1fr !important; gap: 20px !important; }
+      [style*="grid-template-columns: repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(2, 1fr); gap:20px"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(3, 1fr); gap:24px 32px"] { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</helmet>
+
+<div style="color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; overflow-x:hidden; background-color:{{ c.bg }}; transition:background-color 0.2s, color 0.2s;">
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:28px max(64px, calc((100% - 1140px) / 2)); backdrop-filter:blur(8px); border-bottom:1px solid {{ c.border }}; background-color:{{ c.headerBg }}; transition:background-color 0.2s, border-color 0.2s;">
+    <a href="index.html" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s;" style-hover="color:#4A6741;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+    <nav style="display:flex; align-items:center; gap:32px;">
+      <a href="About.html" style="color:{{ c.accent }}; text-decoration:none; font-size:15px; font-weight:600;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Bio &amp; Values</a>
+      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#4A6741;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Work</a>
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #4A6741; outline-offset:2px;">
+        <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </sc-if>
+        <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </sc-if>
+      </button>
+      <a href="index.html#connect" style="color:#F5F0E6; text-decoration:none; font-size:14px; font-weight:600; background:#182B14; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:#3a362f;" style-focus="outline:2px solid #4A6741; outline-offset:3px;">Let's talk</a>
+    </nav>
+  </header>
+
+  <!-- INTRO -->
+  <section style="padding:100px 64px 80px; max-width:900px; margin:0 auto;">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Bio &amp; Values</p>
+    
+    <p style="font-family:'Archivo', sans-serif; font-style:italic; font-size:clamp(19px, 3vw, 24px); line-height:1.55; font-weight:400; margin:0 0 28px; color:{{ c.text }};">
+      People often describe me as a pragmatic, curious leader who isn't afraid to challenge the status quo. I love asking questions, exploring possibilities and encourage looking for better ways of solving problems.
+    </p>
+    <div style="display:flex; align-items:center; gap:16px; margin:44px 0 36px;">
+      <span style="flex:1; height:1px; background:{{ c.border }};"></span>
+      <span style="color:{{ c.accent }}; font-size:14px;">✦</span>
+      <span style="flex:1; height:1px; background:{{ c.border }};"></span>
+    </div>
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">Beyond the screen</p>
+    <p style="font-size:clamp(16px, 2vw, 18px); line-height:1.75; color:{{ c.muted }}; margin:0 0 24px;">
+      Born in India, raised in New Zealand, and having started my career in Australia, I now call London home. I think of myself as a global citizen, as every place I've lived has left its mark on who I am.
+    </p>
+    <p style="font-size:clamp(16px, 2vw, 18px); line-height:1.75; color:{{ c.muted }}; margin:0;">
+      When I need to escape the screen, you'll usually find me painting, illustrating or trying my hand at pottery often inspired by my Indian roots. I also love to travel, hike and spend time by the ocean and true to my Kiwi and Aussie side - I take my coffee very seriously.
+    </p>
+  </section>
+
+  <!-- HOW I LEAD -->
+  <section style="padding:80px 64px; max-width:1140px; margin:0 auto; border-top:1px solid {{ c.border }};">
+    <div style="display:grid; grid-template-columns:0.5fr 1.5fr; gap:60px;">
+      <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0;">How I Lead</p>
+      <p style="font-size:clamp(16px, 2vw, 18px); line-height:1.75; color:{{ c.muted }}; margin:0;">
+        I aim to instill curiosity in the designers I lead, helping them ask better questions and adapt with confidence as the problems we're trying to solve keep changing with AI. The best solutions come from understanding people, systems and challenges deeply before jumping to answers.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMPLEXITY -->
+  <section style="padding:80px 64px; max-width:1140px; margin:0 auto; border-top:1px solid {{ c.border }};">
+    <div style="display:grid; grid-template-columns:0.5fr 1.5fr; gap:60px;">
+      <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0;">Experience</p>
+      <div style="max-width:760px;">
+        
+        <p style="font-size:clamp(15px, 2vw, 17px); line-height:1.75; color:{{ c.muted }}; margin:0 0 20px;">
+          Over the past 10+ years, I've worked across financial services and retail digital products in New Zealand, Australia and the UK.
+        </p>
+        <p style="font-size:clamp(15px, 2vw, 17px); line-height:1.75; color:{{ c.muted }}; margin:0;">
+          Working in finance has taught me how to navigate ambiguity, regulation and competing priorities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK + VALUES -->
+  <section style="padding:100px 64px; max-width:1140px; margin:0 auto; border-top:1px solid {{ c.border }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 16px;">MY PILLARS</p>
+    
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;">
+      <div style="background:{{ p.0.tint }}; border-radius:16px; padding:30px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ p.0.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"></circle><circle cx="5" cy="16" r="2.2"></circle><circle cx="19" cy="16" r="2.2"></circle><line x1="12" y1="7.2" x2="12" y2="12"></line><line x1="12" y1="12" x2="6.6" y2="14.3"></line><line x1="12" y1="12" x2="17.4" y2="14.3"></line></svg>
+          <p style="font-family:'Archivo', sans-serif; font-size:18px; font-weight:600; margin:0; color:{{ c.text }};">Understand the business model</p>
+        </div>
+        <p style="font-size:15px; line-height:1.6; color:{{ c.muted }}; margin:0;"><strong style="color:{{ p.0.accent }};">Know how it makes money.</strong> <br>Design decisions are better when you understand how the business succeeds.</p>
+      </div>
+      <div style="background:{{ p.1.tint }}; border-radius:16px; padding:30px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ p.1.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="15.3" y1="15.3" x2="20.5" y2="20.5"></line></svg>
+          <p style="font-family:'Archivo', sans-serif; font-size:18px; font-weight:600; margin:0; color:{{ c.text }};">Systems thinking</p>
+        </div>
+        <p style="font-size:15px; line-height:1.6; color:{{ c.muted }}; margin:0;"><strong style="color:{{ p.1.accent }};">Design beyond the feature.</strong> <br>Good design accounts for the whole system, not just the surface someone interacts with.</p>
+      </div>
+      <div style="background:{{ p.2.tint }}; border-radius:16px; padding:30px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ p.2.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.4" fill="{{ p.2.accent }}" stroke="none"></circle></svg>
+          <p style="font-family:'Archivo', sans-serif; font-size:18px; font-weight:600; margin:0; color:{{ c.text }};">Outcome focused</p>
+        </div>
+        <p style="font-size:15px; line-height:1.6; color:{{ c.muted }}; margin:0;"><strong style="color:{{ p.2.accent }};">Progress over perfection.</strong> <br>Ship, learn, iterate. Products get better through real feedback loops.</p>
+      </div>
+      <div style="background:{{ p.3.tint }}; border-radius:16px; padding:30px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ p.3.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"></path><path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z"></path><path d="M12 13c0-3-2.5-5-6-5 0 3 2.5 5 6 5z"></path></svg>
+          <p style="font-family:'Archivo', sans-serif; font-size:18px; font-weight:600; margin:0; color:{{ c.text }};">Influence beats authority</p>
+        </div>
+        <p style="font-size:15px; line-height:1.6; color:{{ c.muted }}; margin:0;"><strong style="color:{{ p.3.accent }};">Build confident teams.</strong> <br>Create an environment where people feel trusted, challenged and supported to do their best work.</p>
+      </div>
+      <div style="background:{{ p.4.tint }}; border-radius:16px; padding:30px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ p.4.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-3 5-3 1.5 3-5z"></path></svg>
+          <p style="font-family:'Archivo', sans-serif; font-size:18px; font-weight:600; margin:0; color:{{ c.text }};">Curiosity first</p>
+        </div>
+        <p style="font-size:15px; line-height:1.6; color:{{ c.muted }}; margin:0;"><strong style="color:{{ p.4.accent }};">Ask better questions.</strong> <br>Curiosity uncovers opportunities that solutions alone can't.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#182B14; color:#F5F0E6; padding:40px 64px; border-top:1px solid rgba(245,240,230,0.1);">
+    <div style="max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-family:'Archivo', sans-serif; font-size:18px;">Anusha Yenugula</span>
+      <a href="index.html" style="color:rgba(245,240,230,0.6); text-decoration:none; font-size:14px; transition:color 0.15s;" style-hover="color:#F5F0E6;" style-focus="outline:2px solid #A9C08F; outline-offset:3px;">← Back to portfolio</a>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isDark: localStorage.getItem("theme") === "dark" };
+
+  light = { bg: "#F4F1E9", text: "#22301C", muted: "#4f584a", border: "rgba(34,48,28,0.14)", headerBg: "#F4F1E9E0", accent: "#5D6D22", cardBg: "#FCFAF4", iconBg: "rgba(93,109,34,0.1)" };
+  dark = { bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0", accent: "#A9C08F", cardBg: "#221F16", iconBg: "rgba(169,192,143,0.12)" };
+
+  pillarLight = [
+    { tint: "rgba(93,109,34,0.1)", accent: "#5D6D22" },
+    { tint: "rgba(158,91,43,0.1)", accent: "#9E5B2B" },
+    { tint: "rgba(58,107,120,0.1)", accent: "#3A6B78" },
+    { tint: "rgba(163,80,84,0.1)", accent: "#A35054" },
+    { tint: "rgba(122,99,163,0.1)", accent: "#7A63A3" },
+  ];
+  pillarDark = [
+    { tint: "rgba(169,192,143,0.12)", accent: "#A9C08F" },
+    { tint: "rgba(214,152,110,0.12)", accent: "#D6986E" },
+    { tint: "rgba(130,185,199,0.12)", accent: "#82B9C7" },
+    { tint: "rgba(214,132,136,0.12)", accent: "#D68488" },
+    { tint: "rgba(178,157,214,0.12)", accent: "#B29DD6" },
+  ];
+
+  renderVals() {
+    const isDark = this.state.isDark;
+    return {
+      isDark,
+      isLight: !isDark,
+      onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),
+      c: isDark ? this.dark : this.light,
+      p: isDark ? this.pillarDark : this.pillarLight,
+    };
+  }
+}
+</script>
+</body>
+</html>
