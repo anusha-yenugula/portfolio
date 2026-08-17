@@ -94,15 +94,17 @@
 
   <!-- WORK -->
   <section id="top" style="padding:100px 64px 120px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
-    <div style="max-width:clamp(300px, 50%, 700px);">
-      <img src="uploads/portrait-round.png" alt="Anusha Yenugula" width="452" height="452" style="width:113px; height:113px; border-radius:50%; object-fit:cover; object-position:center top; display:block; margin:0 0 28px; box-shadow:0 20px 40px -18px rgba(0,0,0,0.35);">
-      <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">DESIGN LEADER AT SMART PENSION</p>
+    <div style="display:flex; align-items:center; gap:clamp(32px, 5vw, 64px); flex-wrap:wrap;">
+    <div style="flex:1 1 420px; min-width:0; max-width:700px;">
+      <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">DESIGN LEADER</p>
       <h2 style="font-family:'Archivo', sans-serif; font-size:clamp(24px, 4.5vw, 36px); line-height:1.2; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">I help turn complex digital experiences into something simple, achievable and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h2>
       
       <div style="display:flex; gap:16px;">
         <a href="#work" style="display: inline-flex; align-items: center; gap: 8px; color: #F5F0E6; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; background-color: #22301C; transition:background-color 0.15s, transform 0.15s;" style-hover="background-color:#182B14; transform:translateY(-1px);" style-focus="outline:2px solid #22301C; outline-offset:3px;">View my work&nbsp;</a>
         <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:{{ c.text }}; text-decoration:none; padding:14px 28px; border-radius:12px; font-size:15px; font-weight:600; border:1px solid {{ c.border }}; transition:border-color 0.15s, background 0.15s;" style-hover="border-color:#4A6741; background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">Get in touch</a>
       </div>
+    </div>
+    <img src="uploads/hero-museum.png" alt="Anusha at the Design Museum Japan exhibit" width="880" height="1100" style="flex:1 1 260px; min-width:240px; max-width:360px; height:auto; border-radius:28px; box-shadow:0 24px 48px -20px rgba(0,0,0,0.4);">
     </div>
   </section><section id="work" style="padding:100px 64px; max-width:1140px; margin:0 auto; border-top:1px solid {{ c.border }}; scroll-margin-top:96px;">
     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:48px; gap:24px; flex-wrap:wrap;">
@@ -130,43 +132,84 @@
               </g>
             </svg>
             <sc-if value="{{ w.isDisc }}" hint-placeholder-val="{{ true }}">
-              <div style="position:absolute; left:50%; transform:translateX(-50%); top:18px; bottom:0; width:54%; background:{{ w.bezel }}; border-radius:20px 20px 0 0; padding:6px 6px 0; box-shadow:0 18px 34px -14px rgba(0,0,0,0.6);">
-                <div style="position:relative; height:100%; background:#EFF2EA; border-radius:15px 15px 0 0; padding:14px 8px 0; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
-                  <div style="position:absolute; top:5px; left:50%; transform:translateX(-50%); width:26px; height:4px; border-radius:2px; background:{{ w.bezel }}; opacity:0.45;"></div>
-                  <div style="border:1.5px dashed rgba(34,48,28,0.45); color:#4f584a; border-radius:8px; padding:9px 8px; font-size:9.5px; font-weight:600; line-height:1.2;">Workplace pension</div>
-                  <div style="background:#5D6D22; color:#F4F1E9; border-radius:8px; padding:10px 8px; font-size:9.5px; font-weight:600; line-height:1.2; display:flex; align-items:flex-start; gap:5px;">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <!-- Laptop: screen + visible base/hinge -->
+              <div style="position:absolute; left:7%; top:26px; width:60%; bottom:8px; background:{{ w.bezel }}; border-radius:10px 10px 2px 2px; padding:5px 5px 8px; box-shadow:0 18px 34px -14px rgba(0,0,0,0.6);">
+                <div style="position:relative; height:100%; background:#EFF2EA; border-radius:6px; padding:14px 10px 6px; display:flex; flex-direction:column; gap:7px; overflow:hidden;">
+                  <div style="position:absolute; top:4px; left:50%; transform:translateX(-50%); width:5px; height:5px; border-radius:50%; background:{{ w.bezel }}; opacity:0.45;"></div>
+                  <div style="border:1.5px dashed rgba(34,48,28,0.45); color:#4f584a; border-radius:7px; padding:7px 8px; font-size:9px; font-weight:600; line-height:1.2;">Workplace pension</div>
+                  <div style="display:flex; gap:7px;">
+                    <div style="flex:1; background:#5D6D22; color:#F4F1E9; border-radius:7px; padding:7px 7px; font-size:9px; font-weight:600; line-height:1.2; display:flex; align-items:flex-start; gap:4px;">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                      Add money
+                    </div>
+                    <div style="flex:1.4; background:#22301C; color:#F4F1E9; border-radius:7px; padding:7px 7px; font-size:9px; font-weight:600; line-height:1.25; display:flex; align-items:flex-start; gap:4px;">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                      SIPP
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="position:absolute; left:2%; bottom:0; width:70%; height:8px; background:{{ w.bezel }}; border-radius:2px 2px 6px 6px;"></div>
+              <div style="position:absolute; left:50%; transform:translateX(-50%); bottom:5px; width:9%; height:3px; background:rgba(244,241,233,0.25); border-radius:0 0 4px 4px; margin-left:-15.5%;"></div>
+              <!-- Phone: rounded corners, notch, overlapping foreground -->
+              <div style="position:absolute; right:8%; top:44px; bottom:0; width:26%; background:{{ w.bezel }}; border-radius:18px 18px 0 0; padding:5px 5px 0; box-shadow:-8px 14px 30px -10px rgba(0,0,0,0.65);">
+                <div style="position:relative; height:100%; background:#EFF2EA; border-radius:14px 14px 0 0; padding:14px 6px 0; display:flex; flex-direction:column; gap:6px; overflow:hidden;">
+                  <div style="position:absolute; top:4px; left:50%; transform:translateX(-50%); width:24px; height:5px; border-radius:3px; background:{{ w.bezel }};"></div>
+                  <div style="border:1.5px dashed rgba(34,48,28,0.45); color:#4f584a; border-radius:7px; padding:7px 6px; font-size:8.5px; font-weight:600; line-height:1.2;">Workplace pension</div>
+                  <div style="background:#5D6D22; color:#F4F1E9; border-radius:7px; padding:8px 6px; font-size:8.5px; font-weight:600; line-height:1.2; display:flex; align-items:flex-start; gap:4px;">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                     Add money
                   </div>
-                  <div style="background:#22301C; color:#F4F1E9; border-radius:8px; padding:10px 8px; font-size:9.5px; font-weight:600; line-height:1.25; display:flex; align-items:flex-start; gap:5px;">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    Self-invested personal pension (SIPP)
+                  <div style="background:#22301C; color:#F4F1E9; border-radius:7px; padding:8px 6px; font-size:8.5px; font-weight:600; line-height:1.25; display:flex; align-items:flex-start; gap:4px;">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="flex-shrink:0; margin-top:1px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    SIPP
                   </div>
                 </div>
               </div>
             </sc-if>
             <sc-if value="{{ w.isHub }}" hint-placeholder-val="{{ false }}">
-              <svg viewBox="0 0 240 168" style="position:absolute; inset:0; width:100%; height:100%;">
-                <g stroke="{{ w.fg2 }}" stroke-width="1.6" opacity="0.85">
-                  <line x1="178" y1="84" x2="120" y2="84"></line>
-                  <line x1="149" y1="134" x2="120" y2="84"></line>
-                  <line x1="91" y1="134" x2="120" y2="84"></line>
-                  <line x1="62" y1="84" x2="120" y2="84"></line>
-                  <line x1="91" y1="34" x2="120" y2="84"></line>
-                  <line x1="149" y1="34" x2="120" y2="84"></line>
+              <svg viewBox="0 0 240 168" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%;">
+                <g stroke="{{ w.fg2 }}" stroke-width="1.4" opacity="0.75" fill="none">
+                  <path d="M 76 40 C 100 40, 106 76, 128 76"></path>
+                  <line x1="76" y1="84" x2="128" y2="84"></line>
+                  <path d="M 76 128 C 100 128, 106 92, 128 92"></path>
                 </g>
                 <g fill="{{ w.fg2 }}">
-                  <circle cx="178" cy="84" r="8"></circle>
-                  <circle cx="149" cy="134" r="8"></circle>
-                  <circle cx="91" cy="134" r="8"></circle>
-                  <circle cx="62" cy="84" r="8"></circle>
-                  <circle cx="91" cy="34" r="8"></circle>
-                  <circle cx="149" cy="34" r="8"></circle>
+                  <circle cx="129" cy="76" r="2.4"></circle>
+                  <circle cx="129" cy="84" r="2.4"></circle>
+                  <circle cx="129" cy="92" r="2.4"></circle>
                 </g>
-                <circle cx="120" cy="84" r="30" fill="{{ w.bezel }}"></circle>
-                <circle cx="120" cy="74" r="8" fill="#C7D8A8"></circle>
-                <rect x="106" y="88" width="28" height="16" rx="8" fill="#C7D8A8"></rect>
               </svg>
+              <!-- account chips feeding in -->
+              <div style="position:absolute; left:7%; top:12px; bottom:12px; width:24%; display:flex; flex-direction:column; justify-content:space-between;">
+                <div style="border:1.5px dashed rgba(169,192,143,0.75); color:#C7D8A8; border-radius:8px; padding:8px 9px; font-size:8.5px; font-weight:600; line-height:1.25; background:rgba(15,38,32,0.5); text-align:center;">Employer one</div>
+                <div style="border:1.5px dashed rgba(169,192,143,0.75); color:#C7D8A8; border-radius:8px; padding:8px 9px; font-size:8.5px; font-weight:600; line-height:1.25; background:rgba(15,38,32,0.5); text-align:center;">Employer two</div>
+                <div style="border:1.5px dashed rgba(169,192,143,0.75); color:#C7D8A8; border-radius:8px; padding:8px 9px; font-size:8.5px; font-weight:600; line-height:1.25; background:rgba(15,38,32,0.5); text-align:center;">Personal pension</div>
+              </div>
+              <!-- one profile: phone -->
+              <div style="position:absolute; right:9%; top:20px; bottom:0; width:34%; border-radius:18px 18px 0 0; background:{{ w.bezel }}; padding:5px 5px 0; box-shadow:0 22px 40px -16px rgba(0,0,0,0.55);">
+                <div style="height:100%; border-radius:14px 14px 0 0; background:#04443F; padding:12px 7px 0; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <div style="display:flex; align-items:center; justify-content:center; gap:4px;">
+                    <span style="width:9px; height:9px; border-radius:50%; background:#F4F1E9; flex-shrink:0;"></span>
+                    <span style="color:#F4F1E9; font-size:7.5px; font-weight:600;">Smart Pension</span>
+                  </div>
+                  <p style="color:#F4F1E9; font-size:9.5px; font-weight:400; text-align:center; margin:0;">Find your account</p>
+                  <div style="flex:1; background:#FFFFFF; border-radius:6px 6px 0 0; padding:9px 8px; display:flex; flex-direction:column; gap:6px;">
+                    <div style="height:3px; background:#D8D5CC; border-radius:2px; width:92%;"></div>
+                    <div style="height:3px; background:#D8D5CC; border-radius:2px; width:70%;"></div>
+                    <p style="font-size:7px; font-weight:600; color:#182B2B; margin:5px 0 0;">First name</p>
+                    <div style="height:13px; border:1px solid #B9B6AD; border-radius:3px;"></div>
+                    <p style="font-size:7px; font-weight:600; color:#182B2B; margin:3px 0 0;">Last name</p>
+                    <div style="height:13px; border:1px solid #B9B6AD; border-radius:3px;"></div>
+                    <p style="font-size:7px; font-weight:600; color:#182B2B; margin:3px 0 0;">Date of birth</p>
+                    <div style="display:flex; gap:4px;">
+                      <div style="width:16px; height:13px; border:1px solid #B9B6AD; border-radius:3px;"></div>
+                      <div style="width:16px; height:13px; border:1px solid #B9B6AD; border-radius:3px;"></div>
+                      <div style="width:22px; height:13px; border:1px solid #B9B6AD; border-radius:3px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </sc-if>
             <sc-if value="{{ w.hasScreen }}" hint-placeholder-val="{{ false }}">
               <div style="position:absolute; left:50%; transform:translateX(-50%); top:26px; bottom:0; width:54%; border-radius:18px 18px 0 0; overflow:hidden; background:{{ w.bezel }}; padding:5px 5px 0; box-shadow:0 22px 40px -16px rgba(0,0,0,0.55);">
@@ -211,13 +254,13 @@ class Component extends DCLogic {
 
   work = [
     { num: "01", title: "Native Member App", tag: "Smart Pension ", href: "Case Study - Native Member App.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#A9C08F", fg: "#22301C", fg2: "#F4F1E9", bezel: "#22301C", screen: "uploads/screen-native-member-app.png", gradient: "linear-gradient(135deg, #4A6741 0%, #0d2b2e 100%)", image: "uploads/case-study-native-member-app.png" },
-    { num: "02", title: "Profile Project", tag: "Smart Pension", href: "Case Study - Profile Project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#1F3B34", fg: "#2E5449", fg2: "#A9C08F", bezel: "#0F2620", hub: true, gradient: "linear-gradient(135deg, #22301C 0%, #4A6741 100%)", image: "uploads/case-study-profile-project.png" },
+    { num: "02", title: "Identity Project", tag: "Smart Pension", href: "Case Study - Identity Project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#1F3B34", fg: "#2E5449", fg2: "#A9C08F", bezel: "#0F2620", hub: true, gradient: "linear-gradient(135deg, #22301C 0%, #4A6741 100%)", image: "uploads/case-study-profile-project.png" },
     { num: "03", title: "Individual Pensions", tag: "Smart Pension", href: "Case Study - Individual Pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#22301C", fg: "#5D6D22", fg2: "#A9C08F", bezel: "#12200D", gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)", image: "uploads/case-study-individual-pensions.png" },
   ];
 
   items = [
     { title: "Native Member App", subtitle: "Case study", href: "Case Study - Native Member App.html" },
-    { title: "Profile Project", subtitle: "Case study", href: "Case Study - Profile Project.html" },
+    { title: "Identity Project", subtitle: "Case study", href: "Case Study - Identity Project.html" },
     { title: "Individual Pensions", subtitle: "Case study", href: "Case Study - Individual Pensions.html" },
     { title: "Connect", subtitle: "Get in touch", href: "#connect" },
   ];
