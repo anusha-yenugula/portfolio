@@ -29,7 +29,7 @@
       header a[href="#top"] { font-size: 18px !important; }
       header nav { gap: 12px !important; }
       header nav > a[href="#work"] { display: none !important; }
-      header nav > a[href="About.html"] { display: none !important; }
+      header nav > a[href="about.html"] { font-size: 13px !important; }
       header nav > a[target="_blank"] { padding: 8px 14px !important; font-size: 13px !important; }
       section#work { padding: 60px 24px !important; }
       section#work > div:last-child { grid-template-columns: 1fr !important; }
@@ -73,7 +73,7 @@
     </div>
 
     <nav style="display:flex; align-items:center; gap:32px; flex-shrink:0;">
-      <a href="About.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Bio &amp; Values</a>
+      <a href="about.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Bio &amp; Values</a>
       <a href="#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Work</a>
 
       <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-hover="background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:2px;">
@@ -253,15 +253,15 @@ class Component extends DCLogic {
   state = { searchQuery: "", isDark: localStorage.getItem("theme") === "dark", hoveredWork: 0 };
 
   work = [
-    { num: "01", title: "Native Member App", tag: "Smart Pension ", href: "Case Study - Native Member App.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#A9C08F", fg: "#22301C", fg2: "#F4F1E9", bezel: "#22301C", screen: "uploads/screen-native-member-app.png", gradient: "linear-gradient(135deg, #4A6741 0%, #0d2b2e 100%)", image: "uploads/case-study-native-member-app.png" },
-    { num: "02", title: "Identity Project", tag: "Smart Pension", href: "Case Study - Identity Project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#1F3B34", fg: "#2E5449", fg2: "#A9C08F", bezel: "#0F2620", hub: true, gradient: "linear-gradient(135deg, #22301C 0%, #4A6741 100%)", image: "uploads/case-study-profile-project.png" },
-    { num: "03", title: "Individual Pensions", tag: "Smart Pension", href: "Case Study - Individual Pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#22301C", fg: "#5D6D22", fg2: "#A9C08F", bezel: "#12200D", gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)", image: "uploads/case-study-individual-pensions.png" },
+    { num: "01", title: "Native Member App", tag: "Smart Pension ", href: "native-member-app.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#A9C08F", fg: "#22301C", fg2: "#F4F1E9", bezel: "#22301C", screen: "uploads/screen-native-member-app.png", gradient: "linear-gradient(135deg, #4A6741 0%, #0d2b2e 100%)", image: "uploads/case-study-native-member-app.png" },
+    { num: "02", title: "Identity Project", tag: "Smart Pension", href: "identity-project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#1F3B34", fg: "#2E5449", fg2: "#A9C08F", bezel: "#0F2620", hub: true, gradient: "linear-gradient(135deg, #22301C 0%, #4A6741 100%)", image: "uploads/case-study-profile-project.png" },
+    { num: "03", title: "Individual Pensions", tag: "Smart Pension", href: "individual-pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#22301C", fg: "#5D6D22", fg2: "#A9C08F", bezel: "#12200D", gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)", image: "uploads/case-study-individual-pensions.png" },
   ];
 
   items = [
-    { title: "Native Member App", subtitle: "Case study", href: "Case Study - Native Member App.html" },
-    { title: "Identity Project", subtitle: "Case study", href: "Case Study - Identity Project.html" },
-    { title: "Individual Pensions", subtitle: "Case study", href: "Case Study - Individual Pensions.html" },
+    { title: "Native Member App", subtitle: "Case study", href: "native-member-app.html" },
+    { title: "Identity Project", subtitle: "Case study", href: "identity-project.html" },
+    { title: "Individual Pensions", subtitle: "Case study", href: "individual-pensions.html" },
     { title: "Connect", subtitle: "Get in touch", href: "#connect" },
   ];
 

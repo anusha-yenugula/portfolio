@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    ::selection { background: #4A6741; color: #F5F0E6; }
+    @media (max-width: 768px) {
+      header { padding: 20px 24px !important; }
+      section { padding-left: 24px !important; padding-right: 24px !important; }
+      footer { padding-left: 24px !important; padding-right: 24px !important; }
+      [style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+      [style*="grid-template-columns: repeat(5, 1fr)"] { grid-template-columns: repeat(2,1fr) !important; gap: 10px !important; }
+      [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr auto 1fr"] { grid-template-columns: 1fr !important; text-align: center !important; }
+      div[style*="justify-content: space-between"] { flex-wrap: wrap !important; gap: 12px !important; }
+    }
+    @media (max-width: 480px) {
+      [style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(5, 1fr)"] { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      header { padding: 24px 32px !important; }
+      section { padding-left: 32px !important; padding-right: 32px !important; }
+      footer { padding-left: 32px !important; padding-right: 32px !important; }
+      [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+      [style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+    }
+  </style>
+</helmet>
+
+<sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+  <div style="background:{{ c.bg }}; color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; transition:background-color 0.2s, color 0.2s;">
+    <form onSubmit="{{ onSubmit }}" style="width:100%; max-width:380px; background:{{ c.cardBg }}; border:1px solid {{ c.border2 }}; border-radius:20px; padding:44px 36px; box-shadow:0 30px 60px -30px rgba(25,23,20,0.25); text-align:center;">
+      <div style="width:44px; height:44px; border-radius:50%; background:#EFEAD9; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A6741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      </div>
+      <p style="font-family:'Archivo', sans-serif; font-size:24px; font-weight:400; margin:0 0 8px;">This case study is private</p>
+      <p style="font-size:15px; color:{{ c.muted }}; line-height:1.5; margin:0 0 28px;">Enter the password to view Individual Pensions.</p>
+      <input type="password" value="{{ password }}" onChange="{{ onPasswordChange }}" placeholder="Password" aria-label="Password" style="width:100%; box-sizing:border-box; font-family:'Archivo', sans-serif; font-size:15px; color:{{ c.text }}; background:{{ c.inputBg }}; border:1px solid {{ c.inputBorder }}; border-radius:10px; padding:12px 14px; outline:none; margin-bottom:14px; transition:border-color 0.15s, box-shadow 0.15s;" style-focus="border-color:{{ c.accent }}; box-shadow:0 0 0 3px rgba(74,103,65,0.15);" />
+      <sc-if value="{{ hasError }}">
+        <p style="font-size:13px; color:{{ c.error }}; margin:-4px 0 14px;">Incorrect password — try again.</p>
+      </sc-if>
+      <button type="submit" style="width:100%; color:#F5F0E6; border:none; padding:13px; border-radius:10px; font-size:15px; font-weight:600; background:#182B14; cursor:pointer; transition:background 0.15s;" style-hover="background:#3a362f;" style-focus="outline:2px solid #4A6741; outline-offset:3px;">Unlock</button>
+      <a href="index.html" style="display:block; margin-top:20px; font-size:14px; color:{{ c.muted }}; text-decoration:none;" style-hover="color:#22301C;">← Back to portfolio</a>
+    </form>
+  </div>
+</sc-if>
+
+<sc-if value="{{ unlocked }}">
+<div style="background:{{ c.bg }}; color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; overflow-x:hidden; transition:background-color 0.2s, color 0.2s;">
+
+  <header style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:28px max(64px, calc((100% - 1140px) / 2)); background:{{ c.headerBg }}; backdrop-filter:blur(8px); border-bottom:1px solid {{ c.border }}; transition:background-color 0.2s, border-color 0.2s;">
+    <a href="index.html" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:600; display:flex; align-items:center; gap:8px; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">← Back to work</a>
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #4A6741; outline-offset:2px;">
+        <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </sc-if>
+        <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </sc-if>
+      </button>
+    </div>
+  </header>
+
+  <section style="padding:100px 64px 60px; max-width:1100px; margin:0 auto;">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Case Study 03 — Platform Strategy</p>
+    <h1 style="font-family:'Archivo', sans-serif; font-size:clamp(28px, 6vw, 48px); line-height:1.12; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">Reimagining Keystone: From Workplace Pension Administration to a Financial Platform</h1>
+    <p style="font-size:clamp(16px, 2vw, 19px); line-height:1.6; color:{{ c.muted }}; max-width:760px; margin:0 0 48px;">Creating the foundations for individual ownership, flexible savings products and Smart Pension's next phase of growth.</p>
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; padding:32px; background:{{ c.cardBg }}; border-radius:20px; border:1px solid {{ c.border }};">
+      <div>
+        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">B2B → B2C</p>
+        <p style="font-size:14px; color:{{ c.muted }}; margin:0;">Moving beyond employer-only relationships</p>
+      </div>
+      <div>
+        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">One</p>
+        <p style="font-size:14px; color:{{ c.muted }}; margin:0;">Flexible platform foundation</p>
+      </div>
+      <div>
+        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">Future</p>
+        <p style="font-size:14px; color:{{ c.muted }}; margin:0;">SIPP, ISA and savings products enabled</p>
+      </div>
+      <div>
+        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">Scale</p>
+        <p style="font-size:14px; color:{{ c.muted }}; margin:0;">Designed for multiple markets</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">The opportunity</p>
+    <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0 0 24px;">Keystone was originally built around workplace and employer-based master trust arrangements. This model allowed Smart Pension to successfully serve employers and employees, but it limited the platform's ability to support customers outside an employment relationship.</p>
+    <p style="font-family:'Archivo', sans-serif; font-style:italic; font-size:clamp(19px, 3vw, 26px); line-height:1.55; font-weight:400; color:{{ c.text }}; margin:36px 0;">"The challenge was not launching another pension product. It was redesigning the platform so it could support a new relationship between Smart Pension and customers."</p>
+    <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0;">The opportunity was to evolve Keystone into a flexible savings platform capable of supporting individual customers, direct funding and future financial products.</p>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">My role as Design Leader</p>
+    <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0 0 40px;">As Design Manager, I helped shape the future-state experience strategy and create alignment around how Keystone needed to evolve.</p>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Strategy</p>
+        <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
+          <li>Defined future customer experience</li>
+          <li>Translated business ambition into product direction</li>
+          <li>Created scalable experience principles</li>
+        </ul>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Design</p>
+        <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
+          <li>Mapped customer journeys</li>
+          <li>Identified experience gaps</li>
+          <li>Designed flexible interaction models</li>
+        </ul>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Leadership</p>
+        <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
+          <li>Aligned Product and Engineering</li>
+          <li>Created shared vision</li>
+          <li>Guided teams through ambiguity</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">Understanding the problem</p>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Current model</p>
+        <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
+          <li>Employer-led journeys</li>
+          <li>Products tied to schemes</li>
+          <li>Limited customer ownership</li>
+        </ul>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Customer need</p>
+        <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
+          <li>Individual savings options</li>
+          <li>Direct product management</li>
+          <li>Greater financial flexibility</li>
+        </ul>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Business challenge</p>
+        <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
+          <li>Restricted market opportunity</li>
+          <li>Limited product expansion</li>
+          <li>Platform constraints</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">Design approach</p>
+    <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0 0 32px;">Before designing solutions, we needed to understand how customers, employers and internal teams interacted with the platform.</p>
+    <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:14px;">
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Discover</div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Map</div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Define</div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Design</div>
+      <div style="background:#4A6741; color:#F5F0E6; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Scale</div>
+    </div>
+    <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:32px 0 0;">Through workshops, journey mapping and stakeholder collaboration, we moved the conversation from "how do we add a product?" to "how do we create a platform capable of supporting future products?"</p>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">The strategic shift</p>
+    <div style="background:#182B14; color:#F5F0E6; border-radius:20px; padding:44px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:28px; font-family:'IBM Plex Sans', monospace;">
+      <div>
+        <p style="font-weight:600; margin:0 0 16px; color:#A9C08F;">Today</p>
+        <p style="margin:0 0 8px;">Employer</p>
+        <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
+        <p style="margin:0 0 8px;">Workplace Pension</p>
+        <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
+        <p style="margin:0;">Member</p>
+      </div>
+      <div style="font-size:28px; color:#A9C08F;">→</div>
+      <div>
+        <p style="font-weight:600; margin:0 0 16px; color:#A9C08F;">Future</p>
+        <p style="margin:0 0 8px;">Individual</p>
+        <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
+        <p style="margin:0 0 8px;">Flexible Savings Platform</p>
+        <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
+        <p style="margin:0 0 4px;">Pensions</p>
+        <p style="margin:0 0 4px;">ISA</p>
+        <p style="margin:0;">Future Products</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Design principles</p>
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;">
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Design for flexibility</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Create foundations that support multiple products, markets and customer models.</p>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Enable direct relationships</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Allow individuals to manage and fund their own financial products.</p>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Build for tomorrow</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Avoid solving only today's product challenge.</p>
+      </div>
+      <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Simplify complexity</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Make financial decisions easier without removing important choices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Outcome</p>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+      <div style="background:{{ c.cardBg2 }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">New markets</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Created the foundation to move beyond workplace pensions into wider savings products.</p>
+      </div>
+      <div style="background:{{ c.cardBg2 }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Platform evolution</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Enabled Keystone to support different ownership and funding models.</p>
+      </div>
+      <div style="background:{{ c.cardBg2 }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
+        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Future growth</p>
+        <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Established foundations for SIPP, ISA and future financial products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 64px 20px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
+    <p style="font-family:'Archivo', sans-serif; font-style:italic; font-size:clamp(20px, 3vw, 28px); line-height:1.5; font-weight:400; color:{{ c.text }}; margin:0;">"Design leadership is about creating the foundations that allow organisations to become what they want to be."</p>
+  </section>
+
+  <footer style="background:#182B14; color:#F5F0E6; padding:80px 64px 48px; margin-top:40px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#A9C08F; margin:0 0 24px;">Next</p>
+      <a href="native-member-app.html" style="display:flex; justify-content:space-between; align-items:center; text-decoration:none; color:#F5F0E6; padding-bottom:32px; border-bottom:1px solid rgba(245,240,230,0.15); transition:opacity 0.15s;" style-hover="opacity:0.75;" style-focus="outline:2px solid #A9C08F; outline-offset:2px;">
+        <span style="font-family:'Archivo', sans-serif; font-size:clamp(22px, 4vw, 36px); font-weight:400;">Native Member App</span>
+        <span style="font-size:15px; font-weight:600;">View case study →</span>
+      </a>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:32px;">
+        <span style="font-family:'Archivo', sans-serif; font-size:18px;">Anusha Yenugula</span>
+        <a href="index.html" style="color:rgba(245,240,230,0.6); text-decoration:none; font-size:14px; transition:color 0.15s;" style-hover="color:#F5F0E6;" style-focus="outline:2px solid #A9C08F; outline-offset:3px;">← Back to portfolio</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { unlocked: false, password: "", error: false, isDark: localStorage.getItem("theme") === "dark" };
+  PASSWORD = "kiwi2026";
+
+  light = { bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", bodyText: "#33302b", border: "rgba(25,23,20,0.1)", border2: "rgba(34,48,28,0.14)", headerBg: "rgba(245,240,230,0.88)", cardBg: "#FFFFFF", cardBg2: "#FCFAF4", inputBg: "#F5F0E6", inputBorder: "rgba(34,48,28,0.18)", accent: "#5D6D22", error: "#a3453a" };
+  dark = { bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", bodyText: "#d9d4c8", border: "rgba(245,240,230,0.15)", border2: "rgba(245,240,230,0.15)", headerBg: "rgba(23,22,15,0.88)", cardBg: "#221F16", cardBg2: "#2a261a", inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)", accent: "#A9C08F", error: "#e0776a" };
+
+  componentDidMount() {
+    if (sessionStorage.getItem("cs_unlocked") === "true") this.setState({ unlocked: true });
+  }
+
+  renderVals() {
+    return {
+      unlocked: this.state.unlocked,
+      locked: !this.state.unlocked,
+      password: this.state.password,
+      onPasswordChange: e => this.setState({ password: e.target.value, error: false }),
+      onSubmit: e => {
+        e.preventDefault();
+        if (this.state.password === this.PASSWORD) {
+          sessionStorage.setItem("cs_unlocked", "true");
+          this.setState({ unlocked: true, error: false });
+        } else {
+          this.setState({ error: true });
+        }
+      },
+      hasError: this.state.error,
+      isDark: this.state.isDark,
+      isLight: !this.state.isDark,
+      onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),
+      c: this.state.isDark ? this.dark : this.light,
+    };
+  }
+}
+</script>
+</body>
+</html>
