@@ -16,8 +16,12 @@
     ::selection { background: #4A6741; color: #F5F0E6; }
     body { transition: background-color 0.2s, color 0.2s; }
     @media (max-width: 768px) {
-      header { padding: 20px 24px !important; }
-      nav[style*="gap: 40px"] { gap: 16px !important; }
+      header { padding: 14px 20px !important; flex-wrap: wrap !important; row-gap: 10px !important; }
+      header > a { font-size: 17px !important; }
+      header nav { gap: 14px !important; width: 100% !important; justify-content: flex-start !important; }
+      header nav > a { font-size: 13px !important; white-space: nowrap !important; }
+      header nav > button { width: 30px !important; height: 30px !important; flex-shrink: 0 !important; margin-left: auto !important; }
+      header nav > a[href="index.html#connect"] { display: none !important; }
       section { padding-left: 24px !important; padding-right: 24px !important; }
       footer { padding-left: 24px !important; padding-right: 24px !important; }
       [style*="grid-template-columns: 0.5fr 1.5fr"] { grid-template-columns: 1fr !important; gap: 20px !important; }
@@ -37,6 +41,7 @@
     <nav style="display:flex; align-items:center; gap:32px;">
       <a href="about.html" style="color:{{ c.accent }}; text-decoration:none; font-size:15px; font-weight:600;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Bio &amp; Values</a>
       <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#4A6741;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Work</a>
+      <a href="index.html#thoughts" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#4A6741;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Thoughts</a>
       <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #4A6741; outline-offset:2px;">
         <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>

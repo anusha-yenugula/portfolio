@@ -24,16 +24,16 @@
     @media (max-width: 768px) {
       #top { padding: 60px 24px 80px !important; }
       #top > div { max-width: none !important; }
-      header { padding: 16px 20px !important; }
-      header > div:nth-child(2) { display: none !important; }
-      header a[href="#top"] { font-size: 18px !important; }
-      header nav { gap: 12px !important; }
-      header nav > a[href="#work"] { display: none !important; }
-      header nav > a[href="about.html"] { font-size: 13px !important; }
-      header nav > a[target="_blank"] { padding: 8px 14px !important; font-size: 13px !important; }
+      header { padding: 14px 20px !important; flex-wrap: wrap !important; row-gap: 10px !important; }
+      header a[href="#top"] { font-size: 17px !important; }
+      header nav { gap: 14px !important; width: 100% !important; justify-content: flex-start !important; }
+      header nav > a { font-size: 13px !important; white-space: nowrap !important; }
+      header nav > button { width: 30px !important; height: 30px !important; flex-shrink: 0 !important; margin-left: auto !important; }
+      header nav > a[target="_blank"] { display: none !important; }
       section#work { padding: 60px 24px !important; }
+      section#thoughts { padding: 60px 24px !important; }
       section#work > div:last-child { grid-template-columns: 1fr !important; }
-      #top h2 { font-size: 32px !important; }
+      #top h3 { font-size: 24px !important; }
       footer { padding-left: 24px !important; padding-right: 24px !important; }
       footer h2 { font-size: 32px !important; }
     }
@@ -52,29 +52,10 @@
   <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 28px max(64px, calc((100% - 1140px) / 2)); backdrop-filter: blur(8px); border-bottom: 1px solid {{ c.border }}; background-color: {{ c.headerBg }}; transition: background-color 0.2s, border-color 0.2s;">
     <a href="#top" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s; flex-shrink:0;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
 
-    <div style="position:relative; flex:1; max-width:220px; margin:0 40px;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ c.muted }}" stroke-width="2" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); pointer-events:none;"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <input type="text" value="{{ searchQuery }}" onChange="{{ onSearchChange }}" placeholder="Search work, writing…" aria-label="Search site" style="width:100%; box-sizing:border-box; font-family:'Archivo', sans-serif; font-size:14px; color:{{ c.text }}; background:{{ c.inputBg }}; border:1px solid {{ c.inputBorder }}; border-radius:12px; padding:10px 16px 10px 40px; outline:none; transition:border-color 0.15s, box-shadow 0.15s, background-color 0.2s;" style-focus="border-color:#4A6741; box-shadow:0 0 0 3px rgba(74,103,65,0.15);">
-      <sc-if value="{{ searchQuery }}">
-        <div style="position:absolute; top:calc(100% + 8px); left:0; right:0; background:{{ c.dropdownBg }}; border:1px solid {{ c.border }}; border-radius:14px; box-shadow:0 20px 40px -20px rgba(0,0,0,0.3); overflow:hidden; z-index:60;">
-          <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
-            <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="0">
-              <a href="{{ r.href }}" style="display:block; padding:14px 18px; text-decoration:none; color:{{ c.text }}; font-size:14px; border-top:1px solid {{ c.border }}; transition:background 0.15s;" style-hover="background:{{ c.cardHoverBg }};">
-                <span style="font-weight:600;">{{ r.title }}</span>
-                <span style="color:{{ c.muted }};"> — {{ r.subtitle }}</span>
-              </a>
-            </sc-for>
-          </sc-if>
-          <sc-if value="{{ hasNoResults }}">
-            <div style="padding:14px 18px; font-size:14px; color:{{ c.muted }};">No results for "{{ searchQuery }}"</div>
-          </sc-if>
-        </div>
-      </sc-if>
-    </div>
-
     <nav style="display:flex; align-items:center; gap:32px; flex-shrink:0;">
       <a href="about.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Bio &amp; Values</a>
       <a href="#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Work</a>
+      <a href="#thoughts" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Thoughts</a>
 
       <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-hover="background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:2px;">
         <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
@@ -85,7 +66,7 @@
         </sc-if>
       </button>
 
-      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:#F5F0E6; text-decoration:none; font-size:14px; font-weight:600; background:#22301C; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:#182B14;" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">Let's Connect!</a>
+      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">Let's Connect!</a>
     </nav>
   </header>
 
@@ -97,10 +78,11 @@
     <div style="display:flex; align-items:center; gap:clamp(32px, 5vw, 64px); flex-wrap:wrap;">
     <div style="flex:1 1 420px; min-width:0; max-width:700px;">
       <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">DESIGN LEADER</p>
-      <h2 style="font-family:'Archivo', sans-serif; font-size:clamp(24px, 4.5vw, 36px); line-height:1.2; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">I help turn complex digital experiences into something simple, achievable and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h2>
+      <h3 style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3.5vw, 28px); line-height:1.3; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">I help teams turn complex digital experiences into something simpler, more achievable and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h3>
+      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 36px;">Currently shaping design at <a href="https://www.keystonebysmart.com/" target="_blank" rel="noopener" style="color:{{ c.btnBg }}; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px;">Smart Pension</a>.</h4>
       
       <div style="display:flex; gap:16px;">
-        <a href="#work" style="display: inline-flex; align-items: center; gap: 8px; color: #F5F0E6; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; background-color: #22301C; transition:background-color 0.15s, transform 0.15s;" style-hover="background-color:#182B14; transform:translateY(-1px);" style-focus="outline:2px solid #22301C; outline-offset:3px;">View my work&nbsp;</a>
+        <a href="#work" style="display: inline-flex; align-items: center; gap: 8px; color: {{ c.btnText }}; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; background-color: {{ c.btnBg }}; transition:background-color 0.15s, transform 0.15s;" style-hover="background-color:{{ c.btnHover }}; transform:translateY(-1px);" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">View my work&nbsp;</a>
         <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:{{ c.text }}; text-decoration:none; padding:14px 28px; border-radius:12px; font-size:15px; font-weight:600; border:1px solid {{ c.border }}; transition:border-color 0.15s, background 0.15s;" style-hover="border-color:#4A6741; background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">Get in touch</a>
       </div>
     </div>
@@ -229,6 +211,24 @@
     </div>
   </section>
 
+  <!-- THOUGHTS -->
+  <section id="thoughts" style="padding:100px 64px; max-width:1140px; margin:0 auto; border-top:1px solid {{ c.border }}; scroll-margin-top:96px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:24px; gap:24px; flex-wrap:wrap;">
+      <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0;">Thoughts</p>
+      <a href="https://substack.com" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; font-size:14px; color:{{ c.muted }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};"><svg width="13" height="14" viewBox="0 0 448 511" fill="currentColor" aria-hidden="true"><path d="M0 0h448v62H0zM0 120h448v62H0zM0 240h448v271l-224-125L0 511z"></path></svg>Substack</a>
+    </div>
+    <div style="display:flex; flex-direction:column;">
+      <sc-for list="{{ thoughts }}" as="t" hint-placeholder-count="2">
+        <a href="#thoughts" style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; padding:26px 0; text-decoration:none; color:{{ c.text }}; border-top:1px solid {{ c.border }}; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
+          <span style="display:flex; flex-direction:column; gap:6px; min-width:0;">
+            <span style="font-size:clamp(18px, 2.5vw, 22px); font-weight:400; letter-spacing:-0.01em;">{{ t.title }}</span>
+            <span style="font-size:15px; color:{{ c.muted }}; line-height:1.6;">{{ t.teaser }}</span>
+          </span>
+          <span style="display:inline-flex; align-items:center; gap:7px; font-size:14px; color:{{ c.muted }}; flex-shrink:0; white-space:nowrap;">{{ t.date }}<svg width="12" height="13" viewBox="0 0 448 511" fill="currentColor" aria-hidden="true"><path d="M0 0h448v62H0zM0 120h448v62H0zM0 240h448v271l-224-125L0 511z"></path></svg></span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
 
   <!-- CONNECT / FOOTER -->
   <footer id="connect" style="background:#182B14; color:#F5F0E6; padding:100px 64px 48px; scroll-margin-top:0;">
@@ -258,10 +258,17 @@ class Component extends DCLogic {
     { num: "03", title: "Individual Pensions", tag: "Smart Pension", href: "individual-pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#22301C", fg: "#5D6D22", fg2: "#A9C08F", bezel: "#12200D", gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)", image: "uploads/case-study-individual-pensions.png" },
   ];
 
+  thoughts = [
+    { title: "Losing the power of iteration", teaser: "When AI hands us a finished-looking first draft, we skip the messy middle where the real design thinking happens.", date: "Aug 2026", href: "https://substack.com" },
+    { title: "Beyond static Figma designs", teaser: "Static mockups are giving way to living, interactive artifacts and rapidly changing how we give and receive feedback.", date: "Aug 2026", href: "https://substack.com" },
+  ];
+
   items = [
     { title: "Native Member App", subtitle: "Case study", href: "native-member-app.html" },
     { title: "Identity Project", subtitle: "Case study", href: "identity-project.html" },
     { title: "Individual Pensions", subtitle: "Case study", href: "individual-pensions.html" },
+    { title: "Losing the power of iteration", subtitle: "Thoughts", href: "#thoughts" },
+    { title: "Beyond static Figma designs", subtitle: "Thoughts", href: "#thoughts" },
     { title: "Connect", subtitle: "Get in touch", href: "#connect" },
   ];
 
@@ -272,6 +279,7 @@ class Component extends DCLogic {
     inputBg: "#FFFFFF", inputBorder: "rgba(34,48,28,0.18)",
     dropdownBg: "#FFFFFF",
     accent: "#5D6D22", eyebrow: "#5D6D22",
+    btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14",
   };
   dark = {
     bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d",
@@ -280,6 +288,7 @@ class Component extends DCLogic {
     inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)",
     dropdownBg: "#221F16",
     accent: "#A9C08F", eyebrow: "#A9C08F",
+    btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4",
   };
 
   renderVals() {
@@ -299,6 +308,7 @@ class Component extends DCLogic {
       c: this.state.isDark ? this.dark : this.light,
       workItems: this.work.map((w, i) => ({ ...w, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }) })),
       activeWork: this.work[this.state.hoveredWork],
+      thoughts: this.thoughts,
     };
   }
 }
