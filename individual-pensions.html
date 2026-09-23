@@ -52,7 +52,7 @@
 
 <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
   <div style="background:{{ c.bg }}; color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; transition:background-color 0.2s, color 0.2s;">
-    <form onSubmit="{{ onSubmit }}" style="width:100%; max-width:380px; background:{{ c.cardBg }}; border:1px solid {{ c.border2 }}; border-radius:20px; padding:44px 36px; box-shadow:0 30px 60px -30px rgba(34,48,28,0.25); text-align:center;">
+    <form onSubmit="{{ onSubmit }}" style="width:100%; max-width:380px; background:{{ c.cardBg }}; border:1px solid {{ c.border2 }}; border-radius:20px; padding:44px 36px; box-shadow:none; text-align:center;">
       <div style="width:44px; height:44px; border-radius:50%; background:#EFEAD9; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A6741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </div>
@@ -292,8 +292,8 @@ class Component extends DCLogic {
   state = { unlocked: false, password: "", error: false, isDark: localStorage.getItem("theme") !== "light" };
   PASSWORD = "kiwi2026";
 
-  light = { btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(255,255,255,0.65)", glassShadow: "inset 0 1px 0 rgba(255,255,255,0.75), 0 10px 30px -14px rgba(34,48,28,0.25)", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", bodyText: "#33302b", border: "rgba(34,48,28,0.1)", border2: "rgba(34,48,28,0.14)", headerBg: "rgba(245,240,230,0.88)", cardBg: "#FFFFFF", cardBg2: "#FCFAF4", inputBg: "#F5F0E6", inputBorder: "rgba(34,48,28,0.18)", accent: "#5D6D22", error: "#a3453a" };
-  dark = { btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "inset 0 1px 0 rgba(245,240,230,0.10), 0 10px 30px -14px rgba(0,0,0,0.6)", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", bodyText: "#d9d4c8", border: "rgba(245,240,230,0.15)", border2: "rgba(245,240,230,0.15)", headerBg: "rgba(23,22,15,0.88)", cardBg: "#221F16", cardBg2: "#2a261a", inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)", accent: "#A9C08F", error: "#e0776a" };
+  light = { btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(34,48,28,0.10)", glassShadow: "none", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", bodyText: "#33302b", border: "rgba(34,48,28,0.1)", border2: "rgba(34,48,28,0.14)", headerBg: "rgba(245,240,230,0.88)", cardBg: "#FFFFFF", cardBg2: "#FCFAF4", inputBg: "#F5F0E6", inputBorder: "rgba(34,48,28,0.18)", accent: "#5D6D22", error: "#a3453a" };
+  dark = { btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "none", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", bodyText: "#d9d4c8", border: "rgba(245,240,230,0.15)", border2: "rgba(245,240,230,0.15)", headerBg: "rgba(23,22,15,0.88)", cardBg: "#221F16", cardBg2: "#2a261a", inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)", accent: "#A9C08F", error: "#e0776a" };
 
   componentDidMount() {
     if (sessionStorage.getItem("cs_unlocked") === "true") this.setState({ unlocked: true });

@@ -55,14 +55,14 @@
 
   <!-- HEADER -->
   <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1188px) / 2));">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 12px 12px 24px; border-radius:22px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; transition:background-color 0.3s;">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 12px 12px 24px; border-radius:999px; background:{{ c.navBg }}; -webkit-backdrop-filter:blur(10px) saturate(140%); backdrop-filter:blur(10px) saturate(140%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; transition:background-color 0.3s;">
     <a href="#top" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s; flex-shrink:0;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
 
     <nav style="display:flex; align-items:center; gap:32px; flex-shrink:0;">
       <a href="#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Work</a>
       <a href="about.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">About</a>
 
-      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-hover="background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:2px;">
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:999px; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-hover="background:{{ c.cardHoverBg }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:2px;">
         <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </sc-if>
@@ -71,7 +71,7 @@
         </sc-if>
       </button>
 
-      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:999px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">LinkedIn</a>
     </nav>
     </div>
   </header>
@@ -80,11 +80,11 @@
   
 
   <div ref="{{ heroRef }}" style="position:relative; overflow:hidden; isolation:isolate; margin-top:-110px; padding-top:110px; background:{{ c.heroBg }};">
-    <div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; -webkit-mask-image:linear-gradient(to bottom, #000 55%, transparent 100%); mask-image:linear-gradient(to bottom, #000 55%, transparent 100%);">
-      <div style="position:absolute; width:520px; height:520px; left:-8%; top:-30%; border-radius:50%; background:{{ c.b1 }}; filter:blur(80px); transform:translate3d(calc(var(--px, 0) * -40px), calc(var(--py, 0) * -30px + var(--sy, 0) * 0.35px), 0); will-change:transform;"></div>
-      <div style="position:absolute; width:420px; height:420px; left:38%; top:-40%; border-radius:50%; background:{{ c.b2 }}; filter:blur(80px); transform:translate3d(calc(var(--px, 0) * 30px), calc(var(--py, 0) * 23px + var(--sy, 0) * 0.18px), 0); will-change:transform;"></div>
-      <div style="position:absolute; width:480px; height:480px; left:70%; top:40%; border-radius:50%; background:{{ c.b3 }}; filter:blur(80px); transform:translate3d(calc(var(--px, 0) * 55px), calc(var(--py, 0) * 41px + var(--sy, 0) * 0.45px), 0); will-change:transform;"></div>
-      <div style="position:absolute; width:400px; height:400px; left:8%; top:60%; border-radius:50%; background:{{ c.b4 }}; filter:blur(80px); transform:translate3d(calc(var(--px, 0) * -25px), calc(var(--py, 0) * -19px + var(--sy, 0) * 0.25px), 0); will-change:transform;"></div>
+    <div aria-hidden="true" style="--bs:{{ blobScale }}; position:absolute; inset:0; z-index:-1; pointer-events:none; -webkit-mask-image:linear-gradient(to bottom, #000 55%, transparent 100%); mask-image:linear-gradient(to bottom, #000 55%, transparent 100%);">
+      <div style="position:absolute; width:calc(520px * var(--bs)); height:calc(520px * var(--bs)); margin:calc(260px * (1 - var(--bs))) 0 0 calc(260px * (1 - var(--bs))); left:-8%; top:-30%; border-radius:50%; background:{{ c.b1 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * -40px), calc(var(--py, 0) * -30px + var(--sy, 0) * 0.35px), 0); will-change:transform;"></div>
+      <div style="position:absolute; width:calc(420px * var(--bs)); height:calc(420px * var(--bs)); margin:calc(210px * (1 - var(--bs))) 0 0 calc(210px * (1 - var(--bs))); left:38%; top:-40%; border-radius:50%; background:{{ c.b2 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * 30px), calc(var(--py, 0) * 23px + var(--sy, 0) * 0.18px), 0); will-change:transform;"></div>
+      <div style="position:absolute; width:calc(480px * var(--bs)); height:calc(480px * var(--bs)); margin:calc(240px * (1 - var(--bs))) 0 0 calc(240px * (1 - var(--bs))); left:70%; top:40%; border-radius:50%; background:{{ c.b3 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * 55px), calc(var(--py, 0) * 41px + var(--sy, 0) * 0.45px), 0); will-change:transform;"></div>
+      <div style="position:absolute; width:calc(400px * var(--bs)); height:calc(400px * var(--bs)); margin:calc(200px * (1 - var(--bs))) 0 0 calc(200px * (1 - var(--bs))); left:8%; top:60%; border-radius:50%; background:{{ c.b4 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * -25px), calc(var(--py, 0) * -19px + var(--sy, 0) * 0.25px), 0); will-change:transform;"></div>
       <div style="position:absolute; inset:0; background:radial-gradient(560px circle at var(--mx, 50%) var(--my, 40%), {{ c.glow }}, transparent 65%); opacity:var(--glow, 0); transition:opacity 0.6s ease;"></div>
     </div>
   <!-- WORK -->
@@ -101,7 +101,7 @@
       </div>
       
     </div>
-    <img src="uploads/img/portrait-720.jpg" srcset="uploads/img/portrait-360.jpg 360w, uploads/img/portrait-720.jpg 720w, uploads/img/portrait-1086.jpg 1086w" sizes="(max-width: 768px) 80vw, 360px" alt="Portrait of Anusha Yenugula" width="1086" height="1169" decoding="async" fetchpriority="high" style="flex:1 1 260px; min-width:240px; max-width:360px; height:auto; aspect-ratio:1086/1169; object-fit:cover; border-radius:28px; box-shadow:0 24px 48px -20px rgba(0,0,0,0.4);">
+    <img src="uploads/img/portrait-720.jpg" srcset="uploads/img/portrait-360.jpg 360w, uploads/img/portrait-720.jpg 720w, uploads/img/portrait-1086.jpg 1086w" sizes="(max-width: 768px) 60vw, 260px" alt="Portrait of Anusha Yenugula" width="1086" height="1169" decoding="async" fetchpriority="high" style="flex:0 1 260px; min-width:180px; max-width:260px; height:auto; aspect-ratio:1086/1169; object-fit:cover; border-radius:28px;">
     </div>
   </section>
   </div><section id="work" style="padding:40px 64px 100px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
@@ -115,8 +115,8 @@
 
     <div style="display:flex; flex-direction:column; gap:24px; max-width:780px; margin:0 auto;">
       <sc-for list="{{ workItems }}" as="w" hint-placeholder-count="3">
-        <a href="{{ w.href }}" style="display:flex; flex-wrap:wrap; text-decoration:none; background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:18px; overflow:hidden; color:{{ c.text }}; transition:transform 0.18s, box-shadow 0.18s;" style-hover="transform:translateY(-3px); box-shadow:0 20px 40px -24px rgba(34,48,28,0.35);" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
-          <div style="position:relative; flex:1 1 260px; min-height:260px; background:radial-gradient(60% 55% at 18% 18%, rgba(93,109,34,0.6), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(217,185,140,0.28), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(201,139,107,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(143,176,169,0.28), transparent 70%), #182B14; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box;">
+        <a href="{{ w.href }}" style="display:flex; flex-wrap:wrap; text-decoration:none; background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:28px; overflow:hidden; color:{{ c.text }}; transition:transform 0.18s, box-shadow 0.18s;" style-hover="transform:translateY(-3px);" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
+          <div style="position:relative; flex:0 0 300px; max-width:100%; min-height:300px; align-self:stretch; background:radial-gradient(60% 55% at 18% 18%, rgba(93,109,34,0.6), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(217,185,140,0.28), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(201,139,107,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(143,176,169,0.28), transparent 70%), #182B14; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box;">
             <sc-if value="{{ w.hasScreen }}" hint-placeholder-val="{{ false }}">
               <div style="position:absolute; inset:0; margin:auto; height:calc(100% - 40px); max-height:380px; aspect-ratio:9/19; border-radius:28px; overflow:hidden; background:#17160F; padding:6px; box-sizing:border-box; box-shadow:0 30px 50px -20px rgba(0,0,0,0.6);">
                 <img src="{{ w.screen }}" srcset="{{ w.screenSet }}" sizes="180px" alt="{{ w.title }} screen" loading="lazy" decoding="async" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top; border-radius:22px; image-rendering:auto; backface-visibility:hidden;">
@@ -155,7 +155,7 @@
             
             </div>
           </div>
-          <div style="flex:1.6 1 380px; min-width:0; padding:clamp(24px, 3vw, 36px); display:flex; flex-direction:column; gap:16px; justify-content:center;">
+          <div style="flex:1 1 380px; min-width:0; padding:clamp(20px, 2.4vw, 28px); display:flex; flex-direction:column; gap:12px; justify-content:center;">
             <div style="display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;">
               <p style="font-size:clamp(22px, 2.6vw, 28px); font-weight:600; letter-spacing:-0.01em; margin:0;">{{ w.title }}</p>
               <p style="font-size:14px; font-weight:600; color:{{ c.muted }}; margin:0;">{{ w.meta }}</p>
@@ -181,7 +181,6 @@
   <footer id="connect" style="background:linear-gradient(90deg, transparent, {{ c.hair }} 20%, {{ c.hair }} 80%, transparent) top / 100% 1px no-repeat, {{ c.bg }}; color:{{ c.text }}; padding:28px 64px; transition:background-color 0.2s, color 0.2s;">
     <div style="max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:12px;">
-        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#182B14"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#A9C08F"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F5F0E6"></path><path d="M26 50 L32 40 L38 50 Z" fill="#182B14"></path></svg>
         <span style="font-size:16px; font-weight:600;">Anusha Yenugula · Product Design Leader</span>
       </div>
       <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="font-size:15px; color:{{ c.muted }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px; border-radius:2px;">Connect on LinkedIn</a>
@@ -190,7 +189,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Sage &amp; sand&quot;,&quot;Moss &amp; mist&quot;,&quot;Olive &amp; clay&quot;,&quot;Fern &amp; lilac&quot;],&quot;default&quot;:&quot;Olive &amp; clay&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;blobScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.1,&quot;default&quot;:2.4,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
 class Component extends DCLogic {
   state = { searchQuery: "", isDark: localStorage.getItem("theme") !== "light", hoveredWork: 0, scrolled: false };
 
@@ -214,7 +213,7 @@ class Component extends DCLogic {
   light = {
     bg: "#F4F1E9", text: "#22301C", muted: "#4f584a",
     border: "rgba(34,48,28,0.14)", headerBg: "#F5F0E6E0", hair: "rgba(34,48,28,0.10)",
-    glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(255,255,255,0.65)", glassShadow: "inset 0 1px 0 rgba(255,255,255,0.75), 0 10px 30px -14px rgba(34,48,28,0.25)",
+    glassBg: "rgba(252,250,244,0.42)", navBg: "rgba(252,250,244,0.14)", glassBorder: "rgba(34,48,28,0.10)", glassShadow: "none",
     cardBg: "#FCFAF4", cardHoverBg: "#FCFAF4",
     inputBg: "#FFFFFF", inputBorder: "rgba(34,48,28,0.18)",
     dropdownBg: "#FFFFFF",
@@ -226,7 +225,7 @@ class Component extends DCLogic {
   dark = {
     bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d",
     border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0", hair: "rgba(245,240,230,0.10)",
-    glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "inset 0 1px 0 rgba(245,240,230,0.10), 0 10px 30px -14px rgba(0,0,0,0.6)",
+    glassBg: "rgba(40,38,28,0.38)", navBg: "rgba(40,38,28,0.14)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "none",
     cardBg: "#221F16", cardHoverBg: "#221F16",
     inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)",
     dropdownBg: "#221F16",
@@ -236,6 +235,25 @@ class Component extends DCLogic {
     b1: "rgba(93,109,34,0.55)", b2: "rgba(217,185,140,0.25)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.25)",
   };
 
+
+  palettes = {
+    "Sage & sand": {
+      light: { b1: "rgba(169,192,143,0.45)", b2: "rgba(217,185,140,0.40)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.35)" },
+      dark: { b1: "rgba(93,109,34,0.55)", b2: "rgba(217,185,140,0.25)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.25)" },
+    },
+    "Moss & mist": {
+      light: { b1: "rgba(150,178,120,0.38)", b2: "rgba(176,196,190,0.34)", b3: "rgba(198,210,226,0.30)", b4: "rgba(120,160,138,0.28)" },
+      dark: { b1: "rgba(70,100,40,0.50)", b2: "rgba(110,150,140,0.22)", b3: "rgba(120,140,170,0.18)", b4: "rgba(60,110,90,0.28)" },
+    },
+    "Olive & clay": {
+      light: { b1: "rgba(160,170,100,0.38)", b2: "rgba(226,190,150,0.34)", b3: "rgba(210,150,120,0.24)", b4: "rgba(190,176,120,0.26)" },
+      dark: { b1: "rgba(100,110,40,0.50)", b2: "rgba(190,140,90,0.20)", b3: "rgba(170,100,70,0.22)", b4: "rgba(140,130,60,0.22)" },
+    },
+    "Fern & lilac": {
+      light: { b1: "rgba(160,190,140,0.38)", b2: "rgba(214,200,226,0.34)", b3: "rgba(236,214,196,0.30)", b4: "rgba(150,184,170,0.28)" },
+      dark: { b1: "rgba(80,110,50,0.50)", b2: "rgba(140,120,170,0.20)", b3: "rgba(190,150,130,0.16)", b4: "rgba(80,130,110,0.24)" },
+    },
+  };
 
   componentDidMount() {
     const rvEls = document.querySelectorAll("section, footer");
@@ -297,7 +315,8 @@ class Component extends DCLogic {
       isDark: this.state.isDark,
       isLight: !this.state.isDark,
       onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),
-      c: this.state.isDark ? this.dark : this.light,
+      c: { ...(this.state.isDark ? this.dark : this.light), ...((this.palettes[this.props.palette] || this.palettes["Moss & mist"])[this.state.isDark ? "dark" : "light"]) },
+      blobScale: this.props.blobScale ?? 1.7,
       workItems: this.work.map((w, i) => ({ ...w, meta: w.year || w.tag, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }) })),
       activeWork: this.work[this.state.hoveredWork],
       thoughts: this.thoughts,

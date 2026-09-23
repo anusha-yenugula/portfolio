@@ -225,8 +225,8 @@
 class Component extends DCLogic {
   state = { isDark: localStorage.getItem("theme") !== "light" };
 
-  light = { hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(255,255,255,0.65)", glassShadow: "inset 0 1px 0 rgba(255,255,255,0.75), 0 10px 30px -14px rgba(34,48,28,0.25)", btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", border: "rgba(34,48,28,0.14)", headerBg: "#F5F0E6E0", accent: "#5D6D22", cardBg: "#FCFAF4", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(93,109,34,0.1)" };
-  dark = { hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "inset 0 1px 0 rgba(245,240,230,0.10), 0 10px 30px -14px rgba(0,0,0,0.6)", btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0", accent: "#A9C08F", cardBg: "#221F16", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(169,192,143,0.12)" };
+  light = { hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(34,48,28,0.10)", glassShadow: "none", btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", border: "rgba(34,48,28,0.14)", headerBg: "#F5F0E6E0", accent: "#5D6D22", cardBg: "#FCFAF4", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(93,109,34,0.1)" };
+  dark = { hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "none", btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0", accent: "#A9C08F", cardBg: "#221F16", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(169,192,143,0.12)" };
 
   pillarLight = [
     { tint: "rgba(93,109,34,0.1)", accent: "#5D6D22" },
