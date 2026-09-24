@@ -12,11 +12,11 @@
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200..700;1,200..700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; }
-    ::selection { background: #4A6741; color: #F5F0E6; }
+    ::selection { background: #6A5696; color: #F6F6F5; }
     body { transition: background-color 0.2s, color 0.2s; }
     section > * , footer > div { }
     .rv { opacity: 0; transition: opacity 0.9s ease; }
@@ -41,11 +41,15 @@
       .tl .tl-line { left: 11px !important; }
       .story-grid, .away-grid { grid-template-columns: 1fr !important; }
       .exp-row > div:first-child { padding-top: 0 !important; }
-      header { padding: 14px 20px !important; flex-wrap: wrap !important; row-gap: 10px !important; }
+      header { padding: 6px 16px !important; }
+      header > div { gap: 8px !important; padding: 4px 0 !important; }
       header > a { font-size: 17px !important; }
-      header nav { gap: 14px !important; width: 100% !important; justify-content: flex-start !important; }
-      header nav > a { font-size: 13px !important; white-space: nowrap !important; }
-      header nav > button { width: 30px !important; height: 30px !important; flex-shrink: 0 !important; margin-left: auto !important; }
+      header nav { gap: 2px !important; flex-shrink: 0 !important; }
+      header nav > a { font-size: 14px !important; white-space: nowrap !important; padding: 12px 10px !important; }
+      header nav > button { width: 44px !important; height: 44px !important; flex-shrink: 0 !important; margin-left: 4px !important; }
+      header nav > a[target="_blank"] { display: none !important; }
+      #work { scroll-margin-top: 72px !important; }
+      div:has(> section#work) { border-radius: 28px 28px 0 0 !important; }
       header nav > a[href="index.html#connect"] { display: none !important; }
       section { padding-left: 24px !important; padding-right: 24px !important; }
       footer { padding-left: 24px !important; padding-right: 24px !important; }
@@ -58,16 +62,23 @@
   </style>
 </helmet>
 
-<div style="color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; overflow-x:hidden; background-color:{{ c.bg }}; transition:background-color 0.2s, color 0.2s;">
+<div data-bgfx="1" aria-hidden="true" style="position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; background-color:{{ c.bg }}; transition:background-color 0.2s;">
+  <div style="position:absolute; width:900px; height:900px; left:-18%; top:-30%; border-radius:50%; background:rgba({{ fx.b1 }}); filter:blur(140px); transform:translate3d(0, calc(var(--sy, 0) * -0.06px), 0); will-change:transform;"></div>
+  <div style="position:absolute; width:760px; height:760px; right:-16%; top:10%; border-radius:50%; background:rgba({{ fx.b2 }}); filter:blur(140px); transform:translate3d(0, calc(var(--sy, 0) * -0.12px), 0); will-change:transform;"></div>
+  <div style="position:absolute; width:820px; height:820px; left:20%; top:60%; border-radius:50%; background:rgba({{ fx.b3 }}); filter:blur(150px); transform:translate3d(0, calc(var(--sy, 0) * -0.09px), 0); will-change:transform;"></div>
+  <div style="position:absolute; inset:0; background-image:{{ fx.grain }}; background-size:220px 220px; opacity:{{ fx.grainOp }};"></div>
+</div>
+
+<div style="color:{{ c.text }}; font-family:'IBM Plex Sans', sans-serif; min-height:100vh; overflow-x:clip; background-color:transparent; transition:background-color 0.2s, color 0.2s;">
 
   <!-- HEADER -->
-  <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1188px) / 2));">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 12px 12px 24px; border-radius:22px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }};">
-    <a href="index.html" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s;" style-hover="color:#4A6741;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+  <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1140px) / 2)); background:{{ c.glassBg }}; border-bottom:1px solid {{ c.glassBorder }}; -webkit-backdrop-filter:blur(10px) saturate(140%); backdrop-filter:blur(10px) saturate(140%); transition:background-color 0.3s;">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 0;">
+    <a href="index.html" style="font-family:'Hanken Grotesk', sans-serif; font-size:22px; font-weight:500; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s;" style-hover="color:#6A5696;" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
     <nav style="display:flex; align-items:center; gap:32px;">
-      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#4A6741;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Work</a>
-      <a href="about.html" style="color:{{ c.accent }}; text-decoration:none; font-size:15px; font-weight:600;" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">About</a>
-      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #4A6741; outline-offset:2px;">
+      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#6A5696;" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">Work</a>
+      <a href="about.html" style="color:{{ c.accent }}; text-decoration:none; font-size:15px; font-weight:600;" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">About</a>
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #6A5696; outline-offset:2px;">
         <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </sc-if>
@@ -75,7 +86,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </sc-if>
       </button>
-      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid #4A6741; outline-offset:3px;">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid #6A5696; outline-offset:3px;">LinkedIn</a>
     </nav>
     </div>
   </header>
@@ -83,7 +94,7 @@
   <!-- INTRO -->
   <section style="padding:120px 64px 56px; max-width:1140px; margin:0 auto;">
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">About</p>
-    <h1 style="font-family:'Archivo', sans-serif; font-size:clamp(28px, 3.4vw, 42px); font-weight:400; line-height:1.15; letter-spacing:-0.02em; color:{{ c.text }}; margin:0; max-width:720px; text-wrap:balance;">My work sits at the intersection of craft, systems and strategy.</h1>
+    <h1 style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(34px, 5vw, 48px); font-weight:300; line-height:1.1; letter-spacing:-0.025em; color:{{ c.text }}; margin:0; max-width:720px; text-wrap:balance;">My work sits at the intersection of craft, systems and strategy.</h1>
   </section>
 
   <section style="padding:0 64px 48px; max-width:1140px; margin:0 auto;">
@@ -173,35 +184,35 @@
       <div style="background:{{ p.0.tint }}; border-radius:14px; padding:20px;">
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:8px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ p.0.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"></circle><circle cx="5" cy="16" r="2.2"></circle><circle cx="19" cy="16" r="2.2"></circle><line x1="12" y1="7.2" x2="12" y2="12"></line><line x1="12" y1="12" x2="6.6" y2="14.3"></line><line x1="12" y1="12" x2="17.4" y2="14.3"></line></svg>
-          <p style="font-family:'Archivo', sans-serif; font-size:16px; font-weight:600; line-height:1.3; margin:0; color:{{ p.0.accent }};">Know how the business makes money</p>
+          <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; line-height:1.35; margin:0; color:{{ p.0.accent }}; letter-spacing:-0.005em;">Know how the business makes money</p>
         </div>
         <p style="font-size:14px; line-height:1.5; color:{{ c.muted }}; margin:0;">Design decisions are better when you understand how the business succeeds.</p>
       </div>
       <div style="background:{{ p.1.tint }}; border-radius:14px; padding:20px;">
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:8px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ p.1.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="15.3" y1="15.3" x2="20.5" y2="20.5"></line></svg>
-          <p style="font-family:'Archivo', sans-serif; font-size:16px; font-weight:600; line-height:1.3; margin:0; color:{{ p.1.accent }};">Design beyond the feature</p>
+          <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; line-height:1.35; margin:0; color:{{ p.1.accent }}; letter-spacing:-0.005em;">Design beyond the feature</p>
         </div>
         <p style="font-size:14px; line-height:1.5; color:{{ c.muted }}; margin:0;">Good design accounts for the whole system, not just the surface someone interacts with.</p>
       </div>
       <div style="background:{{ p.2.tint }}; border-radius:14px; padding:20px;">
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:8px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ p.2.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.4" fill="{{ p.2.accent }}" stroke="none"></circle></svg>
-          <p style="font-family:'Archivo', sans-serif; font-size:16px; font-weight:600; line-height:1.3; margin:0; color:{{ p.2.accent }};">Progress over perfection</p>
+          <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; line-height:1.35; margin:0; color:{{ p.2.accent }}; letter-spacing:-0.005em;">Progress over perfection</p>
         </div>
         <p style="font-size:14px; line-height:1.5; color:{{ c.muted }}; margin:0;">Ship, learn, iterate. Products get better through real feedback loops.</p>
       </div>
       <div style="background:{{ p.3.tint }}; border-radius:14px; padding:20px;">
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:8px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ p.3.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"></path><path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z"></path><path d="M12 13c0-3-2.5-5-6-5 0 3 2.5 5 6 5z"></path></svg>
-          <p style="font-family:'Archivo', sans-serif; font-size:16px; font-weight:600; line-height:1.3; margin:0; color:{{ p.3.accent }};">Build confident teams</p>
+          <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; line-height:1.35; margin:0; color:{{ p.3.accent }}; letter-spacing:-0.005em;">Build confident teams</p>
         </div>
         <p style="font-size:14px; line-height:1.5; color:{{ c.muted }}; margin:0;">Create an environment where people feel trusted, challenged and supported to do their best work.</p>
       </div>
       <div style="background:{{ p.4.tint }}; border-radius:14px; padding:20px;">
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:8px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ p.4.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-3 5-3 1.5 3-5z"></path></svg>
-          <p style="font-family:'Archivo', sans-serif; font-size:16px; font-weight:600; line-height:1.3; margin:0; color:{{ p.4.accent }};">Ask better questions</p>
+          <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; line-height:1.35; margin:0; color:{{ p.4.accent }}; letter-spacing:-0.005em;">Ask better questions</p>
         </div>
         <p style="font-size:14px; line-height:1.5; color:{{ c.muted }}; margin:0;">Curiosity uncovers opportunities that solutions alone can't.</p>
       </div>
@@ -212,7 +223,7 @@
   <footer style="background:linear-gradient(90deg, transparent, {{ c.hair }} 20%, {{ c.hair }} 80%, transparent) top / 100% 1px no-repeat, {{ c.bg }}; color:{{ c.text }}; padding:28px 64px; transition:background-color 0.2s, color 0.2s;">
     <div style="max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:12px;">
-        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#182B14"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#A9C08F"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F5F0E6"></path><path d="M26 50 L32 40 L38 50 Z" fill="#182B14"></path></svg>
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#353530"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#C4B4EC"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F6F6F5"></path><path d="M26 50 L32 40 L38 50 Z" fill="#353530"></path></svg>
         <span style="font-size:16px; font-weight:600;">Anusha Yenugula · Product Design Leader</span>
       </div>
       <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="font-size:15px; color:{{ c.muted }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px; border-radius:2px;">Connect on LinkedIn</a>
@@ -223,10 +234,12 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { isDark: localStorage.getItem("theme") !== "light" };
+  state = { isDark: localStorage.getItem("theme") === "dark" };
 
   light = { hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(34,48,28,0.10)", glassShadow: "none", btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", border: "rgba(34,48,28,0.14)", headerBg: "#F5F0E6E0", accent: "#5D6D22", cardBg: "#FCFAF4", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(93,109,34,0.1)" };
   dark = { hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "none", btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0", accent: "#A9C08F", cardBg: "#221F16", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(169,192,143,0.12)" };
+  light = { ...this.light, ...{"bg":"#FBFBFB","text":"#262624","muted":"#5E5E5A","border":"rgba(38,38,36,0.14)","hair":"rgba(38,38,36,0.10)","glassBorder":"rgba(38,38,36,0.10)","cardBg":"#FFFFFF","accent":"#6A5696","btnBg":"#353530","btnText":"#FFFFFF","btnHover":"#262624","headerBg":"#FBFBFBE0","glassBg":"rgba(255,255,255,0.42)"} };
+  dark = { ...this.dark, ...{"bg":"#0F1012","text":"#F6F6F5","muted":"#ABACB0","border":"rgba(246,246,245,0.15)","hair":"rgba(246,246,245,0.10)","glassBorder":"rgba(246,246,245,0.12)","cardBg":"#18191C","accent":"#C4B4EC","btnBg":"#F6F6F5","btnText":"#262624","btnHover":"#ABACB0","headerBg":"#0F1012E0"} };
 
   pillarLight = [
     { tint: "rgba(93,109,34,0.1)", accent: "#5D6D22" },
@@ -248,6 +261,9 @@ class Component extends DCLogic {
 
 
   componentDidMount() {
+    const bgfx = () => { const el = document.querySelector("[data-bgfx]"); if (el) el.style.setProperty("--sy", String(window.scrollY)); };
+    this._bgfx = () => { if (!this._bgRaf) this._bgRaf = requestAnimationFrame(() => { this._bgRaf = 0; bgfx(); }); };
+    window.addEventListener("scroll", this._bgfx, { passive: true }); bgfx();
     const els = document.querySelectorAll("section, footer");
     els.forEach(el => el.classList.add("rv"));
     this._io = new IntersectionObserver((entries) => {
@@ -255,10 +271,12 @@ class Component extends DCLogic {
     }, { threshold: 0.15 });
     els.forEach(el => this._io.observe(el));
   }
-  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._bgfx); if (this._io) this._io.disconnect(); }
   renderVals() {
     const isDark = this.state.isDark;
     return {
+      fx: this.state.isDark ? { b1: "215,212,205,0.20", b2: "200,185,235,0.18", b3: "215,180,80,0.12", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.12 } : { b1: "215,212,205,0.18", b2: "200,185,235,0.15", b3: "215,180,80,0.10", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.04 },
       isDark,
       isLight: !isDark,
       onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),

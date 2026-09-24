@@ -13,20 +13,24 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200..700;1,200..700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; }
-    ::selection { background: #4A6741; color: #F5F0E6; }
+    ::selection { background: #6A5696; color: #F6F6F5; }
     .rv { opacity: 0; transition: opacity 0.9s ease; }
     .rv.in { opacity: 1; }
     @media (prefers-reduced-motion: reduce) { .rv { opacity: 1 !important; transform: none !important; transition: none !important; } }
     @media (max-width: 768px) {
-      header { padding: 14px 20px !important; flex-wrap: wrap !important; row-gap: 10px !important; }
+      header { padding: 6px 16px !important; }
+      header > div { gap: 8px !important; padding: 4px 0 !important; }
       header > a { font-size: 17px !important; }
-      header nav { gap: 14px !important; width: 100% !important; justify-content: flex-start !important; }
-      header nav > a { font-size: 13px !important; white-space: nowrap !important; }
-      header nav > button { width: 30px !important; height: 30px !important; flex-shrink: 0 !important; margin-left: auto !important; }
+      header nav { gap: 2px !important; flex-shrink: 0 !important; }
+      header nav > a { font-size: 14px !important; white-space: nowrap !important; padding: 12px 10px !important; }
+      header nav > button { width: 44px !important; height: 44px !important; flex-shrink: 0 !important; margin-left: 4px !important; }
+      header nav > a[target="_blank"] { display: none !important; }
+      #work { scroll-margin-top: 72px !important; }
+      div:has(> section#work) { border-radius: 28px 28px 0 0 !important; }
       section { padding-left: 24px !important; padding-right: 24px !important; }
       footer { padding-left: 24px !important; padding-right: 24px !important; }
       [style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
@@ -40,8 +44,9 @@
       [style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }
       [style*="grid-template-columns: repeat(5, 1fr)"] { grid-template-columns: 1fr !important; }
     }
+    @media (max-width: 380px) { header > div > a:first-child { font-size: 15px !important; } header nav > a { padding: 12px 7px !important; } }
     @media (max-width: 1024px) and (min-width: 769px) {
-      header { padding: 24px 32px !important; }
+      header { padding: 14px 32px !important; }
       section { padding-left: 32px !important; padding-right: 32px !important; }
       footer { padding-left: 32px !important; padding-right: 32px !important; }
       [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
@@ -50,34 +55,41 @@
   </style>
 </helmet>
 
+<div data-bgfx="1" aria-hidden="true" style="position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; background-color:{{ c.bg }}; transition:background-color 0.2s;">
+  <div style="position:absolute; width:900px; height:900px; left:-18%; top:-30%; border-radius:50%; background:rgba({{ fx.b1 }}); filter:blur(140px); transform:translate3d(0, calc(var(--sy, 0) * -0.06px), 0); will-change:transform;"></div>
+  <div style="position:absolute; width:760px; height:760px; right:-16%; top:10%; border-radius:50%; background:rgba({{ fx.b2 }}); filter:blur(140px); transform:translate3d(0, calc(var(--sy, 0) * -0.12px), 0); will-change:transform;"></div>
+  <div style="position:absolute; width:820px; height:820px; left:20%; top:60%; border-radius:50%; background:rgba({{ fx.b3 }}); filter:blur(150px); transform:translate3d(0, calc(var(--sy, 0) * -0.09px), 0); will-change:transform;"></div>
+  <div style="position:absolute; inset:0; background-image:{{ fx.grain }}; background-size:220px 220px; opacity:{{ fx.grainOp }};"></div>
+</div>
+
 <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
-  <div style="background:{{ c.bg }}; color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; transition:background-color 0.2s, color 0.2s;">
+  <div style="background:transparent; color:{{ c.text }}; font-family:'IBM Plex Sans', sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; transition:background-color 0.2s, color 0.2s;">
     <form onSubmit="{{ onSubmit }}" style="width:100%; max-width:380px; background:{{ c.cardBg }}; border:1px solid {{ c.border2 }}; border-radius:20px; padding:44px 36px; box-shadow:none; text-align:center;">
-      <div style="width:44px; height:44px; border-radius:50%; background:#EFEAD9; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A6741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <div style="width:44px; height:44px; border-radius:50%; background:#F0F2EC; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6A5696" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </div>
-      <p style="font-family:'Archivo', sans-serif; font-size:24px; font-weight:400; margin:0 0 8px;">This case study is private</p>
+      <p style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(20px, 2.4vw, 24px); font-weight:400; margin:0 0 8px; line-height:1.3; letter-spacing:-0.01em;">This case study is private</p>
       <p style="font-size:15px; color:{{ c.muted }}; line-height:1.5; margin:0 0 28px;">Enter the password to view Individual Pensions.</p>
-      <input type="password" value="{{ password }}" onChange="{{ onPasswordChange }}" placeholder="Password" aria-label="Password" style="width:100%; box-sizing:border-box; font-family:'Archivo', sans-serif; font-size:15px; color:{{ c.text }}; background:{{ c.inputBg }}; border:1px solid {{ c.inputBorder }}; border-radius:10px; padding:12px 14px; outline:none; margin-bottom:14px; transition:border-color 0.15s, box-shadow 0.15s;" style-focus="border-color:{{ c.accent }}; box-shadow:0 0 0 3px rgba(74,103,65,0.15);" />
+      <input type="password" value="{{ password }}" onChange="{{ onPasswordChange }}" placeholder="Password" aria-label="Password" style="width:100%; box-sizing:border-box; font-family:'Hanken Grotesk', sans-serif; font-size:15px; color:{{ c.text }}; background:{{ c.inputBg }}; border:1px solid {{ c.inputBorder }}; border-radius:10px; padding:12px 14px; outline:none; margin-bottom:14px; transition:border-color 0.15s, box-shadow 0.15s;" style-focus="border-color:{{ c.accent }}; box-shadow:0 0 0 3px rgba(74,103,65,0.15);" />
       <sc-if value="{{ hasError }}">
         <p style="font-size:13px; color:{{ c.error }}; margin:-4px 0 14px;">Incorrect password — try again.</p>
       </sc-if>
-      <button type="submit" style="width:100%; color:#F5F0E6; border:none; padding:13px; border-radius:10px; font-size:15px; font-weight:600; background:#182B14; cursor:pointer; transition:background 0.15s;" style-hover="background:#3a362f;" style-focus="outline:2px solid #4A6741; outline-offset:3px;">Unlock</button>
-      <a href="index.html" style="display:block; margin-top:20px; font-size:14px; color:{{ c.muted }}; text-decoration:none;" style-hover="color:#22301C;">← Back to portfolio</a>
+      <button type="submit" style="width:100%; color:#F6F6F5; border:none; padding:13px; border-radius:10px; font-size:15px; font-weight:600; background:#353530; cursor:pointer; transition:background 0.15s;" style-hover="background:#3a362f;" style-focus="outline:2px solid #6A5696; outline-offset:3px;">Unlock</button>
+      <a href="index.html" style="display:block; margin-top:20px; font-size:14px; color:{{ c.muted }}; text-decoration:none;" style-hover="color:#262624;">← Back to portfolio</a>
     </form>
   </div>
 </sc-if>
 
 <sc-if value="{{ unlocked }}">
-<div style="background:{{ c.bg }}; color:{{ c.text }}; font-family:'Archivo', sans-serif; min-height:100vh; overflow-x:hidden; transition:background-color 0.2s, color 0.2s;">
+<div style="background:transparent; color:{{ c.text }}; font-family:'IBM Plex Sans', sans-serif; min-height:100vh; overflow-x:clip; transition:background-color 0.2s, color 0.2s;">
 
-  <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1188px) / 2));">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 12px 12px 24px; border-radius:22px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }};">
-    <a href="index.html" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+  <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1140px) / 2)); background:{{ c.glassBg }}; border-bottom:1px solid {{ c.glassBorder }}; -webkit-backdrop-filter:blur(10px) saturate(140%); backdrop-filter:blur(10px) saturate(140%); transition:background-color 0.3s;">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 0;">
+    <a href="index.html" style="font-family:'Hanken Grotesk', sans-serif; font-size:22px; font-weight:500; color:{{ c.text }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
     <nav style="display:flex; align-items:center; gap:24px;">
-      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">Work</a>
-      <a href="about.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #4A6741; outline-offset:4px; border-radius:2px;">About</a>
-      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #4A6741; outline-offset:2px;">
+      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">Work</a>
+      <a href="about.html" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">About</a>
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #6A5696; outline-offset:2px;">
         <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </sc-if>
@@ -92,23 +104,23 @@
 
   <section style="padding:100px 64px 60px; max-width:1100px; margin:0 auto;">
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Case Study 03 — Platform Strategy</p>
-    <h1 style="font-family:'Archivo', sans-serif; font-size:clamp(28px, 6vw, 48px); line-height:1.12; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">Reimagining Keystone: From Workplace Pension Administration to a Financial Platform</h1>
+    <h1 style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(34px, 5vw, 48px); line-height:1.1; font-weight:300; margin:0 0 32px; letter-spacing:-0.025em;">Reimagining Keystone: From Workplace Pension Administration to a Financial Platform</h1>
     <p style="font-size:clamp(16px, 2vw, 19px); line-height:1.6; color:{{ c.muted }}; max-width:760px; margin:0 0 48px;">Creating the foundations for individual ownership, flexible savings products and Smart Pension's next phase of growth.</p>
     <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; padding:32px; background:{{ c.cardBg }}; border-radius:20px; border:1px solid {{ c.border }};">
       <div>
-        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">B2B → B2C</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(20px, 2.4vw, 24px); font-weight:400; margin:0 0 8px; line-height:1.3; letter-spacing:-0.01em;">B2B → B2C</p>
         <p style="font-size:14px; color:{{ c.muted }}; margin:0;">Moving beyond employer-only relationships</p>
       </div>
       <div>
-        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">One</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(20px, 2.4vw, 24px); font-weight:400; margin:0 0 8px; line-height:1.3; letter-spacing:-0.01em;">One</p>
         <p style="font-size:14px; color:{{ c.muted }}; margin:0;">Flexible platform foundation</p>
       </div>
       <div>
-        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">Future</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(20px, 2.4vw, 24px); font-weight:400; margin:0 0 8px; line-height:1.3; letter-spacing:-0.01em;">Future</p>
         <p style="font-size:14px; color:{{ c.muted }}; margin:0;">SIPP, ISA and savings products enabled</p>
       </div>
       <div>
-        <p style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3vw, 26px); font-weight:400; margin:0 0 8px;">Scale</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(20px, 2.4vw, 24px); font-weight:400; margin:0 0 8px; line-height:1.3; letter-spacing:-0.01em;">Scale</p>
         <p style="font-size:14px; color:{{ c.muted }}; margin:0;">Designed for multiple markets</p>
       </div>
     </div>
@@ -117,7 +129,7 @@
   <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">The opportunity</p>
     <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0 0 24px;">Keystone was originally built around workplace and employer-based master trust arrangements. This model allowed Smart Pension to successfully serve employers and employees, but it limited the platform's ability to support customers outside an employment relationship.</p>
-    <p style="font-family:'Archivo', sans-serif; font-style:italic; font-size:clamp(19px, 3vw, 26px); line-height:1.55; font-weight:400; color:{{ c.text }}; margin:36px 0;">"The challenge was not launching another pension product. It was redesigning the platform so it could support a new relationship between Smart Pension and customers."</p>
+    <p style="font-family:'Hanken Grotesk', sans-serif; font-style:italic; font-size:clamp(23px, 3vw, 30px); line-height:1.25; font-weight:300; color:{{ c.text }}; margin:36px 0; letter-spacing:-0.015em;">"The challenge was not launching another pension product. It was redesigning the platform so it could support a new relationship between Smart Pension and customers."</p>
     <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0;">The opportunity was to evolve Keystone into a flexible savings platform capable of supporting individual customers, direct funding and future financial products.</p>
   </section>
 
@@ -126,7 +138,7 @@
     <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:0 0 40px;">As Design Manager, I helped shape the future-state experience strategy and create alignment around how Keystone needed to evolve.</p>
     <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Strategy</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 14px; line-height:1.35; letter-spacing:-0.005em;">Strategy</p>
         <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
           <li>Defined future customer experience</li>
           <li>Translated business ambition into product direction</li>
@@ -134,7 +146,7 @@
         </ul>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Design</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 14px; line-height:1.35; letter-spacing:-0.005em;">Design</p>
         <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
           <li>Mapped customer journeys</li>
           <li>Identified experience gaps</li>
@@ -142,7 +154,7 @@
         </ul>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Leadership</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 14px; line-height:1.35; letter-spacing:-0.005em;">Leadership</p>
         <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
           <li>Aligned Product and Engineering</li>
           <li>Created shared vision</li>
@@ -156,7 +168,7 @@
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">Understanding the problem</p>
     <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Current model</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 14px; line-height:1.35; letter-spacing:-0.005em;">Current model</p>
         <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
           <li>Employer-led journeys</li>
           <li>Products tied to schemes</li>
@@ -164,7 +176,7 @@
         </ul>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Customer need</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 14px; line-height:1.35; letter-spacing:-0.005em;">Customer need</p>
         <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
           <li>Individual savings options</li>
           <li>Direct product management</li>
@@ -172,7 +184,7 @@
         </ul>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 14px;">Business challenge</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 14px; line-height:1.35; letter-spacing:-0.005em;">Business challenge</p>
         <ul style="margin:0; padding-left:18px; font-size:15px; color:{{ c.muted }}; line-height:1.7;">
           <li>Restricted market opportunity</li>
           <li>Limited product expansion</li>
@@ -190,25 +202,25 @@
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Map</div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Define</div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Design</div>
-      <div style="background:#4A6741; color:#F5F0E6; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Scale</div>
+      <div style="background:#6A5696; color:#F6F6F5; border-radius:14px; padding:20px 12px; text-align:center; font-weight:600; font-size:15px;">Scale</div>
     </div>
     <p style="font-size:clamp(15px, 2vw, 18px); line-height:1.75; color:{{ c.bodyText }}; margin:32px 0 0;">Through workshops, journey mapping and stakeholder collaboration, we moved the conversation from "how do we add a product?" to "how do we create a platform capable of supporting future products?"</p>
   </section>
 
   <section style="padding:60px 64px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">The strategic shift</p>
-    <div style="background:#182B14; color:#F5F0E6; border-radius:20px; padding:44px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:28px; font-family:'IBM Plex Sans', monospace;">
+    <div style="background:#353530; color:#F6F6F5; border-radius:20px; padding:44px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:28px; font-family:'IBM Plex Sans', monospace;">
       <div>
-        <p style="font-weight:600; margin:0 0 16px; color:#A9C08F;">Today</p>
+        <p style="font-weight:600; margin:0 0 16px; color:#C4B4EC;">Today</p>
         <p style="margin:0 0 8px;">Employer</p>
         <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
         <p style="margin:0 0 8px;">Workplace Pension</p>
         <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
         <p style="margin:0;">Member</p>
       </div>
-      <div style="font-size:28px; color:#A9C08F;">→</div>
+      <div style="font-size:28px; color:#C4B4EC;">→</div>
       <div>
-        <p style="font-weight:600; margin:0 0 16px; color:#A9C08F;">Future</p>
+        <p style="font-weight:600; margin:0 0 16px; color:#C4B4EC;">Future</p>
         <p style="margin:0 0 8px;">Individual</p>
         <p style="margin:0 0 8px; color:rgba(245,240,230,0.5);">↓</p>
         <p style="margin:0 0 8px;">Flexible Savings Platform</p>
@@ -224,19 +236,19 @@
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Design principles</p>
     <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;">
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Design for flexibility</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">Design for flexibility</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Create foundations that support multiple products, markets and customer models.</p>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Enable direct relationships</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">Enable direct relationships</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Allow individuals to manage and fund their own financial products.</p>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Build for tomorrow</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">Build for tomorrow</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Avoid solving only today's product challenge.</p>
       </div>
       <div style="background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Simplify complexity</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">Simplify complexity</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Make financial decisions easier without removing important choices.</p>
       </div>
     </div>
@@ -246,29 +258,29 @@
     <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 24px;">Outcome</p>
     <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
       <div style="background:{{ c.cardBg2 }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">New markets</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">New markets</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Created the foundation to move beyond workplace pensions into wider savings products.</p>
       </div>
       <div style="background:{{ c.cardBg2 }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Platform evolution</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">Platform evolution</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Enabled Keystone to support different ownership and funding models.</p>
       </div>
       <div style="background:{{ c.cardBg2 }}; border:1px solid {{ c.border }}; border-radius:16px; padding:28px;">
-        <p style="font-family:'Archivo', sans-serif; font-size:20px; font-weight:400; margin:0 0 12px;">Future growth</p>
+        <p style="font-family:'Hanken Grotesk', sans-serif; font-size:20px; font-weight:500; margin:0 0 12px; line-height:1.35; letter-spacing:-0.005em;">Future growth</p>
         <p style="font-size:15px; color:{{ c.muted }}; margin:0; line-height:1.6;">Established foundations for SIPP, ISA and future financial products.</p>
       </div>
     </div>
   </section>
 
   <section style="padding:60px 64px 20px; max-width:900px; margin:0 auto; border-top:1px solid {{ c.border2 }};">
-    <p style="font-family:'Archivo', sans-serif; font-style:italic; font-size:clamp(20px, 3vw, 28px); line-height:1.5; font-weight:400; color:{{ c.text }}; margin:0;">"Design leadership is about creating the foundations that allow organisations to become what they want to be."</p>
+    <p style="font-family:'Hanken Grotesk', sans-serif; font-style:italic; font-size:clamp(23px, 3vw, 30px); line-height:1.25; font-weight:300; color:{{ c.text }}; margin:0; letter-spacing:-0.015em;">"Design leadership is about creating the foundations that allow organisations to become what they want to be."</p>
   </section>
 
   <section style="padding:64px 64px 80px; margin-top:40px;">
     <div style="max-width:1140px; margin:0 auto;">
       <p style="font-size:15px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0 0 20px;">Next</p>
       <a href="native-member-app.html" style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; text-decoration:none; color:{{ c.text }}; padding:28px 32px; border-radius:22px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; transition:transform 0.18s;" style-hover="transform:translateY(-2px);" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
-        <span style="font-family:'Archivo', sans-serif; font-size:clamp(22px, 4vw, 36px); font-weight:400;">Native Member App</span>
+        <span style="font-family:'Hanken Grotesk', sans-serif; font-size:clamp(28px, 4vw, 38px); font-weight:300; line-height:1.15; letter-spacing:-0.02em;">Native Member App</span>
         <span style="display:inline-flex; align-items:center; padding:11px 20px; border-radius:999px; background:{{ c.btnBg }}; color:{{ c.btnText }}; font-size:14px; font-weight:600;">View case study →</span>
       </a>
     </div>
@@ -277,7 +289,7 @@
   <footer style="background:linear-gradient(90deg, transparent, {{ c.hair }} 20%, {{ c.hair }} 80%, transparent) top / 100% 1px no-repeat, {{ c.bg }}; color:{{ c.text }}; padding:28px 64px; transition:background-color 0.2s, color 0.2s;">
     <div style="max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:12px;">
-        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#182B14"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#A9C08F"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F5F0E6"></path><path d="M26 50 L32 40 L38 50 Z" fill="#182B14"></path></svg>
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#353530"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#C4B4EC"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F6F6F5"></path><path d="M26 50 L32 40 L38 50 Z" fill="#353530"></path></svg>
         <span style="font-size:16px; font-weight:600;">Anusha Yenugula · Product Design Leader</span>
       </div>
       <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="font-size:15px; color:{{ c.muted }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px; border-radius:2px;">Connect on LinkedIn</a>
@@ -289,13 +301,18 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { unlocked: false, password: "", error: false, isDark: localStorage.getItem("theme") !== "light" };
+  state = { unlocked: false, password: "", error: false, isDark: localStorage.getItem("theme") === "dark" };
   PASSWORD = "kiwi2026";
 
   light = { btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(34,48,28,0.10)", glassShadow: "none", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", bodyText: "#33302b", border: "rgba(34,48,28,0.1)", border2: "rgba(34,48,28,0.14)", headerBg: "rgba(245,240,230,0.88)", cardBg: "#FFFFFF", cardBg2: "#FCFAF4", inputBg: "#F5F0E6", inputBorder: "rgba(34,48,28,0.18)", accent: "#5D6D22", error: "#a3453a" };
   dark = { btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "none", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", bodyText: "#d9d4c8", border: "rgba(245,240,230,0.15)", border2: "rgba(245,240,230,0.15)", headerBg: "rgba(23,22,15,0.88)", cardBg: "#221F16", cardBg2: "#2a261a", inputBg: "#221F16", inputBorder: "rgba(245,240,230,0.2)", accent: "#A9C08F", error: "#e0776a" };
+  light = { ...this.light, ...{"bg":"#FBFBFB","text":"#262624","muted":"#5E5E5A","border":"rgba(38,38,36,0.14)","border2":"rgba(38,38,36,0.14)","bodyText":"#34342F","hair":"rgba(38,38,36,0.10)","glassBorder":"rgba(38,38,36,0.10)","inputBorder":"rgba(38,38,36,0.18)","cardBg":"#FFFFFF","inputBg":"#FFFFFF","accent":"#6A5696","btnBg":"#353530","btnText":"#FFFFFF","btnHover":"#262624","headerBg":"#FBFBFBE0","glassBg":"rgba(255,255,255,0.42)"} };
+  dark = { ...this.dark, ...{"bg":"#0F1012","text":"#F6F6F5","muted":"#ABACB0","border":"rgba(246,246,245,0.15)","border2":"rgba(246,246,245,0.15)","bodyText":"#D9DAD6","hair":"rgba(246,246,245,0.10)","glassBorder":"rgba(246,246,245,0.12)","inputBorder":"rgba(246,246,245,0.2)","cardBg":"#18191C","inputBg":"#18191C","accent":"#C4B4EC","btnBg":"#F6F6F5","btnText":"#262624","btnHover":"#ABACB0","headerBg":"#0F1012E0"} };
 
   componentDidMount() {
+    const bgfx = () => { const el = document.querySelector("[data-bgfx]"); if (el) el.style.setProperty("--sy", String(window.scrollY)); };
+    this._bgfx = () => { if (!this._bgRaf) this._bgRaf = requestAnimationFrame(() => { this._bgRaf = 0; bgfx(); }); };
+    window.addEventListener("scroll", this._bgfx, { passive: true }); bgfx();
     if (sessionStorage.getItem("cs_unlocked") === "true") this.setState({ unlocked: true });
     requestAnimationFrame(() => requestAnimationFrame(() => {
       const rvEls = document.querySelectorAll("section, footer");
@@ -309,6 +326,7 @@ class Component extends DCLogic {
 
   renderVals() {
     return {
+      fx: this.state.isDark ? { b1: "215,212,205,0.20", b2: "200,185,235,0.18", b3: "215,180,80,0.12", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.12 } : { b1: "215,212,205,0.18", b2: "200,185,235,0.15", b3: "215,180,80,0.10", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.04 },
       unlocked: this.state.unlocked,
       locked: !this.state.unlocked,
       password: this.state.password,

@@ -12,29 +12,33 @@
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200..700;1,200..700&amp;family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; }
-    ::selection { background: #4A6741; color: #F5F0E6; }
+    ::selection { background: #6A5696; color: #F6F6F5; }
     .rv { opacity: 0; transition: opacity 0.9s ease; }
     .rv.in { opacity: 1; }
     @media (prefers-reduced-motion: reduce) { .rv { opacity: 1 !important; transform: none !important; transition: none !important; } }
     .delightful-wrap { position: relative; }
-    .delightful-wrap .spark2 { position: absolute; top: 0.75em; left: -0.6em; font-size: 0.4em; color: #A9C08F; opacity: 0; transform: scale(0.4) rotate(15deg); transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s; display: inline-block; font-style: normal; }
+    .delightful-wrap .spark2 { position: absolute; top: 0.75em; left: -0.6em; font-size: 0.4em; color: #C4B4EC; opacity: 0; transform: scale(0.4) rotate(15deg); transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s; display: inline-block; font-style: normal; }
     .delightful-wrap:hover .spark2 { opacity: 1; transform: scale(1) rotate(0deg); }
-    .delightful-wrap::before { content: "✦"; position: absolute; top: 0.4em; right: -1.1em; font-size: 0.35em; color: #A9C08F; opacity: 0; transform: scale(0.4) rotate(20deg); transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s; }
+    .delightful-wrap::before { content: "✦"; position: absolute; top: 0.4em; right: -1.1em; font-size: 0.35em; color: #C4B4EC; opacity: 0; transform: scale(0.4) rotate(20deg); transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s; }
     .delightful-wrap:hover::before { opacity: 1; transform: scale(1) rotate(0deg); }
-    .delightful-wrap::after { content: "✦"; position: absolute; top: -0.1em; right: -0.75em; font-size: 0.55em; color: #5D6D22; opacity: 0; transform: scale(0.4) rotate(-15deg); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .delightful-wrap::after { content: "✦"; position: absolute; top: -0.1em; right: -0.75em; font-size: 0.55em; color: #6A5696; opacity: 0; transform: scale(0.4) rotate(-15deg); transition: opacity 0.35s ease, transform 0.35s ease; }
     .delightful-wrap:hover::after { opacity: 1; transform: scale(1) rotate(0deg); }
     @media (max-width: 768px) {
       #top { padding: 60px 24px 80px !important; }
       #top > div { max-width: none !important; }
-      header { padding: 14px 20px !important; flex-wrap: wrap !important; row-gap: 10px !important; }
+      header { padding: 6px 16px !important; }
+      header > div { gap: 8px !important; padding: 4px 0 !important; }
       header a[href="#top"] { font-size: 17px !important; }
-      header nav { gap: 14px !important; width: 100% !important; justify-content: flex-start !important; }
-      header nav > a { font-size: 13px !important; white-space: nowrap !important; }
-      header nav > button { width: 30px !important; height: 30px !important; flex-shrink: 0 !important; margin-left: auto !important; }
+      header nav { gap: 2px !important; flex-shrink: 0 !important; }
+      header nav > a { font-size: 14px !important; white-space: nowrap !important; padding: 12px 10px !important; }
+      header nav > button { width: 44px !important; height: 44px !important; flex-shrink: 0 !important; margin-left: 4px !important; }
+      header nav > a[target="_blank"] { display: none !important; }
+      #work { scroll-margin-top: 72px !important; }
+      div:has(> section#work) { border-radius: 28px 28px 0 0 !important; }
       header nav > a[target="_blank"] { display: none !important; }
       section#work { padding: 60px 24px !important; }
       section#thoughts { padding: 60px 24px !important; }
@@ -42,21 +46,27 @@
       footer { padding-left: 24px !important; padding-right: 24px !important; }
       footer h2 { font-size: 32px !important; }
     }
+    @media (max-width: 380px) { header > div > a:first-child { font-size: 15px !important; } header nav > a { padding: 12px 7px !important; } }
     @media (max-width: 1024px) and (min-width: 769px) {
-      header { padding: 24px 32px !important; }
-      header > div:nth-child(2) { max-width: 160px !important; margin: 0 20px !important; }
+      header { padding: 14px 32px !important; }
       #top { padding-left: 32px !important; padding-right: 32px !important; }
       section#work { padding-left: 32px !important; padding-right: 32px !important; }
     }
+    @keyframes drift1 { 0%,100% { translate: 0 0; scale: 1; } 33% { translate: 38% 22%; scale: 1.25; } 66% { translate: -12% 36%; scale: 0.85; } }
+    @keyframes drift2 { 0%,100% { translate: 0 0; scale: 1; } 33% { translate: -36% 28%; scale: 0.8; } 66% { translate: 24% 44%; scale: 1.2; } }
+    @keyframes drift3 { 0%,100% { translate: 0 0; scale: 1; } 33% { translate: -42% -30%; scale: 1.3; } 66% { translate: -14% 18%; scale: 0.82; } }
+    @keyframes drift4 { 0%,100% { translate: 0 0; scale: 1; } 33% { translate: 34% -38%; scale: 0.8; } 66% { translate: 46% -8%; scale: 1.2; } }
+    @media (prefers-reduced-motion: reduce) { [data-drift] { animation: none !important; } }
   </style>
 </helmet>
 
-<div style="color: {{ c.text }}; font-family: 'Archivo', sans-serif; min-height: 100vh; overflow-x: hidden; background-color: {{ c.bg }}; transition: background-color 0.2s, color 0.2s;">
+<div style="isolation:isolate; position:relative; --fh:{{ fontHead }}; --fb:{{ fontBody }}; --fwd:{{ fontWd }}; --fwmin:{{ fontWmin }}; color: {{ c.text }}; font-family: var(--fb, 'IBM Plex Sans'), sans-serif; min-height: 100vh; overflow-x:clip; background-color: {{ c.bg }}; transition: background-color 0.2s, color 0.2s;">
 
   <!-- HEADER -->
-  <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1188px) / 2));">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 12px 12px 24px; border-radius:999px; background:{{ c.navBg }}; -webkit-backdrop-filter:blur(10px) saturate(140%); backdrop-filter:blur(10px) saturate(140%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; transition:background-color 0.3s;">
-    <a href="#top" style="font-family:'Archivo', sans-serif; font-size:22px; font-weight:600; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s; flex-shrink:0;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+  <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1140px) / 2)); background:{{ c.navBg }}; border-bottom:1px solid {{ c.glassBorder }}; -webkit-backdrop-filter:blur(10px) saturate(140%); backdrop-filter:blur(10px) saturate(140%); transition:background-color 0.3s; isolation:isolate;">
+    <sc-if value="{{ hasGrain }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ grainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div></sc-if>
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 0;">
+    <a href="#top" style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:22px; font-weight:500; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s; flex-shrink:0;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
 
     <nav style="display:flex; align-items:center; gap:32px; flex-shrink:0;">
       <a href="#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:4px; border-radius:2px;">Work</a>
@@ -79,21 +89,22 @@
   <!-- HERO -->
   
 
-  <div ref="{{ heroRef }}" style="position:relative; overflow:hidden; isolation:isolate; margin-top:-110px; padding-top:110px; background:{{ c.heroBg }};">
-    <div aria-hidden="true" style="--bs:{{ blobScale }}; position:absolute; inset:0; z-index:-1; pointer-events:none; -webkit-mask-image:linear-gradient(to bottom, #000 55%, transparent 100%); mask-image:linear-gradient(to bottom, #000 55%, transparent 100%);">
-      <div style="position:absolute; width:calc(520px * var(--bs)); height:calc(520px * var(--bs)); margin:calc(260px * (1 - var(--bs))) 0 0 calc(260px * (1 - var(--bs))); left:-8%; top:-30%; border-radius:50%; background:{{ c.b1 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * -40px), calc(var(--py, 0) * -30px + var(--sy, 0) * 0.35px), 0); will-change:transform;"></div>
-      <div style="position:absolute; width:calc(420px * var(--bs)); height:calc(420px * var(--bs)); margin:calc(210px * (1 - var(--bs))) 0 0 calc(210px * (1 - var(--bs))); left:38%; top:-40%; border-radius:50%; background:{{ c.b2 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * 30px), calc(var(--py, 0) * 23px + var(--sy, 0) * 0.18px), 0); will-change:transform;"></div>
-      <div style="position:absolute; width:calc(480px * var(--bs)); height:calc(480px * var(--bs)); margin:calc(240px * (1 - var(--bs))) 0 0 calc(240px * (1 - var(--bs))); left:70%; top:40%; border-radius:50%; background:{{ c.b3 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * 55px), calc(var(--py, 0) * 41px + var(--sy, 0) * 0.45px), 0); will-change:transform;"></div>
-      <div style="position:absolute; width:calc(400px * var(--bs)); height:calc(400px * var(--bs)); margin:calc(200px * (1 - var(--bs))) 0 0 calc(200px * (1 - var(--bs))); left:8%; top:60%; border-radius:50%; background:{{ c.b4 }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * -25px), calc(var(--py, 0) * -19px + var(--sy, 0) * 0.25px), 0); will-change:transform;"></div>
+  <div ref="{{ heroRef }}" style="position:relative; overflow:hidden; margin-top:-110px; padding-top:110px;">
+    <div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; background:{{ c.heroBg }};"></div>
+    <div aria-hidden="true" style="--bs:{{ blobScale }}; --ms:{{ motionSpeed }}; position:absolute; inset:0; z-index:-1; pointer-events:none; filter:saturate(1.5) contrast(1.05); opacity:0.6;">
+      <div data-drift="1" style="position:absolute; width:calc(520px * var(--bs)); height:calc(520px * var(--bs)); margin:calc(260px * (1 - var(--bs))) 0 0 calc(260px * (1 - var(--bs))); left:-8%; top:-30%; border-radius:50%; background:{{ c.b1 }}; animation:drift1 calc(11s / var(--ms, 1)) ease-in-out infinite; animation-play-state:{{ motionState }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * -40px), calc(var(--py, 0) * -30px + var(--sy, 0) * 0.35px), 0); will-change:transform;"></div>
+      <div data-drift="2" style="position:absolute; width:calc(420px * var(--bs)); height:calc(420px * var(--bs)); margin:calc(210px * (1 - var(--bs))) 0 0 calc(210px * (1 - var(--bs))); left:38%; top:-40%; border-radius:50%; background:{{ c.b2 }}; animation:drift2 calc(13s / var(--ms, 1)) ease-in-out infinite; animation-play-state:{{ motionState }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * 30px), calc(var(--py, 0) * 23px + var(--sy, 0) * 0.18px), 0); will-change:transform;"></div>
+      <div data-drift="3" style="position:absolute; width:calc(480px * var(--bs)); height:calc(480px * var(--bs)); margin:calc(240px * (1 - var(--bs))) 0 0 calc(240px * (1 - var(--bs))); left:70%; top:40%; border-radius:50%; background:{{ c.b3 }}; animation:drift3 calc(15s / var(--ms, 1)) ease-in-out infinite; animation-play-state:{{ motionState }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * 55px), calc(var(--py, 0) * 41px + var(--sy, 0) * 0.45px), 0); will-change:transform;"></div>
+      <div data-drift="4" style="position:absolute; width:calc(400px * var(--bs)); height:calc(400px * var(--bs)); margin:calc(200px * (1 - var(--bs))) 0 0 calc(200px * (1 - var(--bs))); left:8%; top:60%; border-radius:50%; background:{{ c.b4 }}; animation:drift4 calc(12s / var(--ms, 1)) ease-in-out infinite; animation-play-state:{{ motionState }}; filter:blur(calc(80px * var(--bs))); transform:translate3d(calc(var(--px, 0) * -25px), calc(var(--py, 0) * -19px + var(--sy, 0) * 0.25px), 0); will-change:transform;"></div>
       <div style="position:absolute; inset:0; background:radial-gradient(560px circle at var(--mx, 50%) var(--my, 40%), {{ c.glow }}, transparent 65%); opacity:var(--glow, 0); transition:opacity 0.6s ease;"></div>
     </div>
   <!-- WORK -->
-  <section id="top" style="padding:100px 64px 64px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
+  <section id="top" style="padding:100px 64px 120px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
     <div style="display:flex; align-items:center; gap:clamp(32px, 5vw, 64px); flex-wrap:wrap;">
     <div style="flex:1 1 420px; min-width:0; max-width:700px;">
       <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">PRODUCT DESIGN LEADER</p>
-      <h3 style="font-family:'Archivo', sans-serif; font-size:clamp(20px, 3.5vw, 28px); line-height:1.3; font-weight:400; margin:0 0 32px; letter-spacing:-0.01em;">Over a decade working with financial products people trust. I help turn complex digital experiences into something simpler, more achievable and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h3>
-      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 20px;">Currently shaping design at Smart Pension.</h4>
+      <h3 style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(23px, 3vw, 30px); line-height:1.25; font-weight:300; margin:0 0 32px; letter-spacing:-0.015em;">Over a decade working with financial products people trust. I help turn complex digital experiences into something simpler and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h3>
+      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 20px;">Currently heading design at Smart Pension.</h4>
       <div style="display:flex; flex-wrap:wrap; gap:8px;">
         <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">Design • Strategy</span>
         <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">Fintech</span>
@@ -101,12 +112,14 @@
       </div>
       
     </div>
-    <img src="uploads/img/portrait-720.jpg" srcset="uploads/img/portrait-360.jpg 360w, uploads/img/portrait-720.jpg 720w, uploads/img/portrait-1086.jpg 1086w" sizes="(max-width: 768px) 60vw, 260px" alt="Portrait of Anusha Yenugula" width="1086" height="1169" decoding="async" fetchpriority="high" style="flex:0 1 260px; min-width:180px; max-width:260px; height:auto; aspect-ratio:1086/1169; object-fit:cover; border-radius:28px;">
+    <div style="position:relative; flex:0 1 260px; min-width:180px; max-width:260px; aspect-ratio:835/876; border-radius:28px; overflow:hidden; isolation:isolate;">
+      <img src="uploads/home-photo-hue.png" alt="Portrait of Anusha Yenugula" width="835" height="876" decoding="async" fetchpriority="high" style="display:block; width:100%; height:100%; object-fit:cover;">
+    </div>
     </div>
   </section>
-  </div><section id="work" style="padding:40px 64px 100px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
+  </div><div style="position:relative; z-index:1; margin-top:-48px; background:{{ c.bg }}; border-top:1px solid {{ c.border }}; border-radius:48px 48px 0 0; isolation:isolate; transition:background-color 0.2s;"><sc-if value="{{ hasGrain }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; border-radius:inherit; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ grainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div></sc-if><section id="work" style="padding:88px 64px 100px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:40px; gap:24px; flex-wrap:wrap;">
-      <h2 style="font-family:'Archivo', sans-serif; font-size:clamp(32px, 4.5vw, 44px); font-weight:500; letter-spacing:-0.02em; margin:0;">Work</h2>
+      <h2 style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(28px, 4vw, 38px); font-weight:300; letter-spacing:-0.02em; margin:0; line-height:1.15;">Work</h2>
       <p style="font-size:14px; color:{{ c.muted }}; margin:0; display:flex; align-items:center; gap:6px;">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         Password protected. Access details are available on my resume.
@@ -115,10 +128,12 @@
 
     <div style="display:flex; flex-direction:column; gap:24px; max-width:780px; margin:0 auto;">
       <sc-for list="{{ workItems }}" as="w" hint-placeholder-count="3">
-        <a href="{{ w.href }}" style="display:flex; flex-wrap:wrap; text-decoration:none; background:{{ c.cardBg }}; border:1px solid {{ c.border }}; border-radius:28px; overflow:hidden; color:{{ c.text }}; transition:transform 0.18s, box-shadow 0.18s;" style-hover="transform:translateY(-3px);" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
-          <div style="position:relative; flex:0 0 300px; max-width:100%; min-height:300px; align-self:stretch; background:radial-gradient(60% 55% at 18% 18%, rgba(93,109,34,0.6), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(217,185,140,0.28), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(201,139,107,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(143,176,169,0.28), transparent 70%), #182B14; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box;">
+        <a href="{{ w.href }}" onMouseEnter="{{ w.onCardEnter }}" onMouseLeave="{{ onCardLeave }}" onFocus="{{ w.onCardEnter }}" onBlur="{{ onCardLeave }}" aria-label="{{ w.title }} case study" style="position:relative; isolation:isolate; cursor:pointer; display:flex; flex-wrap:wrap; text-decoration:none; background:{{ cu.bg }}; border:{{ cu.border }}; border-top:{{ cu.borderTop }}; border-radius:{{ cu.radius }}; padding:{{ cu.pad }}; gap:{{ cu.gap }}; -webkit-backdrop-filter:{{ cu.blur }}; backdrop-filter:{{ cu.blur }}; overflow:hidden; color:{{ c.text }}; transition:transform 0.2s, border-color 0.2s;" style-hover="transform:translateY(-3px); border-color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
+          <div style="position:relative; flex:0 0 300px; max-width:100%; min-height:300px; align-self:stretch; border-radius:{{ cu.visRadius }}; background:{{ c.visualBase }}; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box; isolation:isolate;">
+            <div aria-hidden="true" style="position:absolute; inset:-25%; z-index:-2; pointer-events:none; background:{{ c.visual }}; filter:blur(36px) saturate(1.2);"></div>
+            <div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ cardGrainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div>
             <sc-if value="{{ w.hasScreen }}" hint-placeholder-val="{{ false }}">
-              <div style="position:absolute; inset:0; margin:auto; height:calc(100% - 40px); max-height:380px; aspect-ratio:9/19; border-radius:28px; overflow:hidden; background:#17160F; padding:6px; box-sizing:border-box; box-shadow:0 30px 50px -20px rgba(0,0,0,0.6);">
+              <div style="position:absolute; inset:0; margin:auto; height:calc(100% - 40px); max-height:380px; aspect-ratio:9/19; border-radius:28px; overflow:hidden; background:#0F1012; padding:6px; box-sizing:border-box; box-shadow:0 30px 50px -20px rgba(0,0,0,0.6);">
                 <img src="{{ w.screen }}" srcset="{{ w.screenSet }}" sizes="180px" alt="{{ w.title }} screen" loading="lazy" decoding="async" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top; border-radius:22px; image-rendering:auto; backface-visibility:hidden;">
               </div>
             </sc-if>
@@ -132,22 +147,22 @@
             <sc-if value="{{ w.isDisc }}" hint-placeholder-val="{{ true }}">
               <div style="position:absolute; left:14px; top:14px; width:170px; height:112px; box-sizing:border-box; background:{{ w.bezel }}; border-radius:9px 9px 0 0; padding:7px 6px 6px; box-shadow:0 18px 34px -14px rgba(0,0,0,0.6);">
                 <div style="position:absolute; top:2.5px; left:50%; transform:translateX(-50%); width:3px; height:3px; border-radius:50%; background:rgba(245,240,230,0.35);"></div>
-                <div style="height:100%; box-sizing:border-box; background:#EFF2EA; border-radius:3px; padding:10px; display:flex; flex-direction:column; gap:7px; overflow:hidden;">
-                  <div style="border:1px dashed rgba(34,48,28,0.45); color:#4f584a; border-radius:5px; padding:6px 7px; font-size:8px; font-weight:600; line-height:1.2;">Workplace pension</div>
+                <div style="height:100%; box-sizing:border-box; background:#F0F2EC; border-radius:3px; padding:10px; display:flex; flex-direction:column; gap:7px; overflow:hidden;">
+                  <div style="border:1px dashed rgba(34,48,28,0.45); color:#5E5E5A; border-radius:5px; padding:6px 7px; font-size:8px; font-weight:600; line-height:1.2;">Workplace pension</div>
                   <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-                    <div style="background:#5D6D22; color:#F5F0E6; border-radius:5px; padding:8px 7px; font-size:8px; font-weight:600; line-height:1.2; white-space:nowrap;">+ Add money</div>
-                    <div style="background:#22301C; color:#F5F0E6; border-radius:5px; padding:8px 7px; font-size:8px; font-weight:600; line-height:1.2; white-space:nowrap;">+ SIPP</div>
+                    <div style="background:{{ c.mockA }}; color:#F6F6F5; border-radius:5px; padding:8px 7px; font-size:8px; font-weight:600; line-height:1.2; white-space:nowrap;">+ Add money</div>
+                    <div style="background:{{ c.mockB }}; color:#F6F6F5; border-radius:5px; padding:8px 7px; font-size:8px; font-weight:600; line-height:1.2; white-space:nowrap;">+ SIPP</div>
                   </div>
                 </div>
               </div>
               <div style="position:absolute; left:0; top:126px; width:198px; height:7px; background:{{ w.bezel }}; border-radius:0 0 8px 8px; box-shadow:0 10px 18px -8px rgba(0,0,0,0.6);"></div>
               <div style="position:absolute; left:84px; top:126px; width:30px; height:3px; background:rgba(245,240,230,0.18); border-radius:0 0 3px 3px;"></div>
               <div style="position:absolute; left:172px; top:44px; width:64px; height:130px; box-sizing:border-box; background:{{ w.bezel }}; border-radius:14px; padding:4px; box-shadow:-8px 14px 30px -10px rgba(0,0,0,0.65);">
-                <div style="position:relative; height:100%; box-sizing:border-box; background:#EFF2EA; border-radius:10px; padding:16px 5px 6px; display:flex; flex-direction:column; gap:5px; overflow:hidden;">
+                <div style="position:relative; height:100%; box-sizing:border-box; background:#F0F2EC; border-radius:10px; padding:16px 5px 6px; display:flex; flex-direction:column; gap:5px; overflow:hidden;">
                   <div style="position:absolute; top:5px; left:50%; transform:translateX(-50%); width:18px; height:4px; border-radius:2px; background:{{ w.bezel }};"></div>
-                  <div style="border:1px dashed rgba(34,48,28,0.45); color:#4f584a; border-radius:5px; padding:5px 4px; font-size:6.5px; font-weight:600; line-height:1.2;">Workplace pension</div>
-                  <div style="background:#5D6D22; color:#F5F0E6; border-radius:5px; padding:6px 4px; font-size:6.5px; font-weight:600; line-height:1.2; white-space:nowrap;">+ Add money</div>
-                  <div style="background:#22301C; color:#F5F0E6; border-radius:5px; padding:6px 4px; font-size:6.5px; font-weight:600; line-height:1.2; white-space:nowrap;">+ SIPP</div>
+                  <div style="border:1px dashed rgba(34,48,28,0.45); color:#5E5E5A; border-radius:5px; padding:5px 4px; font-size:6.5px; font-weight:600; line-height:1.2;">Workplace pension</div>
+                  <div style="background:{{ c.mockA }}; color:#F6F6F5; border-radius:5px; padding:6px 4px; font-size:6.5px; font-weight:600; line-height:1.2; white-space:nowrap;">+ Add money</div>
+                  <div style="background:{{ c.mockB }}; color:#F6F6F5; border-radius:5px; padding:6px 4px; font-size:6.5px; font-weight:600; line-height:1.2; white-space:nowrap;">+ SIPP</div>
                 </div>
               </div>
             </sc-if>
@@ -155,27 +170,29 @@
             
             </div>
           </div>
-          <div style="flex:1 1 380px; min-width:0; padding:clamp(20px, 2.4vw, 28px); display:flex; flex-direction:column; gap:12px; justify-content:center;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;">
-              <p style="font-size:clamp(22px, 2.6vw, 28px); font-weight:600; letter-spacing:-0.01em; margin:0;">{{ w.title }}</p>
-              <p style="font-size:14px; font-weight:600; color:{{ c.muted }}; margin:0;">{{ w.meta }}</p>
+                    <div style="--cp:clamp(24px, 3vw, 36px); position:relative; flex:1 1 380px; min-width:0; padding:var(--cp); display:flex; flex-direction:column; gap:16px; justify-content:center;">
+            <sc-if value="{{ hasGrain }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ grainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div></sc-if>
+            <sc-if value="{{ cornerArrow }}" hint-placeholder-val="{{ true }}">
+              <span aria-hidden="true" style="position:absolute; top:var(--cp); right:var(--cp); width:40px; height:40px; box-sizing:border-box; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid {{ w.arrowBorder }}; background:{{ w.arrowBg }}; color:{{ w.arrowFg }}; transform:{{ w.arrowTf }}; transition:background 0.2s, color 0.2s, border-color 0.2s, transform 0.25s;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+              </span>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:6px; padding-right:{{ titlePadR }};">
+              <p style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(20px, 2.2vw, 24px); line-height:1.3; font-weight:300; letter-spacing:-0.01em; margin:0; text-wrap:balance;">{{ w.title }}<sc-if value="{{ titleArrow }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="display:inline-block; margin-left:10px; color:{{ c.accent }}; transform:{{ w.titleArrowTf }}; transition:transform 0.25s;">→</span></sc-if></p>
+              <p style="order:-1; display:flex; align-items:center; gap:6px; font-size:13px; font-weight:400; color:{{ c.muted }}; margin:0; font-variant-numeric:tabular-nums;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Password protected"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>{{ w.meta }}</p>
             </div>
-            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
               <sc-for list="{{ w.tags }}" as="t" hint-placeholder-count="3">
-                <span style="padding:6px 12px; border-radius:999px; background:{{ c.chipBg }}; color:{{ c.text }}; font-size:13px; font-weight:500;">{{ t }}</span>
+                <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">{{ t }}</span>
               </sc-for>
             </div>
-            <p style="font-size:16px; color:{{ c.muted }}; line-height:1.6; margin:0; text-wrap:pretty;">{{ w.teaser }}</p>
-            <p style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:{{ c.accent }}; margin:0;">{{ w.metrics }}</p>
-            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:9px; margin-top:6px; padding:11px 20px; border-radius:999px; background:{{ c.btnBg }}; color:{{ c.btnText }}; font-size:14px; font-weight:600;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              View case study →
-            </span>
+            <p style="font-size:16px; color:{{ c.text }}; line-height:1.55; margin:0; max-width:44ch; text-wrap:pretty;">{{ w.teaser }}</p>
+            <p style="font-size:13px; font-weight:500; color:{{ c.accent }}; line-height:1.4; margin:-6px 0 0;">{{ w.metrics }}</p>
           </div>
         </a>
       </sc-for>
     </div>
-  </section>
+  </section></div>
 
   <!-- CONNECT / FOOTER -->
   <footer id="connect" style="background:linear-gradient(90deg, transparent, {{ c.hair }} 20%, {{ c.hair }} 80%, transparent) top / 100% 1px no-repeat, {{ c.bg }}; color:{{ c.text }}; padding:28px 64px; transition:background-color 0.2s, color 0.2s;">
@@ -186,17 +203,19 @@
       <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="font-size:15px; color:{{ c.muted }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px; border-radius:2px;">Connect on LinkedIn</a>
     </div>
   </footer>
+  <sc-if value="{{ hasGrain }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ grainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div></sc-if>
+
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Sage &amp; sand&quot;,&quot;Moss &amp; mist&quot;,&quot;Olive &amp; clay&quot;,&quot;Fern &amp; lilac&quot;],&quot;default&quot;:&quot;Olive &amp; clay&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;blobScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.1,&quot;default&quot;:2.4,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;blobScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.1,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;motionSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.5,&quot;max&quot;:3,&quot;step&quot;:0.1,&quot;default&quot;:1.5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
 class Component extends DCLogic {
-  state = { searchQuery: "", isDark: localStorage.getItem("theme") !== "light", hoveredWork: 0, scrolled: false };
+  state = { hoverCard: -1, searchQuery: "", isDark: localStorage.getItem("theme") === "dark", hoveredWork: 0, scrolled: false };
 
   work = [
-    { num: "01", title: "Native Member App", tag: "Smart Pension", tags: ["Product strategy", "Native mobile", "Member app"], metrics: "3.6 → 4.7 App Store rating · 2M+ members · 0 → 2 markets", year: "2024 – present", glow: "#C7D8B0", href: "native-member-app.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#A9C08F", fg: "#22301C", fg2: "#F5F0E6", bezel: "#22301C", screen: "uploads/img/member-app-360.png", screenSet: "uploads/img/member-app-180.png 180w, uploads/img/member-app-360.png 360w, uploads/img/member-app-540.png 540w", gradient: "linear-gradient(135deg, #4A6741 0%, #0d2b2e 100%)", image: "uploads/case-study-native-member-app.png" },
-    { num: "02", title: "Identity Project", tag: "Smart Pension", tags: ["Design strategy", "Identity", "Platform"], metrics: "70% automation target", glow: "#2F5A4E", href: "identity-project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#1F3B34", fg: "#2E5449", fg2: "#A9C08F", bezel: "#22301C", hub: true, gradient: "linear-gradient(135deg, #22301C 0%, #4A6741 100%)", image: "uploads/case-study-profile-project.png" },
-    { num: "03", title: "Beyond workplace pensions", tag: "Smart Pension", tags: ["Platform strategy", "SIPP · ISA"], metrics: "Future SIPP, ISA and savings products", glow: "#3A4D2C", href: "individual-pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#22301C", fg: "#5D6D22", fg2: "#A9C08F", bezel: "#17160F", hub: true, gradient: "linear-gradient(135deg, #A9C08F 0%, #4A6741 100%)", image: "uploads/case-study-individual-pensions.png" },
+    { num: "01", title: "Native Member App", tag: "Smart Pension", tags: ["Product strategy", "Native mobile", "Member app"], metrics: "3.6 → 4.7 App Store rating · 2M+ members · 0 → 2 markets", year: "2024 – present", glow: "#E1DCF2", href: "native-member-app.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#E1DCF2", fg: "#262624", fg2: "#FFFFFF", bezel: "#262624", screen: "uploads/img/member-app-360.png", screenSet: "uploads/img/member-app-180.png 180w, uploads/img/member-app-360.png 360w, uploads/img/member-app-540.png 540w", gradient: "linear-gradient(135deg, #6A5696 0%, #353530 100%)", image: "uploads/case-study-native-member-app.png" },
+    { num: "02", title: "Identity Project", tag: "Smart Pension", tags: ["Design strategy", "Identity", "Platform"], metrics: "70% automation target", glow: "#8FA389", href: "identity-project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#353530", fg: "#8FA389", fg2: "#C4B4EC", bezel: "#262624", hub: true, gradient: "linear-gradient(135deg, #262624 0%, #6A5696 100%)", image: "uploads/case-study-profile-project.png" },
+    { num: "03", title: "Beyond workplace pensions", tag: "Smart Pension", tags: ["Platform strategy", "SIPP · ISA"], metrics: "Future SIPP, ISA and savings products", glow: "#C4B4EC", href: "individual-pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#4A5A48", fg: "#6A5696", fg2: "#C4B4EC", bezel: "#0F1012", hub: true, gradient: "linear-gradient(135deg, #C4B4EC 0%, #6A5696 100%)", image: "uploads/case-study-individual-pensions.png" },
   ];
 
   thoughts = [
@@ -219,6 +238,7 @@ class Component extends DCLogic {
     dropdownBg: "#FFFFFF",
     accent: "#5D6D22", eyebrow: "#5D6D22",
     btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14",
+    visual: "radial-gradient(60% 55% at 18% 18%, rgba(93,109,34,0.6), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(217,185,140,0.28), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(201,139,107,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(143,176,169,0.28), transparent 70%), #182B14", mockA: "#5D6D22", mockB: "#22301C",
     chipBg: "#E3E8D4", glow: "rgba(255,253,247,0.9)", heroBg: "transparent",
     b1: "rgba(169,192,143,0.45)", b2: "rgba(217,185,140,0.40)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.35)",
   };
@@ -231,31 +251,74 @@ class Component extends DCLogic {
     dropdownBg: "#221F16",
     accent: "#A9C08F", eyebrow: "#A9C08F",
     btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4",
+    visual: "radial-gradient(60% 55% at 18% 18%, rgba(93,109,34,0.6), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(217,185,140,0.28), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(201,139,107,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(143,176,169,0.28), transparent 70%), #182B14", mockA: "#5D6D22", mockB: "#22301C",
     chipBg: "rgba(169,192,143,0.18)", glow: "rgba(245,240,230,0.10)", heroBg: "linear-gradient(to bottom, #182B14 0%, #182B14 50%, #17160F 100%)",
     b1: "rgba(93,109,34,0.55)", b2: "rgba(217,185,140,0.25)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.25)",
   };
 
 
   palettes = {
-    "Sage & sand": {
-      light: { b1: "rgba(169,192,143,0.45)", b2: "rgba(217,185,140,0.40)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.35)" },
-      dark: { b1: "rgba(93,109,34,0.55)", b2: "rgba(217,185,140,0.25)", b3: "rgba(201,139,107,0.28)", b4: "rgba(143,176,169,0.25)" },
-    },
-    "Moss & mist": {
-      light: { b1: "rgba(150,178,120,0.38)", b2: "rgba(176,196,190,0.34)", b3: "rgba(198,210,226,0.30)", b4: "rgba(120,160,138,0.28)" },
-      dark: { b1: "rgba(70,100,40,0.50)", b2: "rgba(110,150,140,0.22)", b3: "rgba(120,140,170,0.18)", b4: "rgba(60,110,90,0.28)" },
-    },
-    "Olive & clay": {
-      light: { b1: "rgba(160,170,100,0.38)", b2: "rgba(226,190,150,0.34)", b3: "rgba(210,150,120,0.24)", b4: "rgba(190,176,120,0.26)" },
-      dark: { b1: "rgba(100,110,40,0.50)", b2: "rgba(190,140,90,0.20)", b3: "rgba(170,100,70,0.22)", b4: "rgba(140,130,60,0.22)" },
-    },
-    "Fern & lilac": {
-      light: { b1: "rgba(160,190,140,0.38)", b2: "rgba(214,200,226,0.34)", b3: "rgba(236,214,196,0.30)", b4: "rgba(150,184,170,0.28)" },
-      dark: { b1: "rgba(80,110,50,0.50)", b2: "rgba(140,120,170,0.20)", b3: "rgba(190,150,130,0.16)", b4: "rgba(80,130,110,0.24)" },
+    "Stone · lilac · mustard": {
+      light: {"bg":"#FBFBFB","text":"#262624","muted":"#5E5E5A","border":"rgba(38,38,36,0.14)","hair":"rgba(38,38,36,0.10)","glassBorder":"rgba(38,38,36,0.10)","inputBorder":"rgba(38,38,36,0.18)","cardBg":"#FFFFFF","cardHoverBg":"#FFFFFF","inputBg":"#FFFFFF","dropdownBg":"#FFFFFF","accent":"#6A5696","eyebrow":"#6A5696","chipBg":"#F4F0E4","btnBg":"#353530","btnText":"#FFFFFF","btnHover":"#262624","headerBg":"#FBFBFBE0","glassBg":"rgba(255,255,255,0.42)","navBg":"rgba(255,255,255,0.14)","b1":"rgba(215,212,205,0.44)","b2":"rgba(200,185,235,0.38)","b3":"rgba(215,180,80,0.24)","b4":"rgba(225,215,240,0.34)","visualBase":"#F4F2EE","visual":"radial-gradient(65% 60% at 15% 15%, rgba(215,212,205,0.9), transparent 70%), radial-gradient(60% 55% at 88% 22%, rgba(200,185,235,0.75), transparent 70%), radial-gradient(60% 55% at 82% 92%, rgba(215,180,80,0.45), transparent 70%), radial-gradient(55% 50% at 10% 90%, rgba(225,215,240,0.7), transparent 70%)","mockA":"#6A5696","mockB":"#262624"},
+      dark: {"bg":"#0F1012","text":"#F6F6F5","muted":"#ABACB0","border":"rgba(246,246,245,0.15)","hair":"rgba(246,246,245,0.10)","glassBorder":"rgba(246,246,245,0.12)","inputBorder":"rgba(246,246,245,0.2)","cardBg":"#18191C","cardHoverBg":"#18191C","inputBg":"#18191C","dropdownBg":"#18191C","accent":"#C4B4EC","eyebrow":"#C4B4EC","chipBg":"rgba(196,180,236,0.18)","btnBg":"#F6F6F5","btnText":"#262624","btnHover":"#ABACB0","heroBg":"linear-gradient(to bottom, #353530 0%, #353530 50%, #0F1012 100%)","headerBg":"#0F1012E0","b1":"rgba(215,212,205,0.28)","b2":"rgba(200,185,235,0.22)","b3":"rgba(215,180,80,0.14)","b4":"rgba(225,215,240,0.14)","visual":"radial-gradient(60% 55% at 18% 18%, rgba(215,212,205,0.55), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(200,185,235,0.34), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(215,180,80,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(225,215,240,0.28), transparent 70%), #353530","mockA":"#6A5696","mockB":"#262624"},
     },
   };
+  accents = {
+    "Mulberry": ["#8E2A5E", "#EC8FBA"],
+    "Rose": ["#B23A5E", "#F09AB0"],
+    "Mocha": ["#7B5140", "#E0B19C"],
+    "Plum": ["#6B3A78", "#D2A2DF"],
+    "Cherry": ["#A0233F", "#F08198"],
+    "Terracotta": ["#A4492F", "#E79A7C"],
+  };
 
+  fonts = {
+    "Archivo": ["'Archivo'", "'Archivo'"],
+    "Archivo + IBM Plex Sans": ["'Archivo'", "'IBM Plex Sans'"],
+    "IBM Plex Serif + IBM Plex Sans": ["'IBM Plex Serif'", "'IBM Plex Sans'"],
+    "Source Serif + IBM Plex Sans": ["'Source Serif 4'", "'IBM Plex Sans'"],
+    "Spectral + IBM Plex Sans": ["'Spectral'", "'IBM Plex Sans'"],
+    "Archivo + IBM Plex Serif": ["'Archivo'", "'IBM Plex Serif'"],
+    "Newsreader + IBM Plex Sans": ["'Newsreader'", "'IBM Plex Sans'"],
+    "Instrument Serif + IBM Plex Sans": ["'Instrument Serif'", "'IBM Plex Sans'"],
+    "Young Serif + IBM Plex Sans": ["'Young Serif'", "'IBM Plex Sans'"],
+    "Libre Caslon + IBM Plex Sans": ["'Libre Caslon Text'", "'IBM Plex Sans'"],
+    "Bricolage Grotesque + IBM Plex Sans": ["'Bricolage Grotesque'", "'IBM Plex Sans'"],
+    "Schibsted Grotesk + IBM Plex Sans": ["'Schibsted Grotesk'", "'IBM Plex Sans'"],
+    "Schibsted Grotesk Light + IBM Plex Sans": ["'Schibsted Grotesk'", "'IBM Plex Sans'", -200, 400],
+    "Hanken Grotesk Light + IBM Plex Sans": ["'Hanken Grotesk'", "'IBM Plex Sans'", -200, 300],
+    "Geist Light": ["'Geist'", "'Geist'", -200, 300],
+  };
+
+  grains = {
+    "Fine paper": { size: 220, op: 0.10, layers: [{ f: "0.85", o: 3 }] },
+  };
+  accentOv() {
+    const a = this.accents[this.props.accentColor];
+    if (!a) return {};
+    const v = a[this.state.isDark ? 1 : 0];
+    return { accent: v, eyebrow: v, mockA: a[0] };
+  }
+  grainSvg(g, alpha) {
+    const s = g.size;
+    const body = g.layers.map((l, i) => "<filter id='n" + i + "' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='" + l.f + "' numOctaves='" + l.o + "' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(#n" + i + ")' opacity='" + (l.a ?? 1) + "'/>").join("");
+    const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + s + "' height='" + s + "'><g opacity='" + (alpha ?? 1) + "'>" + body + "</g></svg>";
+    return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+  }
+
+  goToWork = (e, smooth = true) => {
+    const el = document.getElementById("work");
+    if (!el) return;
+    if (e) e.preventDefault();
+    const hdr = document.querySelector("header");
+    const y = el.getBoundingClientRect().top + window.scrollY - (hdr ? hdr.offsetHeight : 0) + 8;
+    window.scrollTo({ top: y, behavior: smooth ? "smooth" : "auto" });
+    try { history.replaceState(null, "", "#work"); } catch (_) {}
+  };
   componentDidMount() {
+    this._workClick = (e) => { const a = e.target.closest && e.target.closest('a[href="#work"]'); if (a) this.goToWork(e); };
+    document.addEventListener("click", this._workClick);
+    if (location.hash === "#work") setTimeout(() => this.goToWork(null, false), 150);
     const rvEls = document.querySelectorAll("section, footer");
     rvEls.forEach(el => el.classList.add("rv"));
     this._io = new IntersectionObserver((entries) => {
@@ -279,7 +342,7 @@ class Component extends DCLogic {
     const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
     this._scroll = () => { ts = Math.min(window.scrollY, hero.offsetHeight); kick(); };
     window.addEventListener("scroll", this._scroll, { passive: true });
-    if (matchMedia("(pointer: fine)").matches) {
+    if (false) {
       this._move = e => {
         const r = hero.getBoundingClientRect();
         const x = e.clientX - r.left, y = e.clientY - r.top;
@@ -315,13 +378,35 @@ class Component extends DCLogic {
       isDark: this.state.isDark,
       isLight: !this.state.isDark,
       onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),
-      c: { ...(this.state.isDark ? this.dark : this.light), ...((this.palettes[this.props.palette] || this.palettes["Moss & mist"])[this.state.isDark ? "dark" : "light"]) },
-      blobScale: this.props.blobScale ?? 1.7,
-      workItems: this.work.map((w, i) => ({ ...w, meta: w.year || w.tag, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }) })),
+      c: { ...(this.state.isDark ? this.dark : this.light), ...((this.palettes[this.props.palette] || this.palettes["Stone · lilac · mustard"])[this.state.isDark ? "dark" : "light"]), ...this.accentOv() },
+      cardGrainOpacity: this.state.isDark ? 0.35 : 0.55,
+      blobScale: this.props.blobScale ?? 2.5,
+      motionSpeed: this.props.motionSpeed ?? 1.9,
+      motionState: (this.props.motion ?? true) ? "running" : "paused",
+      cu: (() => {
+        const c = { ...(this.state.isDark ? this.dark : this.light), ...((this.palettes[this.props.palette] || this.palettes["Stone · lilac · mustard"])[this.state.isDark ? "dark" : "light"]), ...this.accentOv() };
+        const base = { bg: c.cardBg, border: "1px solid " + c.border, borderTop: "1px solid " + c.border, radius: "28px", pad: "0", gap: "0", blur: "none", visRadius: "0" };
+        return base;
+      })(),
+      cornerArrow: true,
+      titleArrow: false,
+      titlePadR: "52px",
+      onCardLeave: () => this.setState({ hoverCard: -1 }),
+      ...(() => {
+        const g = this.grains["Fine paper"];
+        if (!g) return { hasGrain: false, cardGrain: "none" };
+        const k = 2.5 * (this.state.isDark && !g.blend ? 1.6 : 1);
+        return { hasGrain: true, cardGrain: this.grainSvg(g, Math.min(1, g.op * k).toFixed(3)), grainBg: this.grainSvg(g), grainSize: g.size + "px", grainOpacity: Math.min(1, g.op * k), grainBlend: g.blend || (this.state.isDark ? "soft-light" : "multiply") };
+      })(),
+      fontHead: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[0],
+      fontBody: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[1],
+      fontWd: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[2] || 0,
+      fontWmin: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[3] || 100,
+      workItems: this.work.map((w, i) => ({ ...w, meta: w.year || w.tag, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }), ...(() => { const cc = this.state.isDark ? this.dark : this.light; const on = this.state.hoverCard === i; return { onCardEnter: () => this.setState({ hoverCard: i, hoveredWork: i }), arrowBorder: on ? cc.btnBg : cc.border, arrowBg: on ? cc.btnBg : "transparent", arrowFg: on ? cc.btnText : cc.text, arrowTf: on ? "translateX(3px)" : "none", titleArrowTf: on ? "translateX(6px)" : "none" }; })() })),
       activeWork: this.work[this.state.hoveredWork],
       thoughts: this.thoughts,
       heroRef: this.heroRef,
-      hdrBg: this.state.scrolled ? (this.state.isDark ? this.dark : this.light).headerBg : "transparent",
+      hdrBg: this.state.scrolled ? ({ ...(this.state.isDark ? this.dark : this.light), ...((this.palettes[this.props.palette] || this.palettes["Stone · lilac · mustard"])[this.state.isDark ? "dark" : "light"]) }).headerBg : "transparent",
       hdrBorder: this.state.scrolled ? (this.state.isDark ? this.dark : this.light).border : "transparent",
       hdrBlur: this.state.scrolled ? "blur(8px)" : "none",
     };
