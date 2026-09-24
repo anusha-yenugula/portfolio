@@ -43,6 +43,8 @@
       section#work { padding: 60px 24px !important; }
       section#thoughts { padding: 60px 24px !important; }
       #top h3 { font-size: 24px !important; }
+      [data-hero-photo] { flex: 0 0 auto !important; width: 180px !important; min-width: 0 !important; margin: 8px auto 0 !important; }
+      [data-card-vis] { flex: 1 1 100% !important; width: 100% !important; min-height: 280px !important; }
       footer { padding-left: 24px !important; padding-right: 24px !important; }
       footer h2 { font-size: 32px !important; }
     }
@@ -112,7 +114,7 @@
       </div>
       
     </div>
-    <div style="position:relative; flex:0 1 260px; min-width:180px; max-width:260px; aspect-ratio:835/876; border-radius:28px; overflow:hidden; isolation:isolate;">
+    <div data-hero-photo="" style="position:relative; flex:0 1 260px; min-width:180px; max-width:260px; aspect-ratio:835/876; border-radius:28px; overflow:hidden; isolation:isolate;">
       <img src="uploads/home-photo-hue.png" alt="Portrait of Anusha Yenugula" width="835" height="876" decoding="async" fetchpriority="high" style="display:block; width:100%; height:100%; object-fit:cover;">
     </div>
     </div>
@@ -129,7 +131,7 @@
     <div style="display:flex; flex-direction:column; gap:24px; max-width:780px; margin:0 auto;">
       <sc-for list="{{ workItems }}" as="w" hint-placeholder-count="3">
         <a href="{{ w.href }}" onMouseEnter="{{ w.onCardEnter }}" onMouseLeave="{{ onCardLeave }}" onFocus="{{ w.onCardEnter }}" onBlur="{{ onCardLeave }}" aria-label="{{ w.title }} case study" style="position:relative; isolation:isolate; cursor:pointer; display:flex; flex-wrap:wrap; text-decoration:none; background:{{ cu.bg }}; border:{{ cu.border }}; border-top:{{ cu.borderTop }}; border-radius:{{ cu.radius }}; padding:{{ cu.pad }}; gap:{{ cu.gap }}; -webkit-backdrop-filter:{{ cu.blur }}; backdrop-filter:{{ cu.blur }}; overflow:hidden; color:{{ c.text }}; transition:transform 0.2s, border-color 0.2s;" style-hover="transform:translateY(-3px); border-color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
-          <div style="position:relative; flex:0 0 300px; max-width:100%; min-height:300px; align-self:stretch; border-radius:{{ cu.visRadius }}; background:{{ c.visualBase }}; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box; isolation:isolate;">
+          <div data-card-vis="" style="position:relative; flex:0 0 300px; max-width:100%; min-height:300px; align-self:stretch; border-radius:{{ cu.visRadius }}; background:{{ c.visualBase }}; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box; isolation:isolate;">
             <div aria-hidden="true" style="position:absolute; inset:-25%; z-index:-2; pointer-events:none; background:{{ c.visual }}; filter:blur(36px) saturate(1.2);"></div>
             <div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ cardGrainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div>
             <sc-if value="{{ w.hasScreen }}" hint-placeholder-val="{{ false }}">
