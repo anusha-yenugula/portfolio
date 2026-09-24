@@ -16,7 +16,7 @@
   <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; }
-    ::selection { background: #6A5696; color: #F6F6F5; }
+    ::selection { background: #2C5F7C; color: #F4F5F4; }
     body { transition: background-color 0.2s, color 0.2s; }
     section > * , footer > div { }
     .rv { opacity: 0; transition: opacity 0.9s ease; }
@@ -74,11 +74,11 @@
   <!-- HEADER -->
   <header style="position:sticky; top:0; z-index:50; padding:14px max(24px, calc((100% - 1140px) / 2)); background:{{ c.glassBg }}; border-bottom:1px solid {{ c.glassBorder }}; -webkit-backdrop-filter:blur(10px) saturate(140%); backdrop-filter:blur(10px) saturate(140%); transition:background-color 0.3s;">
     <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 0;">
-    <a href="index.html" style="font-family:'Hanken Grotesk', sans-serif; font-size:22px; font-weight:500; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s;" style-hover="color:#6A5696;" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
+    <a href="index.html" style="font-family:'Hanken Grotesk', sans-serif; font-size:22px; font-weight:500; color:{{ c.text }}; text-decoration:none; letter-spacing:0.01em; transition:color 0.15s;" style-hover="color:#2C5F7C;" style-focus="outline:2px solid #2C5F7C; outline-offset:4px; border-radius:2px;">Anusha Yenugula</a>
     <nav style="display:flex; align-items:center; gap:32px;">
-      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#6A5696;" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">Work</a>
-      <a href="about.html" style="color:{{ c.accent }}; text-decoration:none; font-size:15px; font-weight:600;" style-focus="outline:2px solid #6A5696; outline-offset:4px; border-radius:2px;">About</a>
-      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #6A5696; outline-offset:2px;">
+      <a href="index.html#work" style="color:{{ c.text }}; text-decoration:none; font-size:15px; font-weight:400; transition:color 0.15s;" style-hover="color:#2C5F7C;" style-focus="outline:2px solid #2C5F7C; outline-offset:4px; border-radius:2px;">Work</a>
+      <a href="about.html" style="color:{{ c.accent }}; text-decoration:none; font-size:15px; font-weight:600;" style-focus="outline:2px solid #2C5F7C; outline-offset:4px; border-radius:2px;">About</a>
+      <button type="button" onClick="{{ onToggleDark }}" aria-label="Toggle dark mode" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid {{ c.border }}; background:transparent; color:{{ c.text }}; cursor:pointer; padding:0; transition:border-color 0.15s, background 0.15s;" style-focus="outline:2px solid #2C5F7C; outline-offset:2px;">
         <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </sc-if>
@@ -86,7 +86,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </sc-if>
       </button>
-      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid #6A5696; outline-offset:3px;">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="color:{{ c.btnText }}; text-decoration:none; font-size:14px; font-weight:600; background:{{ c.btnBg }}; padding:10px 20px; border-radius:12px; transition:background 0.15s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid #2C5F7C; outline-offset:3px;">LinkedIn</a>
     </nav>
     </div>
   </header>
@@ -223,7 +223,7 @@
   <footer style="background:linear-gradient(90deg, transparent, {{ c.hair }} 20%, {{ c.hair }} 80%, transparent) top / 100% 1px no-repeat, {{ c.bg }}; color:{{ c.text }}; padding:28px 64px; transition:background-color 0.2s, color 0.2s;">
     <div style="max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:12px;">
-        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#353530"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#C4B4EC"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F6F6F5"></path><path d="M26 50 L32 40 L38 50 Z" fill="#353530"></path></svg>
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink:0;"><rect width="64" height="64" rx="14" fill="#1F3A4A"></rect><path d="M10 50 L32 12 L54 50 Z" fill="#9CC3D8"></path><path d="M32 12 L41.5 28.5 L37 26 L32 30 L27 26 L22.5 28.5 Z" fill="#F4F5F4"></path><path d="M26 50 L32 40 L38 50 Z" fill="#1F3A4A"></path></svg>
         <span style="font-size:16px; font-weight:600;">Anusha Yenugula · Product Design Leader</span>
       </div>
       <a href="https://www.linkedin.com/in/anusha-yenugula" target="_blank" rel="noopener" style="font-size:15px; color:{{ c.muted }}; text-decoration:none; transition:color 0.15s;" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px; border-radius:2px;">Connect on LinkedIn</a>
@@ -238,8 +238,8 @@ class Component extends DCLogic {
 
   light = { hair: "rgba(34,48,28,0.10)", glassBg: "rgba(252,250,244,0.42)", glassBorder: "rgba(34,48,28,0.10)", glassShadow: "none", btnBg: "#22301C", btnText: "#F5F0E6", btnHover: "#182B14", bg: "#F5F0E6", text: "#22301C", muted: "#4f584a", border: "rgba(34,48,28,0.14)", headerBg: "#F5F0E6E0", accent: "#5D6D22", cardBg: "#FCFAF4", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(93,109,34,0.1)" };
   dark = { hair: "rgba(245,240,230,0.10)", glassBg: "rgba(40,38,28,0.38)", glassBorder: "rgba(245,240,230,0.12)", glassShadow: "none", btnBg: "#F5F0E6", btnText: "#22301C", btnHover: "#DDD6C4", bg: "#17160F", text: "#F5F0E6", muted: "#b3ad9d", border: "rgba(245,240,230,0.15)", headerBg: "#17160FE0", accent: "#A9C08F", cardBg: "#221F16", bandBg: "#22301C", bandText: "#F5F0E6", iconBg: "rgba(169,192,143,0.12)" };
-  light = { ...this.light, ...{"bg":"#FBFBFB","text":"#262624","muted":"#5E5E5A","border":"rgba(38,38,36,0.14)","hair":"rgba(38,38,36,0.10)","glassBorder":"rgba(38,38,36,0.10)","cardBg":"#FFFFFF","accent":"#6A5696","btnBg":"#353530","btnText":"#FFFFFF","btnHover":"#262624","headerBg":"#FBFBFBE0","glassBg":"rgba(255,255,255,0.42)"} };
-  dark = { ...this.dark, ...{"bg":"#0F1012","text":"#F6F6F5","muted":"#ABACB0","border":"rgba(246,246,245,0.15)","hair":"rgba(246,246,245,0.10)","glassBorder":"rgba(246,246,245,0.12)","cardBg":"#18191C","accent":"#C4B4EC","btnBg":"#F6F6F5","btnText":"#262624","btnHover":"#ABACB0","headerBg":"#0F1012E0"} };
+  light = { ...this.light, ...{"bg":"#FAFAF8","text":"#1E2528","muted":"#565E62","border":"rgba(30,37,40,0.14)","hair":"rgba(30,37,40,0.10)","glassBorder":"rgba(30,37,40,0.10)","cardBg":"#FFFFFF","accent":"#2C5F7C","btnBg":"#1F3A4A","btnText":"#FFFFFF","btnHover":"#1E2528","headerBg":"#FAFAF8E0","glassBg":"rgba(255,255,255,0.42)"} };
+  dark = { ...this.dark, ...{"bg":"#0E1113","text":"#F4F5F4","muted":"#A7ADB0","border":"rgba(244,245,244,0.15)","hair":"rgba(244,245,244,0.10)","glassBorder":"rgba(244,245,244,0.12)","cardBg":"#171B1E","accent":"#9CC3D8","btnBg":"#F4F5F4","btnText":"#1E2528","btnHover":"#A7ADB0","headerBg":"#0E1113E0"} };
 
   pillarLight = [
     { tint: "rgba(93,109,34,0.1)", accent: "#5D6D22" },
@@ -276,7 +276,7 @@ class Component extends DCLogic {
   renderVals() {
     const isDark = this.state.isDark;
     return {
-      fx: this.state.isDark ? { b1: "215,212,205,0.20", b2: "200,185,235,0.18", b3: "215,180,80,0.12", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.12 } : { b1: "215,212,205,0.18", b2: "200,185,235,0.15", b3: "215,180,80,0.10", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.04 },
+      fx: this.state.isDark ? { b1: "208,210,206,0.20", b2: "130,160,185,0.18", b3: "200,188,120,0.12", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.12 } : { b1: "208,210,206,0.18", b2: "130,160,185,0.15", b3: "200,188,120,0.10", grain: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")", grainOp: 0.04 },
       isDark,
       isLight: !isDark,
       onToggleDark: () => this.setState(s => { const v = !s.isDark; localStorage.setItem("theme", v ? "dark" : "light"); return { isDark: v }; }),

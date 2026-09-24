@@ -16,16 +16,16 @@
   <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; }
-    ::selection { background: #6A5696; color: #F6F6F5; }
+    ::selection { background: #2C5F7C; color: #F4F5F4; }
     .rv { opacity: 0; transition: opacity 0.9s ease; }
     .rv.in { opacity: 1; }
     @media (prefers-reduced-motion: reduce) { .rv { opacity: 1 !important; transform: none !important; transition: none !important; } }
     .delightful-wrap { position: relative; }
-    .delightful-wrap .spark2 { position: absolute; top: 0.75em; left: -0.6em; font-size: 0.4em; color: #C4B4EC; opacity: 0; transform: scale(0.4) rotate(15deg); transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s; display: inline-block; font-style: normal; }
+    .delightful-wrap .spark2 { position: absolute; top: 0.75em; left: -0.6em; font-size: 0.4em; color: #9CC3D8; opacity: 0; transform: scale(0.4) rotate(15deg); transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s; display: inline-block; font-style: normal; }
     .delightful-wrap:hover .spark2 { opacity: 1; transform: scale(1) rotate(0deg); }
-    .delightful-wrap::before { content: "✦"; position: absolute; top: 0.4em; right: -1.1em; font-size: 0.35em; color: #C4B4EC; opacity: 0; transform: scale(0.4) rotate(20deg); transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s; }
+    .delightful-wrap::before { content: "✦"; position: absolute; top: 0.4em; right: -1.1em; font-size: 0.35em; color: #9CC3D8; opacity: 0; transform: scale(0.4) rotate(20deg); transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s; }
     .delightful-wrap:hover::before { opacity: 1; transform: scale(1) rotate(0deg); }
-    .delightful-wrap::after { content: "✦"; position: absolute; top: -0.1em; right: -0.75em; font-size: 0.55em; color: #6A5696; opacity: 0; transform: scale(0.4) rotate(-15deg); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .delightful-wrap::after { content: "✦"; position: absolute; top: -0.1em; right: -0.75em; font-size: 0.55em; color: #2C5F7C; opacity: 0; transform: scale(0.4) rotate(-15deg); transition: opacity 0.35s ease, transform 0.35s ease; }
     .delightful-wrap:hover::after { opacity: 1; transform: scale(1) rotate(0deg); }
     @media (max-width: 768px) {
       #top { padding: 60px 24px 80px !important; }
@@ -105,8 +105,8 @@
     <div style="display:flex; align-items:center; gap:clamp(32px, 5vw, 64px); flex-wrap:wrap;">
     <div style="flex:1 1 420px; min-width:0; max-width:700px;">
       <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">PRODUCT DESIGN LEADER</p>
-      <h3 style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(23px, 3vw, 30px); line-height:1.25; font-weight:300; margin:0 0 32px; letter-spacing:-0.015em;">Over a decade working with financial products people trust. I help turn complex digital experiences into something simpler and a little more <span class="delightful-wrap">delightful.<i class="spark2">✦</i></span></h3>
-      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 20px;">Currently heading design at Smart Pension.</h4>
+      <h3 style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(23px, 3vw, 30px); line-height:1.25; font-weight:300; margin:0 0 32px; letter-spacing:-0.015em;">Over a decade working with financial products people trust. I care about what people experience and the systems and strategy that make it possible</h3>
+      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 20px;">Currently heading design at Smart Pension across a multi-client PaaS ecosystem.</h4>
       <div style="display:flex; flex-wrap:wrap; gap:8px;">
         <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">Design • Strategy</span>
         <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">Fintech</span>
@@ -132,7 +132,7 @@
       <sc-for list="{{ workItems }}" as="w" hint-placeholder-count="3">
         <a href="{{ w.href }}" onMouseEnter="{{ w.onCardEnter }}" onMouseLeave="{{ onCardLeave }}" onFocus="{{ w.onCardEnter }}" onBlur="{{ onCardLeave }}" aria-label="{{ w.title }} case study" style="position:relative; isolation:isolate; cursor:pointer; display:flex; flex-wrap:wrap; text-decoration:none; background:{{ cu.bg }}; border:{{ cu.border }}; border-top:{{ cu.borderTop }}; border-radius:{{ cu.radius }}; padding:{{ cu.pad }}; gap:{{ cu.gap }}; -webkit-backdrop-filter:{{ cu.blur }}; backdrop-filter:{{ cu.blur }}; overflow:hidden; color:{{ c.text }}; transition:transform 0.2s, border-color 0.2s;" style-hover="transform:translateY(-3px); border-color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
           <div data-card-vis="" style="position:relative; flex:0 0 300px; max-width:100%; min-height:300px; align-self:stretch; border-radius:{{ cu.visRadius }}; background:{{ c.visualBase }}; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; padding-top:36px; box-sizing:border-box; isolation:isolate;">
-            <div aria-hidden="true" style="position:absolute; inset:-25%; z-index:-2; pointer-events:none; background:{{ c.visual }}; filter:blur(36px) saturate(1.2);"></div>
+            <div aria-hidden="true" style="position:absolute; inset:-25%; z-index:-2; pointer-events:none; background:{{ c.visual }}; filter:blur(64px) saturate(1.05); opacity:0.7;"></div>
             <div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:{{ grainBg }}; background-size:{{ grainSize }}; opacity:{{ cardGrainOpacity }}; mix-blend-mode:{{ grainBlend }};"></div>
             <sc-if value="{{ w.hasScreen }}" hint-placeholder-val="{{ false }}">
               <div style="position:absolute; inset:0; margin:auto; height:calc(100% - 40px); max-height:380px; aspect-ratio:9/19; border-radius:28px; overflow:hidden; background:#0F1012; padding:6px; box-sizing:border-box; box-shadow:0 30px 50px -20px rgba(0,0,0,0.6);">
@@ -193,9 +193,38 @@
           </div>
         </a>
       </sc-for>
+      <sc-if value="{{ aboutCard }}" hint-placeholder-val="{{ false }}">
+      <a href="about.html" aria-label="About me" style="display:flex; flex-direction:column; gap:20px; text-decoration:none; color:{{ c.text }}; background:{{ cu.bg }}; border:{{ cu.border }}; border-radius:{{ cu.radius }}; padding:clamp(28px, 4vw, 40px); margin-top:24px; transition:transform 0.2s, border-color 0.2s;" style-hover="transform:translateY(-3px); border-color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
+        <p style="font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:{{ c.accent }}; margin:0;">About me</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(20px, 2.2vw, 24px); font-weight:300; line-height:1.35; letter-spacing:-0.01em; margin:0; text-wrap:pretty;">Over a decade in financial services, from AustralianSuper to Smart Pension.</p>
+          <p style="font-size:16px; line-height:1.6; color:{{ c.muted }}; margin:0; max-width:56ch; text-wrap:pretty;">Now shaping products, systems and teams across a growing international pension and wealth ecosystem.</p>
+        </div>
+        <span style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:{{ c.accent }};">Read more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+      </sc-if>
+      <sc-if value="{{ aboutRow }}" hint-placeholder-val="{{ false }}">
+      <a href="about.html" aria-label="About me" style="display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:16px 32px; text-decoration:none; color:{{ c.text }}; padding:28px 0; margin-top:24px; border-top:1px solid {{ c.border }}; border-bottom:1px solid {{ c.border }};" style-hover="color:{{ c.accent }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:3px;">
+        <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
+          <p style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(20px, 2.2vw, 24px); font-weight:300; line-height:1.35; letter-spacing:-0.01em; margin:0; text-wrap:pretty;">Over a decade in financial services, from AustralianSuper to Smart Pension.</p>
+          <p style="font-size:16px; line-height:1.6; color:{{ c.muted }}; margin:0; max-width:56ch; text-wrap:pretty;">Now shaping products, systems and teams across a growing international pension and wealth ecosystem.</p>
+        </div>
+        <span style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:{{ c.accent }}; white-space:nowrap;">About me <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+      </sc-if>
     </div>
   </section></div>
 
+  <sc-if value="{{ aboutBand }}" hint-placeholder-val="{{ true }}">
+  <a href="about.html" aria-label="About me" style="display:block; text-decoration:none; color:{{ c.btnText }}; background:{{ c.btnBg }}; padding:clamp(48px, 7vw, 80px) max(24px, calc((100% - 1140px) / 2)); border-radius:0; margin-top:0; position:relative; z-index:2; transition:background 0.2s;" style-hover="background:{{ c.btnHover }};" style-focus="outline:2px solid {{ c.accent }}; outline-offset:-4px;">
+    <div style="max-width:780px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:24px 40px;">
+      <div style="display:flex; flex-direction:column; gap:16px; min-width:0;">
+        <p style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(18px, 2vw, 22px); font-weight:300; line-height:1.5; letter-spacing:-0.01em; margin:0; text-wrap:pretty;">Over the last four years at Smart, I’ve helped evolve the design practice from a B2C product mindset to shaping the thinking, systems and teams behind a growing wealth management ecosystem.</p>
+      </div>
+      <span role="presentation" style="display:flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:{{ c.btnText }}; color:{{ c.btnBg }}; flex-shrink:0; cursor:pointer; transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="transform:translateX(4px); box-shadow:0 6px 20px rgba(0,0,0,0.25);" style-active="transform:translateX(2px) scale(0.96);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+    </div>
+  </a>
+  </sc-if>
   <!-- CONNECT / FOOTER -->
   <footer id="connect" style="background:linear-gradient(90deg, transparent, {{ c.hair }} 20%, {{ c.hair }} 80%, transparent) top / 100% 1px no-repeat, {{ c.bg }}; color:{{ c.text }}; padding:28px 64px; transition:background-color 0.2s, color 0.2s;">
     <div style="max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
@@ -210,14 +239,14 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;blobScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.1,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;motionSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.5,&quot;max&quot;:3,&quot;step&quot;:0.1,&quot;default&quot;:1.5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Stone · lilac · mustard&quot;,&quot;Ocean · grey-yellow&quot;],&quot;default&quot;:&quot;Ocean · grey-yellow&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colour&quot;},&quot;aboutStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Card&quot;,&quot;Row&quot;,&quot;Footer band&quot;],&quot;default&quot;:&quot;Footer band&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;About snapshot&quot;},&quot;blobScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.1,&quot;default&quot;:2.5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;motionSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.5,&quot;max&quot;:3,&quot;step&quot;:0.1,&quot;default&quot;:1.5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
 class Component extends DCLogic {
   state = { hoverCard: -1, searchQuery: "", isDark: localStorage.getItem("theme") === "dark", hoveredWork: 0, scrolled: false };
 
   work = [
-    { num: "01", title: "Native Member App", tag: "Smart Pension", tags: ["Product strategy", "Native mobile", "Member app"], metrics: "3.6 → 4.7 App Store rating · 2M+ members · 0 → 2 markets", year: "2024 – present", glow: "#E1DCF2", href: "native-member-app.html", teaser: "Transforming Smart Pension's web app into a native mobile experience.", bg: "#E1DCF2", fg: "#262624", fg2: "#FFFFFF", bezel: "#262624", screen: "uploads/img/member-app-360.png", screenSet: "uploads/img/member-app-180.png 180w, uploads/img/member-app-360.png 360w, uploads/img/member-app-540.png 540w", gradient: "linear-gradient(135deg, #6A5696 0%, #353530 100%)", image: "uploads/case-study-native-member-app.png" },
-    { num: "02", title: "Identity Project", tag: "Smart Pension", tags: ["Design strategy", "Identity", "Platform"], metrics: "70% automation target", glow: "#8FA389", href: "identity-project.html", teaser: "Creating a unified, person-centric customer identity experience.", bg: "#353530", fg: "#8FA389", fg2: "#C4B4EC", bezel: "#262624", hub: true, gradient: "linear-gradient(135deg, #262624 0%, #6A5696 100%)", image: "uploads/case-study-profile-project.png" },
-    { num: "03", title: "Beyond workplace pensions", tag: "Smart Pension", tags: ["Platform strategy", "SIPP · ISA"], metrics: "Future SIPP, ISA and savings products", glow: "#C4B4EC", href: "individual-pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#4A5A48", fg: "#6A5696", fg2: "#C4B4EC", bezel: "#0F1012", hub: true, gradient: "linear-gradient(135deg, #C4B4EC 0%, #6A5696 100%)", image: "uploads/case-study-individual-pensions.png" },
+    { num: "01", title: "Building a Native Member App", tag: "Smart Pension", tags: ["Product strategy", "Native mobile", "Member app"], metrics: "3.6 → 4.7 App Store rating · 2M+ members · 0 → 2 markets", glow: "#E1DCF2", href: "native-member-app.html", teaser: "Design strategy, buy-in and launch of a native member app, expanding our product ecosystem and supporting client growth.", bg: "#E1DCF2", fg: "#262624", fg2: "#FFFFFF", bezel: "#262624", screen: "uploads/img/member-app-360.png", screenSet: "uploads/img/member-app-180.png 180w, uploads/img/member-app-360.png 360w, uploads/img/member-app-540.png 540w", gradient: "linear-gradient(135deg, #6A5696 0%, #353530 100%)", image: "uploads/case-study-native-member-app.png" },
+    { num: "02", title: "Transforming pension platforms into a multi-product ecosystem", tag: "Smart Pension", tags: ["Platform strategy", "SIPP · ISA"], metrics: "Future SIPP, ISA and savings products", glow: "#C4B4EC", href: "individual-pensions.html", teaser: "Evolving a workplace pension platform to serve individual customers directly.", bg: "#4A5A48", fg: "#6A5696", fg2: "#C4B4EC", bezel: "#0F1012", hub: true, gradient: "linear-gradient(135deg, #C4B4EC 0%, #6A5696 100%)", image: "uploads/case-study-individual-pensions.png" },
+    { num: "03", title: "Unifying Customer Identity", tag: "Smart Pension", tags: ["Systems thinking", "AI foundations"], metrics: "Reduced operational costs · One account, multiple products", glow: "#8FA389", href: "identity-project.html", teaser: "Transforming the platform identity model to create a single customer profile, reduce operational costs, and establish the foundation for AI-powered customer experiences.", bg: "#353530", fg: "#8FA389", fg2: "#C4B4EC", bezel: "#262624", hub: true, gradient: "linear-gradient(135deg, #262624 0%, #6A5696 100%)", image: "uploads/case-study-profile-project.png" },
   ];
 
   thoughts = [
@@ -263,6 +292,11 @@ class Component extends DCLogic {
     "Stone · lilac · mustard": {
       light: {"bg":"#FBFBFB","text":"#262624","muted":"#5E5E5A","border":"rgba(38,38,36,0.14)","hair":"rgba(38,38,36,0.10)","glassBorder":"rgba(38,38,36,0.10)","inputBorder":"rgba(38,38,36,0.18)","cardBg":"#FFFFFF","cardHoverBg":"#FFFFFF","inputBg":"#FFFFFF","dropdownBg":"#FFFFFF","accent":"#6A5696","eyebrow":"#6A5696","chipBg":"#F4F0E4","btnBg":"#353530","btnText":"#FFFFFF","btnHover":"#262624","headerBg":"#FBFBFBE0","glassBg":"rgba(255,255,255,0.42)","navBg":"rgba(255,255,255,0.14)","b1":"rgba(215,212,205,0.44)","b2":"rgba(200,185,235,0.38)","b3":"rgba(215,180,80,0.24)","b4":"rgba(225,215,240,0.34)","visualBase":"#F4F2EE","visual":"radial-gradient(65% 60% at 15% 15%, rgba(215,212,205,0.9), transparent 70%), radial-gradient(60% 55% at 88% 22%, rgba(200,185,235,0.75), transparent 70%), radial-gradient(60% 55% at 82% 92%, rgba(215,180,80,0.45), transparent 70%), radial-gradient(55% 50% at 10% 90%, rgba(225,215,240,0.7), transparent 70%)","mockA":"#6A5696","mockB":"#262624"},
       dark: {"bg":"#0F1012","text":"#F6F6F5","muted":"#ABACB0","border":"rgba(246,246,245,0.15)","hair":"rgba(246,246,245,0.10)","glassBorder":"rgba(246,246,245,0.12)","inputBorder":"rgba(246,246,245,0.2)","cardBg":"#18191C","cardHoverBg":"#18191C","inputBg":"#18191C","dropdownBg":"#18191C","accent":"#C4B4EC","eyebrow":"#C4B4EC","chipBg":"rgba(196,180,236,0.18)","btnBg":"#F6F6F5","btnText":"#262624","btnHover":"#ABACB0","heroBg":"linear-gradient(to bottom, #353530 0%, #353530 50%, #0F1012 100%)","headerBg":"#0F1012E0","b1":"rgba(215,212,205,0.28)","b2":"rgba(200,185,235,0.22)","b3":"rgba(215,180,80,0.14)","b4":"rgba(225,215,240,0.14)","visual":"radial-gradient(60% 55% at 18% 18%, rgba(215,212,205,0.55), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(200,185,235,0.34), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(215,180,80,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(225,215,240,0.28), transparent 70%), #353530","mockA":"#6A5696","mockB":"#262624"},
+    },
+    "Ocean · grey-yellow": {
+      light: {"bg":"#FAFAF8","text":"#1E2528","muted":"#565E62","border":"rgba(30,37,40,0.14)","hair":"rgba(30,37,40,0.10)","glassBorder":"rgba(30,37,40,0.10)","inputBorder":"rgba(30,37,40,0.18)","cardBg":"#FFFFFF","cardHoverBg":"#FFFFFF","inputBg":"#FFFFFF","dropdownBg":"#FFFFFF","accent":"#2C5F7C","eyebrow":"#2C5F7C","chipBg":"#EEEBDD","btnBg":"#1F3A4A","btnText":"#FFFFFF","btnHover":"#162B37","headerBg":"#FAFAF8E0","glassBg":"rgba(255,255,255,0.42)","navBg":"rgba(255,255,255,0.14)","b1":"rgba(208,210,206,0.44)","b2":"rgba(130,160,185,0.42)","b3":"rgba(200,188,120,0.30)","b4":"rgba(160,182,200,0.36)","visualBase":"#F2F3F1","visual":"radial-gradient(65% 60% at 15% 15%, rgba(208,210,206,0.9), transparent 70%), radial-gradient(60% 55% at 88% 22%, rgba(120,170,200,0.7), transparent 70%), radial-gradient(60% 55% at 82% 92%, rgba(200,188,120,0.5), transparent 70%), radial-gradient(55% 50% at 10% 90%, rgba(190,215,228,0.7), transparent 70%)","mockA":"#2C5F7C","mockB":"#1E2528"},
+      dark: {"bg":"#0E1113","text":"#F4F5F4","muted":"#A7ADB0","border":"rgba(244,245,244,0.15)","hair":"rgba(244,245,244,0.10)","glassBorder":"rgba(244,245,244,0.12)","inputBorder":"rgba(244,245,244,0.2)","cardBg":"#171B1E","cardHoverBg":"#171B1E","inputBg":"#171B1E","dropdownBg":"#171B1E","accent":"#9CC3D8","eyebrow":"#9CC3D8","chipBg":"rgba(156,195,216,0.18)","btnBg":"#F4F5F4","btnText":"#1E2528","btnHover":"#A7ADB0","heroBg":"linear-gradient(to bottom, #1F3A4A 0%, #1F3A4A 50%, #0E1113 100%)","headerBg":"#0E1113E0","b1":"rgba(208,210,206,0.26)","b2":"rgba(130,160,185,0.32)","b3":"rgba(200,188,120,0.16)","b4":"rgba(160,182,200,0.18)","visual":"radial-gradient(60% 55% at 18% 18%, rgba(208,210,206,0.5), transparent 70%), radial-gradient(50% 45% at 85% 25%, rgba(120,170,200,0.4), transparent 70%), radial-gradient(55% 50% at 80% 92%, rgba(200,188,120,0.32), transparent 70%), radial-gradient(50% 45% at 12% 90%, rgba(190,215,228,0.26), transparent 70%), #1F3A4A","mockA":"#2C5F7C","mockB":"#1E2528"},
+      swap: {"#E1DCF2":"#D8E6EE","#6A5696":"#2C5F7C","#C4B4EC":"#C9BE8A"},
     },
   };
   accents = {
@@ -404,7 +438,10 @@ class Component extends DCLogic {
       fontBody: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[1],
       fontWd: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[2] || 0,
       fontWmin: (this.fonts[this.props.typePairing] || this.fonts["Hanken Grotesk Light + IBM Plex Sans"])[3] || 100,
-      workItems: this.work.map((w, i) => ({ ...w, meta: w.year || w.tag, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }), ...(() => { const cc = this.state.isDark ? this.dark : this.light; const on = this.state.hoverCard === i; return { onCardEnter: () => this.setState({ hoverCard: i, hoveredWork: i }), arrowBorder: on ? cc.btnBg : cc.border, arrowBg: on ? cc.btnBg : "transparent", arrowFg: on ? cc.btnText : cc.text, arrowTf: on ? "translateX(3px)" : "none", titleArrowTf: on ? "translateX(6px)" : "none" }; })() })),
+      workItems: this.work.map((w0) => { const sw = (this.palettes[this.props.palette] || {}).swap; if (!sw) return w0; const o = {}; for (const k in w0) { let v = w0[k]; if (typeof v === "string") for (const h in sw) v = v.split(h).join(sw[h]); o[k] = v; } return o; }).map((w, i) => ({ ...w, meta: w.year || w.tag, noImage: !w.image, hasScreen: !!w.screen, noScreen: !w.screen, isHub: !!w.hub, isDisc: !w.screen && !w.hub, onEnter: () => this.setState({ hoveredWork: i }), ...(() => { const cc = this.state.isDark ? this.dark : this.light; const on = this.state.hoverCard === i; return { onCardEnter: () => this.setState({ hoverCard: i, hoveredWork: i }), arrowBorder: on ? cc.btnBg : cc.border, arrowBg: on ? cc.btnBg : "transparent", arrowFg: on ? cc.btnText : cc.text, arrowTf: on ? "translateX(3px)" : "none", titleArrowTf: on ? "translateX(6px)" : "none" }; })() })),
+      aboutCard: this.props.aboutStyle === "Card",
+      aboutRow: this.props.aboutStyle === "Row",
+      aboutBand: (this.props.aboutStyle ?? "Footer band") === "Footer band",
       activeWork: this.work[this.state.hoveredWork],
       thoughts: this.thoughts,
       heroRef: this.heroRef,
