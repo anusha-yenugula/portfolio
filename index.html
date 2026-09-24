@@ -104,9 +104,8 @@
   <section id="top" style="padding:100px 64px 120px; max-width:1140px; margin:0 auto; scroll-margin-top:96px;">
     <div style="display:flex; align-items:center; gap:clamp(32px, 5vw, 64px); flex-wrap:wrap;">
     <div style="flex:1 1 420px; min-width:0; max-width:700px;">
-      <p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ c.eyebrow }}; margin: 0 0 24px">PRODUCT DESIGN LEADER</p>
-      <h3 style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(23px, 3vw, 30px); line-height:1.25; font-weight:300; margin:0 0 32px; letter-spacing:-0.015em;">Over a decade working with financial products people trust. I care about what people experience and the systems and strategy that make it possible</h3>
-      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 20px;">Currently heading design at Smart Pension across a multi-client PaaS ecosystem.</h4>
+      <h3 style="font-family:var(--fh, 'Hanken Grotesk'), sans-serif; font-size:clamp(28px, 3.6vw, 42px); line-height:1.18; font-weight:300; letter-spacing:-0.025em; margin:0 0 28px; text-wrap:pretty;">I care about what people <em style="font-style:italic; font-weight:400; color:{{ c.accent }};">experience</em>, and the <em style="font-style:italic; font-weight:400; color:{{ c.accent }};">systems and strategy</em> that make it possible.</h3>
+      <h4 style="font-size:clamp(16px, 2.2vw, 19px); line-height:1.5; font-weight:400; color:{{ c.muted }}; margin:0 0 20px;">Over a decade working with financial products people trust. Currently heading design at Smart Pension across a multi-client platform ecosystem.</h4>
       <div style="display:flex; flex-wrap:wrap; gap:8px;">
         <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">Design • Strategy</span>
         <span style="padding:8px 14px; border-radius:999px; background:{{ c.glassBg }}; -webkit-backdrop-filter:blur(24px) saturate(180%); backdrop-filter:blur(24px) saturate(180%); border:1px solid {{ c.glassBorder }}; box-shadow:{{ c.glassShadow }}; color:{{ c.text }}; font-size:14px; font-weight:500;">Fintech</span>
@@ -300,12 +299,7 @@ class Component extends DCLogic {
     },
   };
   accents = {
-    "Mulberry": ["#8E2A5E", "#EC8FBA"],
-    "Rose": ["#B23A5E", "#F09AB0"],
-    "Mocha": ["#7B5140", "#E0B19C"],
-    "Plum": ["#6B3A78", "#D2A2DF"],
-    "Cherry": ["#A0233F", "#F08198"],
-    "Terracotta": ["#A4492F", "#E79A7C"],
+    "Ocean": ["#2C5F7C", "#9CC3D8", "#1F3A4A", "#162B37"],
   };
 
   fonts = {
@@ -333,7 +327,9 @@ class Component extends DCLogic {
     const a = this.accents[this.props.accentColor];
     if (!a) return {};
     const v = a[this.state.isDark ? 1 : 0];
-    return { accent: v, eyebrow: v, mockA: a[0] };
+    const o = { accent: v, eyebrow: v, mockA: a[0] };
+    if (!this.state.isDark) { o.btnBg = a[2]; o.btnHover = a[3]; }
+    return o;
   }
   grainSvg(g, alpha) {
     const s = g.size;
